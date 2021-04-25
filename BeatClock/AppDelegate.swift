@@ -11,10 +11,17 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet var window: NSWindow!
-
-
+    @IBOutlet var beatsWindow: NSTextField!
+    var timer: Timer!
+    var beat: BeatClock!
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        beat = BeatClock()
+        
+        //beat.isCentiBeat = true
+        beatsWindow.stringValue = "@\(beat.beatTime())"
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in beatsWindow.stringValue = "@\(self.beat.beatTime())"}
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -8,7 +8,7 @@
 import Foundation
 
 class BeatClock: NSObject {
-    static let UTCplus1Offset:Double = 3600
+    private static let UTCplus1Offset:Double = 3600
     var isCentiBeat = false
 
     func beatTime() -> String

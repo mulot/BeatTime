@@ -34,17 +34,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    private func drawTimeCircle()
+    {
+        let circleDiameter = min(window.frame.height, window.frame.width) - 50
+        let circleView = Drawing(frame: NSRect(x: window.frame.width/2 - (circleDiameter/2), y: window.frame.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        circleView.isHidden = false
+        view.addSubview(circleView)
+    }
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         beat = BeatClock()
         //beat.isCentiBeat = true
-        
-        halfSize = min(window.frame.height/2, window.frame.width/2)
-        let circleView = Drawing(frame: NSRect(x: window.frame.width/2 - (halfSize/2), y: window.frame.height/2 - (halfSize/2), width: halfSize, height: halfSize))
-        circleView.isHidden = false
-        view.addSubview(circleView)
-        
         beatsWindow.stringValue = "@\(beat.beatTime())"
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in beatsWindow.stringValue = "@\(self.beat.beatTime())"}
+        drawTimeCircle()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -57,15 +60,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 class Drawing: NSView {
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        let lineWidth:CGFloat = 5
-        //let fillColor = NSColor.red
-        let fillColor = NSColor.clear
-        let lineColor = NSColor.blue
-        let path = NSBezierPath(ovalIn: dirtyRect)
-        path.lineWidth = lineWidth
-        lineColor.setStroke()
-        fillColor.setFill()
-        path.fill()
-        path.stroke()
+        let context = NSGraphicsContext.current!.cgContext
+        let lineWidth:CGFloat = 10
+        context.saveGState()
+        context.setLineWidth(lineWidth)
+        context.setStrokeColor(NSColor.blue.cgColor)
+        
+        context.beginPath()
+        context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(0), clockwise: true)
+        //context.closePath()
+        context.strokePath()
+        //context.fillPath()
+        
+        //context.setFillColor(NSColor.red.cgColor)
+        //context.fillEllipse(in: dirtyRect)
+        //context.strokeEllipse(in: dirtyRect)
+        
+        context.restoreGState()
     }
 }

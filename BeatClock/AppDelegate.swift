@@ -13,10 +13,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var window: NSWindow!
     @IBOutlet var view: NSView!
     @IBOutlet var beatsWindow: NSTextField!
+    @IBOutlet var optCentiBeats: NSMenuItem!
+    
     var timer: Timer!
     var beat: BeatClock!
     var halfSize:CGFloat!
     
+    @IBAction func changeCentiBeats(_ sender: AnyObject) {
+        if (beat != nil) {
+            if (optCentiBeats.state == NSControl.StateValue.off) {
+                optCentiBeats.state = NSControl.StateValue.on
+                beat.isCentiBeat = true
+                beatsWindow.stringValue = "@\(beat.beatTime())"
+            }
+            else {
+                optCentiBeats.state = NSControl.StateValue.off
+                beat.isCentiBeat = false
+                beatsWindow.stringValue = "@\(beat.beatTime())"
+            }
+        }
+    }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         beat = BeatClock()

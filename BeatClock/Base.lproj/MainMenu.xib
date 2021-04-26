@@ -16,6 +16,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="BeatClock" customModuleProvider="target">
             <connections>
                 <outlet property="beatsWindow" destination="axz-U4-xrK" id="cSY-XQ-ptJ"/>
+                <outlet property="optCentiBeats" destination="08f-AP-Qyd" id="1In-IG-xCP"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="XGf-Ig-Eh5"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -638,6 +639,13 @@
                                 <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                                 <connections>
                                     <action selector="toggleFullScreen:" target="-1" id="dU3-MA-1Rq"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="j6M-Tf-Omj"/>
+                            <menuItem title="Show centiBeats" keyEquivalent="c" identifier="isCentiBeats" id="08f-AP-Qyd">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="changeCentiBeats:" target="Voe-Tx-rLC" id="h2w-rd-Jh5"/>
                                 </connections>
                             </menuItem>
                         </items>

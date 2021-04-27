@@ -41,6 +41,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         let circle = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         circle.arcFrag = 1000
         circle.lineColor = NSColor.gray.cgColor
+        circle.isShadow = true
         if (circleView != nil) {
             view.replaceSubview(circleView, with: circle)
             circleView = circle
@@ -88,6 +89,7 @@ class Drawing: NSView {
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10
     var lineColor: CGColor = NSColor.blue.cgColor
+    var isShadow: Bool = false
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -97,6 +99,9 @@ class Drawing: NSView {
         context.saveGState()
         context.setLineWidth(lineWidth)
         context.setStrokeColor(lineColor)
+        if (isShadow) {
+            context.setShadow(offset: CGSize(width: 2, height: -2), blur: 3)
+        }
         context.beginPath()
         if (arcFrag != 1000) {
             context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)

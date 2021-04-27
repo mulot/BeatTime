@@ -8,7 +8,7 @@
 import Cocoa
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     @IBOutlet var window: NSWindow!
     @IBOutlet var view: NSView!
@@ -18,6 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var timer: Timer!
     var beat: BeatClock!
     var circleBeatView: Drawing!
+    var circleView: Drawing!
     
     @IBAction func changeCentiBeats(_ sender: AnyObject) {
         if (beat != nil) {
@@ -37,25 +38,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func drawTimeCircle()
     {
         let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
-        let circleView = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
-        circleView.arcFrag = 1000
-        circleView.lineColor = NSColor.gray.cgColor
-        view.addSubview(circleView)
-        circleBeatView = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
-        if (beat != nil) {
-            circleBeatView.arcFrag = Double(beat.beatTime()) ?? 0
+        let circle = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        circle.arcFrag = 1000
+        circle.lineColor = NSColor.gray.cgColor
+        if (circleView != nil) {
+            view.replaceSubview(circleView, with: circle)
+            circleView = circle
         }
-        view.addSubview(circleBeatView)
+        else {
+            circleView = circle
+            view.addSubview(circleView)
+        }
+        let circleBeat = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        if (beat != nil) {
+            circleBeat.arcFrag = Double(beat.beatTime()) ?? 0
+        }
+        if (circleBeatView != nil) {
+            view.replaceSubview(circleBeatView, with: circleBeat)
+            circleBeatView = circleBeat
+        }
+        else {
+            circleBeatView = circleBeat
+            view.addSubview(circleBeatView)
+        }
+    }
+    
+    func windowDidResize(_ notification: Notification) {
+        drawTimeCircle()
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         beat = BeatClock()
         //beat.isCentiBeat = true
         beatsWindow.stringValue = "@\(beat.beatTime())"
+        drawTimeCircle()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
             beatsWindow.stringValue = "@\(self.beat.beatTime())"
+            drawTimeCircle()
         }
-        drawTimeCircle()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

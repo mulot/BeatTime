@@ -716,6 +716,9 @@
                     </textField>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="oXJ-dp-oCK"/>
+            </connections>
             <point key="canvasLocation" x="-314.5" y="-269"/>
         </window>
     </objects>

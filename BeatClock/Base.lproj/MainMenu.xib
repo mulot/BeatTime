@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -694,16 +694,16 @@
         <window title="BeatClock" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="281" height="106"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
-            <value key="minSize" type="size" width="281" height="106"/>
+            <rect key="contentRect" x="335" y="390" width="281" height="218"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <value key="minSize" type="size" width="250" height="200"/>
             <view key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="281" height="106"/>
+                <rect key="frame" x="0.0" y="0.0" width="281" height="218"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="axz-U4-xrK">
-                        <rect key="frame" x="18" y="20" width="245" height="66"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="axz-U4-xrK">
+                        <rect key="frame" x="18" y="76" width="245" height="66"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" selectable="YES" allowsUndo="NO" alignment="center" title="@Beats" usesSingleLineMode="YES" id="6Bw-KF-tOb">
                             <font key="font" metaFont="system" size="48"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -719,7 +719,7 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="oXJ-dp-oCK"/>
             </connections>
-            <point key="canvasLocation" x="-314.5" y="-269"/>
+            <point key="canvasLocation" x="-319" y="-213"/>
         </window>
     </objects>
 </document>

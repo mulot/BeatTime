@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var timer: Timer!
     var beat: BeatClock!
-    var halfSize:CGFloat!
+    var circleBeatView: Drawing!
     
     @IBAction func changeCentiBeats(_ sender: AnyObject) {
         if (beat != nil) {
@@ -38,44 +38,53 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         let circleDiameter = min(window.frame.height, window.frame.width) - 50
         let circleView = Drawing(frame: NSRect(x: window.frame.width/2 - (circleDiameter/2), y: window.frame.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
-        circleView.isHidden = false
+        circleView.arcFrag = 1000
+        circleView.lineColor = NSColor.gray.cgColor
         view.addSubview(circleView)
+        circleBeatView = Drawing(frame: NSRect(x: window.frame.width/2 - (circleDiameter/2), y: window.frame.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        if (beat != nil) {
+            circleBeatView.arcFrag = Double(beat.beatTime()) ?? 0
+        }
+        view.addSubview(circleBeatView)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         beat = BeatClock()
         //beat.isCentiBeat = true
         beatsWindow.stringValue = "@\(beat.beatTime())"
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in beatsWindow.stringValue = "@\(self.beat.beatTime())"}
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
+            beatsWindow.stringValue = "@\(self.beat.beatTime())"
+        }
         drawTimeCircle()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-    
-    
 }
 
 class Drawing: NSView {
+    
+    var arcFrag: Double = 0
+    var lineWidth: CGFloat = 10
+    var lineColor: CGColor = NSColor.blue.cgColor
+    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         let context = NSGraphicsContext.current!.cgContext
-        let lineWidth:CGFloat = 10
+        let arcLength: CGFloat = CGFloat((2 * Double.pi) - (2 * Double.pi * arcFrag)/1000 + (Double.pi/2))
+        
         context.saveGState()
         context.setLineWidth(lineWidth)
-        context.setStrokeColor(NSColor.blue.cgColor)
-        
+        context.setStrokeColor(lineColor)
         context.beginPath()
-        context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(0), clockwise: true)
-        //context.closePath()
+        if (arcFrag != 1000) {
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
+        }
+        else {
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
+        }
         context.strokePath()
-        //context.fillPath()
-        
-        //context.setFillColor(NSColor.red.cgColor)
-        //context.fillEllipse(in: dirtyRect)
-        //context.strokeEllipse(in: dirtyRect)
-        
         context.restoreGState()
     }
 }

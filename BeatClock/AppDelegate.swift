@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     var timer: Timer!
     var beat: BeatClock!
-    var circleBeatView: Drawing!
-    var circleView: Drawing!
+    var circleBeatView: DrawingArcCircle!
+    var circleView: DrawingArcCircle!
     
     @IBAction func changeCentiBeats(_ sender: AnyObject) {
         if (beat != nil) {
@@ -38,7 +38,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     private func drawTimeCircle()
     {
         let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
-        let circle = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        let circle = DrawingArcCircle(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         circle.arcFrag = 1000
         circle.lineColor = NSColor.gray.cgColor
         circle.isShadow = true
@@ -50,7 +50,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
             circleView = circle
             view.addSubview(circleView)
         }
-        let circleBeat = Drawing(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        let circleBeat = DrawingArcCircle(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         if (beat != nil) {
             circleBeat.arcFrag = Double(beat.beatTime()) ?? 0
         }
@@ -84,7 +84,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     }
 }
 
-class Drawing: NSView {
+class DrawingArcCircle: NSView {
     
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10

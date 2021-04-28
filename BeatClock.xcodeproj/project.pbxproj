@@ -11,22 +11,7 @@
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
 		94DA1E9A2634771E00F83E86 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
-		94DA1EA326347EBC00F83E86 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1EA226347EBC00F83E86 /* Media.xcassets */; };
-		94DA1EA526347EBC00F83E86 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1EA426347EBC00F83E86 /* icon.icns */; };
-		94DA1EA726347EBC00F83E86 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1EA626347EBC00F83E86 /* ActionViewController.swift */; };
-		94DA1EAA26347EBC00F83E86 /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1EA826347EBC00F83E86 /* ActionViewController.xib */; };
-		94DA1EAF26347EBC00F83E86 /* BeatClockWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 94DA1EA026347EBB00F83E86 /* BeatClockWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		94DA1EAD26347EBC00F83E86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 94DA1E9F26347EBB00F83E86;
-			remoteInfo = BeatClockWidget;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		94DA1EB326347EBC00F83E86 /* Embed App Extensions */ = {
@@ -35,7 +20,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				94DA1EAF26347EBC00F83E86 /* BeatClockWidget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,24 +34,10 @@
 		94DA1E8F2634757700F83E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94DA1E902634757700F83E86 /* BeatClock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClock.entitlements; sourceTree = "<group>"; };
 		94DA1E992634771E00F83E86 /* BeatClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClock.swift; sourceTree = "<group>"; };
-		94DA1EA026347EBB00F83E86 /* BeatClockWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BeatClockWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		94DA1EA226347EBC00F83E86 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		94DA1EA426347EBC00F83E86 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
-		94DA1EA626347EBC00F83E86 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
-		94DA1EA926347EBC00F83E86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ActionViewController.xib; sourceTree = "<group>"; };
-		94DA1EAB26347EBC00F83E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		94DA1EAC26347EBC00F83E86 /* BeatClockWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClockWidget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		94DA1E822634757300F83E86 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		94DA1E9D26347EBB00F83E86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -81,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				94DA1E872634757300F83E86 /* BeatClock */,
-				94DA1EA126347EBC00F83E86 /* BeatClockWidget */,
 				94DA1E862634757300F83E86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				94DA1E852634757300F83E86 /* BeatClock.app */,
-				94DA1EA026347EBB00F83E86 /* BeatClockWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,19 +76,6 @@
 			path = BeatClock;
 			sourceTree = "<group>";
 		};
-		94DA1EA126347EBC00F83E86 /* BeatClockWidget */ = {
-			isa = PBXGroup;
-			children = (
-				94DA1EA226347EBC00F83E86 /* Media.xcassets */,
-				94DA1EA426347EBC00F83E86 /* icon.icns */,
-				94DA1EA626347EBC00F83E86 /* ActionViewController.swift */,
-				94DA1EA826347EBC00F83E86 /* ActionViewController.xib */,
-				94DA1EAB26347EBC00F83E86 /* Info.plist */,
-				94DA1EAC26347EBC00F83E86 /* BeatClockWidget.entitlements */,
-			);
-			path = BeatClockWidget;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -136,29 +91,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				94DA1EAE26347EBC00F83E86 /* PBXTargetDependency */,
 			);
 			name = BeatClock;
 			productName = BeatClock;
 			productReference = 94DA1E852634757300F83E86 /* BeatClock.app */;
 			productType = "com.apple.product-type.application";
-		};
-		94DA1E9F26347EBB00F83E86 /* BeatClockWidget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 94DA1EB026347EBC00F83E86 /* Build configuration list for PBXNativeTarget "BeatClockWidget" */;
-			buildPhases = (
-				94DA1E9C26347EBB00F83E86 /* Sources */,
-				94DA1E9D26347EBB00F83E86 /* Frameworks */,
-				94DA1E9E26347EBB00F83E86 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BeatClockWidget;
-			productName = BeatClockWidget;
-			productReference = 94DA1EA026347EBB00F83E86 /* BeatClockWidget.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -170,9 +107,6 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					94DA1E842634757300F83E86 = {
-						CreatedOnToolsVersion = 12.4;
-					};
-					94DA1E9F26347EBB00F83E86 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
@@ -191,7 +125,6 @@
 			projectRoot = "";
 			targets = (
 				94DA1E842634757300F83E86 /* BeatClock */,
-				94DA1E9F26347EBB00F83E86 /* BeatClockWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -203,16 +136,6 @@
 			files = (
 				94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */,
 				94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		94DA1E9E26347EBB00F83E86 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94DA1EA326347EBC00F83E86 /* Media.xcassets in Resources */,
-				94DA1EA526347EBC00F83E86 /* icon.icns in Resources */,
-				94DA1EAA26347EBC00F83E86 /* ActionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,23 +151,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94DA1E9C26347EBB00F83E86 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				94DA1EA726347EBC00F83E86 /* ActionViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		94DA1EAE26347EBC00F83E86 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 94DA1E9F26347EBB00F83E86 /* BeatClockWidget */;
-			targetProxy = 94DA1EAD26347EBC00F83E86 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		94DA1E8C2634757700F83E86 /* MainMenu.xib */ = {
@@ -253,14 +160,6 @@
 				94DA1E8D2634757700F83E86 /* Base */,
 			);
 			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
-		94DA1EA826347EBC00F83E86 /* ActionViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				94DA1EA926347EBC00F83E86 /* Base */,
-			);
-			name = ActionViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -431,50 +330,6 @@
 			};
 			name = Release;
 		};
-		94DA1EB126347EBC00F83E86 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = BeatClockWidget/BeatClockWidget.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = VNLK894MAE;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = BeatClockWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClock.BeatClockWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		94DA1EB226347EBC00F83E86 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = BeatClockWidget/BeatClockWidget.entitlements;
-				CODE_SIGN_IDENTITY = "-";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = VNLK894MAE;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = BeatClockWidget/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@executable_path/../../../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClock.BeatClockWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -492,15 +347,6 @@
 			buildConfigurations = (
 				94DA1E942634757700F83E86 /* Debug */,
 				94DA1E952634757700F83E86 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		94DA1EB026347EBC00F83E86 /* Build configuration list for PBXNativeTarget "BeatClockWidget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				94DA1EB126347EBC00F83E86 /* Debug */,
-				94DA1EB226347EBC00F83E86 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

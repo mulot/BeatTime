@@ -11,14 +11,14 @@ class BeatClock: NSObject {
     private static let UTCplus1Offset:Double = 3600
     var isCentiBeat = false
 
-    func beatTime() -> String
+    func beatTime(date: Date = Date()) -> String
     {
         var beats: Double
         var timeSeconds: TimeInterval
-        var date: Date
+        //var date: Date
         var daySeconds: TimeInterval
         
-        date = Date()
+        //date = Date()
         timeSeconds = date.timeIntervalSinceReferenceDate + BeatClock.UTCplus1Offset
         daySeconds = timeSeconds.truncatingRemainder(dividingBy: 86400)
         beats = (daySeconds * 1000) / 86400

@@ -10,22 +10,22 @@ import SwiftUI
 
 struct BeatClockProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
-        BeatEntry(date: Date(), beat: BeatClock())
+        BeatEntry(date: Date(), beat: BeatClock().beatTime())
     }
 
     func getSnapshot(in context: Context, completion: @escaping (BeatEntry) -> ()) {
-        let entry = BeatEntry(date: Date(), beat: BeatClock())
+        let entry = BeatEntry(date: Date(), beat: BeatClock().beatTime())
         completion(entry)
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries: [BeatEntry] = []
 
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
+        // Generate a timeline consisting of five entries a minute apart, starting from the current date.
         let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = BeatEntry(date: entryDate, beat: BeatClock())
+        for Offset in 0 ..< 5 {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: currentDate)!
+            let entry = BeatEntry(date: entryDate, beat: BeatClock().beatTime(date: entryDate))
             entries.append(entry)
         }
 
@@ -36,14 +36,14 @@ struct BeatClockProvider: TimelineProvider {
 
 struct BeatEntry: TimelineEntry {
     let date: Date
-    let beat: BeatClock
+    let beat: String
 }
 
 struct BeatClockWidgetEntryView : View {
     var entry: BeatClockProvider.Entry
 
     var body: some View {
-        Text(entry.beat.beatTime())
+        Text(entry.beat)
     }
 }
 
@@ -66,7 +66,7 @@ struct BeatClockWidget: Widget {
 
 struct BeatClockWidget_Previews: PreviewProvider {
     static var previews: some View {
-        BeatClockWidgetEntryView(entry: BeatEntry(date: Date(), beat: BeatClock()))
+        BeatClockWidgetEntryView(entry: BeatEntry(date: Date(), beat: BeatClock().beatTime()))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }

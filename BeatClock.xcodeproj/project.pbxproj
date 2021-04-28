@@ -13,6 +13,8 @@
 		9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9476F32E2639D662006FBF66 /* Assets.xcassets */; };
 		9476F3342639D662006FBF66 /* BeatClockWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
+		9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
+		9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
 		94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E882634757300F83E86 /* AppDelegate.swift */; };
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
@@ -51,6 +53,7 @@
 		9476F32E2639D662006FBF66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9476F3302639D662006FBF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9476F3312639D662006FBF66 /* BeatClockWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClockWidget.entitlements; sourceTree = "<group>"; };
+		9476F33C2639ED7C006FBF66 /* ViewDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDraw.swift; sourceTree = "<group>"; };
 		94DA1E852634757300F83E86 /* BeatClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DA1E882634757300F83E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94DA1E8A2634757700F83E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -124,6 +127,7 @@
 			children = (
 				94DA1E882634757300F83E86 /* AppDelegate.swift */,
 				94DA1E992634771E00F83E86 /* BeatClock.swift */,
+				9476F33C2639ED7C006FBF66 /* ViewDraw.swift */,
 				94DA1E8A2634757700F83E86 /* Assets.xcassets */,
 				94DA1E8C2634757700F83E86 /* MainMenu.xib */,
 				94DA1E8F2634757700F83E86 /* Info.plist */,
@@ -234,6 +238,7 @@
 			files = (
 				9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */,
 				9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */,
+				9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,6 +248,7 @@
 			files = (
 				94DA1E9A2634771E00F83E86 /* BeatClock.swift in Sources */,
 				94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */,
+				9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -41,9 +41,13 @@ struct BeatEntry: TimelineEntry {
 
 struct BeatClockWidgetEntryView : View {
     var entry: BeatClockProvider.Entry
+    //var beatCircle: DrawingArcCircle
 
     var body: some View {
-        Text(entry.beat)
+        Text("@\(entry.beat)")
+            .foregroundColor(.blue)
+            .font(.system(size: 32)
+                    .bold())
     }
 }
 

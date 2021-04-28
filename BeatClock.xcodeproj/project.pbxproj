@@ -7,11 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
+		9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
+		9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatClockWidget.swift */; };
+		9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9476F32E2639D662006FBF66 /* Assets.xcassets */; };
+		9476F3342639D662006FBF66 /* BeatClockWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 		94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E882634757300F83E86 /* AppDelegate.swift */; };
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
 		94DA1E9A2634771E00F83E86 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9476F3322639D662006FBF66 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9476F3242639D65A006FBF66;
+			remoteInfo = BeatClockWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		94DA1EB326347EBC00F83E86 /* Embed App Extensions */ = {
@@ -20,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				9476F3342639D662006FBF66 /* BeatClockWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,6 +44,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BeatClockWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9476F3272639D65A006FBF66 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		9476F3292639D65A006FBF66 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		9476F32C2639D65B006FBF66 /* BeatClockWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClockWidget.swift; sourceTree = "<group>"; };
+		9476F32E2639D662006FBF66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9476F3302639D662006FBF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9476F3312639D662006FBF66 /* BeatClockWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClockWidget.entitlements; sourceTree = "<group>"; };
 		94DA1E852634757300F83E86 /* BeatClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DA1E882634757300F83E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94DA1E8A2634757700F83E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +61,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9476F3222639D65A006FBF66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */,
+				9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94DA1E822634757300F83E86 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,10 +80,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9476F3262639D65A006FBF66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9476F3272639D65A006FBF66 /* WidgetKit.framework */,
+				9476F3292639D65A006FBF66 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9476F32B2639D65A006FBF66 /* BeatClockWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9476F32C2639D65B006FBF66 /* BeatClockWidget.swift */,
+				9476F32E2639D662006FBF66 /* Assets.xcassets */,
+				9476F3302639D662006FBF66 /* Info.plist */,
+				9476F3312639D662006FBF66 /* BeatClockWidget.entitlements */,
+			);
+			path = BeatClockWidget;
+			sourceTree = "<group>";
+		};
 		94DA1E7C2634757300F83E86 = {
 			isa = PBXGroup;
 			children = (
 				94DA1E872634757300F83E86 /* BeatClock */,
+				9476F32B2639D65A006FBF66 /* BeatClockWidget */,
+				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				94DA1E852634757300F83E86 /* BeatClock.app */,
+				9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,6 +135,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9476F3352639D662006FBF66 /* Build configuration list for PBXNativeTarget "BeatClockWidgetExtension" */;
+			buildPhases = (
+				9476F3212639D65A006FBF66 /* Sources */,
+				9476F3222639D65A006FBF66 /* Frameworks */,
+				9476F3232639D65A006FBF66 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatClockWidgetExtension;
+			productName = BeatClockWidgetExtension;
+			productReference = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		94DA1E842634757300F83E86 /* BeatClock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94DA1E932634757700F83E86 /* Build configuration list for PBXNativeTarget "BeatClock" */;
@@ -91,6 +164,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				9476F3332639D662006FBF66 /* PBXTargetDependency */,
 			);
 			name = BeatClock;
 			productName = BeatClock;
@@ -103,9 +177,12 @@
 		94DA1E7D2634757300F83E86 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1240;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					9476F3242639D65A006FBF66 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					94DA1E842634757300F83E86 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -125,11 +202,20 @@
 			projectRoot = "";
 			targets = (
 				94DA1E842634757300F83E86 /* BeatClock */,
+				9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9476F3232639D65A006FBF66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94DA1E832634757300F83E86 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -142,6 +228,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9476F3212639D65A006FBF66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */,
+				9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94DA1E812634757300F83E86 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -152,6 +247,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9476F3332639D662006FBF66 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */;
+			targetProxy = 9476F3322639D662006FBF66 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		94DA1E8C2634757700F83E86 /* MainMenu.xib */ = {
@@ -165,6 +268,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9476F3362639D662006FBF66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BeatClockWidget/BeatClockWidget.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = BeatClockWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClock.BeatClockWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9476F3372639D662006FBF66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BeatClockWidget/BeatClockWidget.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = BeatClockWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClock.BeatClockWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		94DA1E912634757700F83E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -333,6 +484,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9476F3352639D662006FBF66 /* Build configuration list for PBXNativeTarget "BeatClockWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9476F3362639D662006FBF66 /* Debug */,
+				9476F3372639D662006FBF66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		94DA1E802634757300F83E86 /* Build configuration list for PBXProject "BeatClock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

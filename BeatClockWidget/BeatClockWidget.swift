@@ -41,13 +41,16 @@ struct BeatEntry: TimelineEntry {
 
 struct BeatClockWidgetEntryView : View {
     var entry: BeatClockProvider.Entry
-    //var beatCircle: DrawingArcCircle
 
     var body: some View {
-        Text("@\(entry.beat)")
-            .foregroundColor(.blue)
-            .font(.system(size: 32)
-                    .bold())
+        ZStack {
+            Circle().fill(Color.gray)
+                .frame(maxWidth: 150, maxHeight:150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            Text("@\(entry.beat)")
+                .foregroundColor(.blue)
+                .font(.system(size: 32)
+                .bold())
+        }
     }
 }
 
@@ -74,3 +77,10 @@ struct BeatClockWidget_Previews: PreviewProvider {
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+
+/*
+struct BeatClockView: View {
+    typealias Body = type
+    
+}
+ */

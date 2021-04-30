@@ -33,6 +33,12 @@ class DrawingArcCircle: NSView {
         else {
             context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
         }
+        //context.drawLinearGradient(<#T##gradient: CGGradient##CGGradient#>, start: <#T##CGPoint#>, end: <#T##CGPoint#>, options: <#T##CGGradientDrawingOptions#>)
+        /*
+        if let gradient = NSGradient(starting: NSColor.yellow, ending: NSColor.blue) {
+            gradient.draw(in: context.path, angle: 90)
+        }
+        */
         context.strokePath()
         context.restoreGState()
     }

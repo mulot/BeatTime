@@ -13,8 +13,9 @@ class DrawingArcCircle: NSView {
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10
     var lineColor: CGColor = NSColor.blue.cgColor
-    //var startColor = NSColor.blue
+    //var startColor = NSColor.purple
     var startColor =  NSColor(red: 0, green: 77/255, blue: 129/255, alpha: 1)
+    var midColor = NSColor.purple
     var endColor = NSColor(red: 247/255, green: 186/255, blue: 0, alpha: 1)
     var isShadow: Bool = false
     
@@ -36,9 +37,13 @@ class DrawingArcCircle: NSView {
             let colorSpace = CGColorSpaceCreateDeviceRGB()
             guard let startColorComponents = startColor.cgColor.components else { return }
             guard let endColorComponents = endColor.cgColor.components else { return }
-            let colorComponents: [CGFloat] = [startColorComponents[0], startColorComponents[1], startColorComponents[2], startColorComponents[3], endColorComponents[0], endColorComponents[1], endColorComponents[2], endColorComponents[3]]
-            let locations:[CGFloat] = [0.0, 1.0]
-            guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 2) else { return }
+            guard let midColorComponents = midColor.cgColor.components else { return }
+            //let colorComponents: [CGFloat] = [startColorComponents[0], startColorComponents[1], startColorComponents[2], startColorComponents[3], endColorComponents[0], endColorComponents[1], endColorComponents[2], endColorComponents[3]]
+            let colorComponents: [CGFloat] = [startColorComponents[0], startColorComponents[1], startColorComponents[2], startColorComponents[3], midColorComponents[0], midColorComponents[1], midColorComponents[2], midColorComponents[3], endColorComponents[0], endColorComponents[1], endColorComponents[2], endColorComponents[3]]
+            //let locations:[CGFloat] = [0.0, 1.0]
+            let locations:[CGFloat] = [0.0, 0.5, 1.0]
+            //guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 2) else { return }
+            guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 3) else { return }
             let startPoint = CGPoint(x: 0, y: self.bounds.height)
             let endPoint = CGPoint(x: self.bounds.width,y: self.bounds.height)
             /*

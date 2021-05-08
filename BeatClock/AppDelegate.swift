@@ -53,6 +53,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         let circleBeat = DrawingArcCircle(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         if (beat != nil) {
             circleBeat.arcFrag = Double(beat.beatTime()) ?? 0
+            //circleBeat.arcFrag = 999 // TEST FULL CIRCLE
         }
         if (circleBeatView != nil) {
             view.replaceSubview(circleBeatView, with: circleBeat)

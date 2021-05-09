@@ -8,23 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    var beat: BeatClock
     
     var body: some View {
-        DetailView(beat: beat)
+        DetailView()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(beat: BeatClock())
+        ContentView()
     }
 }
 
 struct DetailView: View {
     
-    var beat: BeatClock = BeatClock()
-    @State var currentDate = Date()
+    @State var beat: BeatClock = BeatClock()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -36,6 +34,8 @@ struct DetailView: View {
                     .foregroundColor(.green)
                     .font(.largeTitle).bold()
             }
+        }.onReceive(timer) { _ in
+            beat = BeatClock()
         }
     }
 }

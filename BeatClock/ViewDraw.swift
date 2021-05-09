@@ -34,7 +34,7 @@ class DrawingArcCircle: NSView {
         }
         context.beginPath()
         if (arcFrag != 1000) {
-            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - lineWidth), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
             context.replacePathWithStrokedPath()
             context.clip()
             let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -60,7 +60,7 @@ class DrawingArcCircle: NSView {
             context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
         }
         else {
-            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - (lineWidth/2)), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - lineWidth), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
             context.setStrokeColor(lineColor)
             context.strokePath()
         }

@@ -38,6 +38,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     private func drawTimeCircle()
     {
         let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
+        //Draw circle layout
         let circle = DrawingArcCircle(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         circle.arcFrag = 1000
         circle.lineColor = NSColor.gray.cgColor
@@ -50,6 +51,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
             circleView = circle
             view.addSubview(circleView)
         }
+        //Draw beat time circle
         let circleBeat = DrawingArcCircle(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
         if (beat != nil) {
             circleBeat.arcFrag = Double(beat.beatTime()) ?? 0

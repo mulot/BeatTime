@@ -30,10 +30,10 @@ struct DetailView: View {
             if (Double(beat.beatTime()) != nil) {
                 DrawingArcCircle(arcFrag: Double(beat.beatTime())!, linecolor: Color.green)
                     .background(Color.black)
+            }
                 Text(beat.beatTime())
                     .foregroundColor(.green)
                     .font(.largeTitle).bold()
-            }
         }.onReceive(timer) { _ in
             beat = BeatClock()
         }

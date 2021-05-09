@@ -15,6 +15,19 @@
 		9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 		9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
 		9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
+		947C562E264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		947C5633264814F0007E6B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5632264814F0007E6B4A /* Assets.xcassets */; };
+		947C563A264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		947C563F264814F1007E6B4A /* BeatClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C563E264814F1007E6B4A /* BeatClockApp.swift */; };
+		947C5643264814F1007E6B4A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5642264814F1007E6B4A /* NotificationController.swift */; };
+		947C5645264814F1007E6B4A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5644264814F1007E6B4A /* NotificationView.swift */; };
+		947C5647264814F1007E6B4A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5646264814F1007E6B4A /* ComplicationController.swift */; };
+		947C5649264814F2007E6B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5648264814F2007E6B4A /* Assets.xcassets */; };
+		947C564C264814F2007E6B4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C564B264814F2007E6B4A /* Preview Assets.xcassets */; };
+		947C5660264819F8007E6B4A /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
+		947C566126481A5E007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
+		947C566226481A68007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
+		947C566326481B22007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
 		94BEB1BD2646D9C500A5D811 /* BeatClockiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */; };
 		94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
 		94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C02646D9CA00A5D811 /* Assets.xcassets */; };
@@ -36,9 +49,45 @@
 			remoteGlobalIDString = 9476F3242639D65A006FBF66;
 			remoteInfo = BeatClockWidgetExtension;
 		};
+		947C562F264814E9007E6B4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 947C562C264814E9007E6B4A;
+			remoteInfo = "BeatClockWatchOS WatchKit App";
+		};
+		947C563B264814F0007E6B4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 947C5638264814F0007E6B4A;
+			remoteInfo = "BeatClockWatchOS WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		947C5652264814F2007E6B4A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				947C563A264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		947C5656264814F2007E6B4A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				947C562E264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94DA1EB326347EBC00F83E86 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -61,6 +110,20 @@
 		9476F3302639D662006FBF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9476F3312639D662006FBF66 /* BeatClockWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClockWidget.entitlements; sourceTree = "<group>"; };
 		9476F33C2639ED7C006FBF66 /* ViewDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDraw.swift; sourceTree = "<group>"; };
+		947C562A264814E9007E6B4A /* BeatClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BeatClockWatchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		947C5632264814F0007E6B4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		947C5634264814F0007E6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BeatClockWatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		947C563E264814F1007E6B4A /* BeatClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClockApp.swift; sourceTree = "<group>"; };
+		947C5640264814F1007E6B4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		947C5642264814F1007E6B4A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		947C5644264814F1007E6B4A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		947C5646264814F1007E6B4A /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		947C5648264814F2007E6B4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		947C564B264814F2007E6B4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		947C564D264814F2007E6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		947C564E264814F2007E6B4A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		94BEB1BA2646D9C500A5D811 /* BeatClockiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClockiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClockiOSApp.swift; sourceTree = "<group>"; };
 		94BEB1BE2646D9C500A5D811 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +148,13 @@
 			files = (
 				9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */,
 				9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		947C5636264814F0007E6B4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +204,39 @@
 			path = SwiftUIView;
 			sourceTree = "<group>";
 		};
+		947C5631264814E9007E6B4A /* BeatClockWatchOS WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				947C5632264814F0007E6B4A /* Assets.xcassets */,
+				947C5634264814F0007E6B4A /* Info.plist */,
+			);
+			path = "BeatClockWatchOS WatchKit App";
+			sourceTree = "<group>";
+		};
+		947C563D264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				947C563E264814F1007E6B4A /* BeatClockApp.swift */,
+				947C5640264814F1007E6B4A /* ContentView.swift */,
+				947C5642264814F1007E6B4A /* NotificationController.swift */,
+				947C5644264814F1007E6B4A /* NotificationView.swift */,
+				947C5646264814F1007E6B4A /* ComplicationController.swift */,
+				947C5648264814F2007E6B4A /* Assets.xcassets */,
+				947C564D264814F2007E6B4A /* Info.plist */,
+				947C564E264814F2007E6B4A /* PushNotificationPayload.apns */,
+				947C564A264814F2007E6B4A /* Preview Content */,
+			);
+			path = "BeatClockWatchOS WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		947C564A264814F2007E6B4A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				947C564B264814F2007E6B4A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		94BEB1BB2646D9C500A5D811 /* BeatClockiOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +264,8 @@
 				9476F32B2639D65A006FBF66 /* BeatClockWidget */,
 				94BEB1BB2646D9C500A5D811 /* BeatClockiOS */,
 				947C562726480050007E6B4A /* SwiftUIView */,
+				947C5631264814E9007E6B4A /* BeatClockWatchOS WatchKit App */,
+				947C563D264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */,
 				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
 			);
@@ -172,6 +277,9 @@
 				94DA1E852634757300F83E86 /* BeatClock.app */,
 				9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */,
 				94BEB1BA2646D9C500A5D811 /* BeatClockiOS.app */,
+				947C562A264814E9007E6B4A /* BeatClock.app */,
+				947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */,
+				947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +317,57 @@
 			productName = BeatClockWidgetExtension;
 			productReference = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
+		};
+		947C5629264814E9007E6B4A /* BeatClockWatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 947C5657264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS" */;
+			buildPhases = (
+				947C5628264814E9007E6B4A /* Resources */,
+				947C5656264814F2007E6B4A /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				947C5630264814E9007E6B4A /* PBXTargetDependency */,
+			);
+			name = BeatClockWatchOS;
+			productName = BeatClockWatchOS;
+			productReference = 947C562A264814E9007E6B4A /* BeatClock.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		947C562C264814E9007E6B4A /* BeatClockWatchOS WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 947C5653264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS WatchKit App" */;
+			buildPhases = (
+				947C562B264814E9007E6B4A /* Resources */,
+				947C5652264814F2007E6B4A /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				947C563C264814F0007E6B4A /* PBXTargetDependency */,
+			);
+			name = "BeatClockWatchOS WatchKit App";
+			productName = "BeatClockWatchOS WatchKit App";
+			productReference = 947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		947C5638264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 947C564F264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS WatchKit Extension" */;
+			buildPhases = (
+				947C5635264814F0007E6B4A /* Sources */,
+				947C5636264814F0007E6B4A /* Frameworks */,
+				947C5637264814F0007E6B4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BeatClockWatchOS WatchKit Extension";
+			productName = "BeatClockWatchOS WatchKit Extension";
+			productReference = 947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 		94BEB1B92646D9C500A5D811 /* BeatClockiOS */ = {
 			isa = PBXNativeTarget;
@@ -258,6 +417,15 @@
 					9476F3242639D65A006FBF66 = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					947C5629264814E9007E6B4A = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					947C562C264814E9007E6B4A = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					947C5638264814F0007E6B4A = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					94BEB1B92646D9C500A5D811 = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -282,6 +450,9 @@
 				94DA1E842634757300F83E86 /* BeatClock */,
 				9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */,
 				94BEB1B92646D9C500A5D811 /* BeatClockiOS */,
+				947C5629264814E9007E6B4A /* BeatClockWatchOS */,
+				947C562C264814E9007E6B4A /* BeatClockWatchOS WatchKit App */,
+				947C5638264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -292,6 +463,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		947C5628264814E9007E6B4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		947C562B264814E9007E6B4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				947C5633264814F0007E6B4A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		947C5637264814F0007E6B4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				947C564C264814F2007E6B4A /* Preview Assets.xcassets in Resources */,
+				947C5649264814F2007E6B4A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +521,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		947C5635264814F0007E6B4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				947C5643264814F1007E6B4A /* NotificationController.swift in Sources */,
+				947C566226481A68007E6B4A /* Colors.swift in Sources */,
+				947C566326481B22007E6B4A /* ContentView.swift in Sources */,
+				947C5660264819F8007E6B4A /* BeatClock.swift in Sources */,
+				947C5647264814F1007E6B4A /* ComplicationController.swift in Sources */,
+				947C566126481A5E007E6B4A /* UIViewDraw.swift in Sources */,
+				947C563F264814F1007E6B4A /* BeatClockApp.swift in Sources */,
+				947C5645264814F1007E6B4A /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		94BEB1B62646D9C500A5D811 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,6 +565,16 @@
 			isa = PBXTargetDependency;
 			target = 9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */;
 			targetProxy = 9476F3322639D662006FBF66 /* PBXContainerItemProxy */;
+		};
+		947C5630264814E9007E6B4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 947C562C264814E9007E6B4A /* BeatClockWatchOS WatchKit App */;
+			targetProxy = 947C562F264814E9007E6B4A /* PBXContainerItemProxy */;
+		};
+		947C563C264814F0007E6B4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 947C5638264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */;
+			targetProxy = 947C563B264814F0007E6B4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -415,6 +635,125 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		947C5650264814F2007E6B4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatClockWatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BeatClockWatchOS WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		947C5651264814F2007E6B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatClockWatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "BeatClockWatchOS WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		947C5654264814F2007E6B4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				IBSC_MODULE = BeatClockWatchOS_WatchKit_Extension;
+				INFOPLIST_FILE = "BeatClockWatchOS WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Debug;
+		};
+		947C5655264814F2007E6B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				IBSC_MODULE = BeatClockWatchOS_WatchKit_Extension;
+				INFOPLIST_FILE = "BeatClockWatchOS WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 7.4;
+			};
+			name = Release;
+		};
+		947C5658264814F2007E6B4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS;
+				PRODUCT_NAME = BeatClock;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		947C5659264814F2007E6B4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockWatchOS;
+				PRODUCT_NAME = BeatClock;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -638,6 +977,33 @@
 			buildConfigurations = (
 				9476F3362639D662006FBF66 /* Debug */,
 				9476F3372639D662006FBF66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		947C564F264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				947C5650264814F2007E6B4A /* Debug */,
+				947C5651264814F2007E6B4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		947C5653264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				947C5654264814F2007E6B4A /* Debug */,
+				947C5655264814F2007E6B4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		947C5657264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				947C5658264814F2007E6B4A /* Debug */,
+				947C5659264814F2007E6B4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

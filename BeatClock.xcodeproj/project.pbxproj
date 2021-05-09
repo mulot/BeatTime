@@ -15,6 +15,12 @@
 		9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 		9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
 		9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
+		94BEB1BD2646D9C500A5D811 /* BeatClockiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */; };
+		94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C02646D9CA00A5D811 /* Assets.xcassets */; };
+		94BEB1C42646D9CA00A5D811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */; };
+		94BEB1CA2646DBBC00A5D811 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
+		94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E882634757300F83E86 /* AppDelegate.swift */; };
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
@@ -54,6 +60,14 @@
 		9476F3302639D662006FBF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9476F3312639D662006FBF66 /* BeatClockWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatClockWidget.entitlements; sourceTree = "<group>"; };
 		9476F33C2639ED7C006FBF66 /* ViewDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDraw.swift; sourceTree = "<group>"; };
+		94BEB1BA2646D9C500A5D811 /* BeatClockiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClockiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClockiOSApp.swift; sourceTree = "<group>"; };
+		94BEB1BE2646D9C500A5D811 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94BEB1C02646D9CA00A5D811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94BEB1C52646D9CA00A5D811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewDraw.swift; sourceTree = "<group>"; };
+		94BEB20E2646E92E00A5D811 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		94DA1E852634757300F83E86 /* BeatClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DA1E882634757300F83E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94DA1E8A2634757700F83E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +84,13 @@
 			files = (
 				9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */,
 				9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BEB1B72646D9C500A5D811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,11 +124,34 @@
 			path = BeatClockWidget;
 			sourceTree = "<group>";
 		};
+		94BEB1BB2646D9C500A5D811 /* BeatClockiOS */ = {
+			isa = PBXGroup;
+			children = (
+				94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */,
+				94BEB1BE2646D9C500A5D811 /* ContentView.swift */,
+				94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */,
+				94BEB20E2646E92E00A5D811 /* Colors.swift */,
+				94BEB1C02646D9CA00A5D811 /* Assets.xcassets */,
+				94BEB1C52646D9CA00A5D811 /* Info.plist */,
+				94BEB1C22646D9CA00A5D811 /* Preview Content */,
+			);
+			path = BeatClockiOS;
+			sourceTree = "<group>";
+		};
+		94BEB1C22646D9CA00A5D811 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		94DA1E7C2634757300F83E86 = {
 			isa = PBXGroup;
 			children = (
 				94DA1E872634757300F83E86 /* BeatClock */,
 				9476F32B2639D65A006FBF66 /* BeatClockWidget */,
+				94BEB1BB2646D9C500A5D811 /* BeatClockiOS */,
 				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
 			);
@@ -118,6 +162,7 @@
 			children = (
 				94DA1E852634757300F83E86 /* BeatClock.app */,
 				9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */,
+				94BEB1BA2646D9C500A5D811 /* BeatClockiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +201,23 @@
 			productReference = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		94BEB1B92646D9C500A5D811 /* BeatClockiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94BEB1C82646D9CB00A5D811 /* Build configuration list for PBXNativeTarget "BeatClockiOS" */;
+			buildPhases = (
+				94BEB1B62646D9C500A5D811 /* Sources */,
+				94BEB1B72646D9C500A5D811 /* Frameworks */,
+				94BEB1B82646D9C500A5D811 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatClockiOS;
+			productName = BeatClockiOS;
+			productReference = 94BEB1BA2646D9C500A5D811 /* BeatClockiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		94DA1E842634757300F83E86 /* BeatClock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94DA1E932634757700F83E86 /* Build configuration list for PBXNativeTarget "BeatClock" */;
@@ -187,6 +249,9 @@
 					9476F3242639D65A006FBF66 = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					94BEB1B92646D9C500A5D811 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					94DA1E842634757300F83E86 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -207,6 +272,7 @@
 			targets = (
 				94DA1E842634757300F83E86 /* BeatClock */,
 				9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */,
+				94BEB1B92646D9C500A5D811 /* BeatClockiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -217,6 +283,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BEB1B82646D9C500A5D811 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BEB1C42646D9CA00A5D811 /* Preview Assets.xcassets in Resources */,
+				94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +314,17 @@
 				9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */,
 				9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */,
 				9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94BEB1B62646D9C500A5D811 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */,
+				94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */,
+				94BEB1BD2646D9C500A5D811 /* BeatClockiOSApp.swift in Sources */,
+				94BEB1CA2646DBBC00A5D811 /* BeatClock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +405,53 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		94BEB1C62646D9CA00A5D811 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatClockiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatClockiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94BEB1C72646D9CA00A5D811 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatClockiOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatClockiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatClockiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -495,6 +628,15 @@
 			buildConfigurations = (
 				9476F3362639D662006FBF66 /* Debug */,
 				9476F3372639D662006FBF66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94BEB1C82646D9CB00A5D811 /* Build configuration list for PBXNativeTarget "BeatClockiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94BEB1C62646D9CA00A5D811 /* Debug */,
+				94BEB1C72646D9CA00A5D811 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

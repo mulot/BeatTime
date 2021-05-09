@@ -66,7 +66,7 @@ struct BeatClockWidgetEntryView : View {
                     .font(.system(size: 32)
                             .bold())
                 Text(DateFormatter.localizedString(from: entry.date, dateStyle: .none, timeStyle: .short))
-                    .font(.footnote)
+                    .font(.headline)
             }
         }
     }

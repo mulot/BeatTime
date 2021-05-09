@@ -125,13 +125,20 @@
 			path = BeatClockWidget;
 			sourceTree = "<group>";
 		};
+		947C562726480050007E6B4A /* SwiftUIView */ = {
+			isa = PBXGroup;
+			children = (
+				94BEB20E2646E92E00A5D811 /* Colors.swift */,
+				94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */,
+			);
+			path = SwiftUIView;
+			sourceTree = "<group>";
+		};
 		94BEB1BB2646D9C500A5D811 /* BeatClockiOS */ = {
 			isa = PBXGroup;
 			children = (
 				94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */,
 				94BEB1BE2646D9C500A5D811 /* ContentView.swift */,
-				94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */,
-				94BEB20E2646E92E00A5D811 /* Colors.swift */,
 				94BEB1C02646D9CA00A5D811 /* Assets.xcassets */,
 				94BEB1C52646D9CA00A5D811 /* Info.plist */,
 				94BEB1C22646D9CA00A5D811 /* Preview Content */,
@@ -153,6 +160,7 @@
 				94DA1E872634757300F83E86 /* BeatClock */,
 				9476F32B2639D65A006FBF66 /* BeatClockWidget */,
 				94BEB1BB2646D9C500A5D811 /* BeatClockiOS */,
+				947C562726480050007E6B4A /* SwiftUIView */,
 				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
 			);

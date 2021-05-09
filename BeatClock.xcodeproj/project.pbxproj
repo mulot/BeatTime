@@ -9,12 +9,10 @@
 /* Begin PBXBuildFile section */
 		9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
-		9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatClockWidget.swift */; };
 		9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9476F32E2639D662006FBF66 /* Assets.xcassets */; };
 		9476F3342639D662006FBF66 /* BeatClockWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9476F3252639D65A006FBF66 /* BeatClockWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 		9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
-		9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
 		947C562E264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		947C5633264814F0007E6B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5632264814F0007E6B4A /* Assets.xcassets */; };
 		947C563A264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -28,6 +26,10 @@
 		947C566126481A5E007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		947C566226481A68007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		947C566326481B22007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		947C5665264839A6007E6B4A /* BeatClockWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatClockWidget.swift */; };
+		947C56682648405F007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
+		947C566926484069007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
+		947C566A26484217007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
 		94BEB1BD2646D9C500A5D811 /* BeatClockiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */; };
 		94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
 		94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C02646D9CA00A5D811 /* Assets.xcassets */; };
@@ -198,6 +200,7 @@
 		947C562726480050007E6B4A /* SwiftUIView */ = {
 			isa = PBXGroup;
 			children = (
+				94BEB1BE2646D9C500A5D811 /* ContentView.swift */,
 				94BEB20E2646E92E00A5D811 /* Colors.swift */,
 				94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */,
 			);
@@ -241,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				94BEB1BC2646D9C500A5D811 /* BeatClockiOSApp.swift */,
-				94BEB1BE2646D9C500A5D811 /* ContentView.swift */,
 				94BEB1C02646D9CA00A5D811 /* Assets.xcassets */,
 				94BEB1C52646D9CA00A5D811 /* Info.plist */,
 				94BEB1C22646D9CA00A5D811 /* Preview Content */,
@@ -515,9 +517,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				947C56682648405F007E6B4A /* UIViewDraw.swift in Sources */,
+				947C566A26484217007E6B4A /* ContentView.swift in Sources */,
+				947C566926484069007E6B4A /* Colors.swift in Sources */,
+				947C5665264839A6007E6B4A /* BeatClockWidget.swift in Sources */,
 				9476F33B2639DF0C006FBF66 /* BeatClock.swift in Sources */,
-				9476F32D2639D65B006FBF66 /* BeatClockWidget.swift in Sources */,
-				9476F33E2639ED7C006FBF66 /* ViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -81,9 +81,12 @@ struct BeatClockWidget: Widget {
             kind: "mulot.org.BeatClock.BeatClockWidget",
             provider: BeatClockProvider()
         ) { entry in
+            /*
             BeatClockWidgetEntryView(entry: entry)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("WidgetBackground"))
+ */
+            ContentView()
         }
         .configurationDisplayName("BeatClock")
         .description("Beat Internet Time widget.")
@@ -91,16 +94,17 @@ struct BeatClockWidget: Widget {
     }
 }
 
+/*
 struct BeatClockWidget_Previews: PreviewProvider {
     static var previews: some View {
         BeatClockWidgetEntryView(entry: BeatEntry(date: Date(), beat: "342", dialColor: Color.white))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+*/
 
-/*
- struct BeatClockView: View {
- typealias Body = type
- 
- }
- */
+struct BeatClockWidget_Previews_2: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

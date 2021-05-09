@@ -21,6 +21,7 @@
 		94BEB1C42646D9CA00A5D811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */; };
 		94BEB1CA2646DBBC00A5D811 /* BeatClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatClock.swift */; };
 		94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
+		94BEB2112647D12D00A5D811 /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E882634757300F83E86 /* AppDelegate.swift */; };
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
@@ -325,6 +326,7 @@
 				94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */,
 				94BEB1BD2646D9C500A5D811 /* BeatClockiOSApp.swift in Sources */,
 				94BEB1CA2646DBBC00A5D811 /* BeatClock.swift in Sources */,
+				94BEB2112647D12D00A5D811 /* UIViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

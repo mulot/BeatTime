@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct BeatClockiOSApp: App {
+    
     var body: some Scene {
+        let beat: BeatClock = BeatClock()
+        
         WindowGroup {
-            ContentView()
+            ContentView(beat: beat)
         }
     }
 }

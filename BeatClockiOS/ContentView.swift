@@ -8,23 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    var beat: BeatClock
+    
     var body: some View {
-        DetailView()
+        DetailView(beat: beat)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(beat: BeatClock())
     }
 }
 
 struct DetailView: View {
     
-    //let character: CharacterDetail
-
+    var beat: BeatClock = BeatClock()
+    @State var currentDate = Date()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            if (Double(beat.beatTime()) != nil) {
+                DrawingArcCircle(arcFrag: Double(beat.beatTime())!, linecolor: Color.green)
+                    .background(Color.black)
+                Text(beat.beatTime())
+                    .foregroundColor(.green)
+                    .font(.largeTitle).bold()
+            }
+        }
     }
 }

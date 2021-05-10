@@ -12,17 +12,15 @@ struct BeatClockiOSApp: App {
     
     let fgColors: [Color] = [.gray, .red, .orange, .yellow,
                                .green, .blue, .purple, .pink]
-        @State private var fgColor: Color = .gray
-    
+    @State private var fgColor: Color = .gray
     
     var body: some Scene {
-
         WindowGroup {
-            //ContentView()
-            BeatClockView(lineWidth: 15)
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
+            BeatClockView(lineWidth: 25)
                 .background(Color.black)
                 .foregroundColor(fgColor)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                .edgesIgnoringSafeArea(.all)
                 .onTapGesture(perform: {
                     fgColor = fgColors.randomElement()!
                 })

@@ -35,7 +35,7 @@ struct BeatClockView: View {
                 DrawingArcCircle(arcFrag: Double(beat.beatTime())!, lineWidth: lineWidth)
                     //.background(background)
             }
-                Text(beat.beatTime())
+            Text("@" + beat.beatTime())
                     //.foregroundColor(textColor)
                     .font(.largeTitle).bold()
         }.onReceive(timer) { _ in

@@ -11,7 +11,7 @@ import Cocoa
 class DrawingArcCircle: NSView {
     
     var arcFrag: Double = 0
-    var lineWidth: CGFloat = 10
+    var lineWidth: CGFloat = 15
     var lineColor: CGColor = NSColor.blue.cgColor
     var startColor =  NSColor(red: 0, green: 30/255, blue: 50/255, alpha: 1)
     var midColor = NSColor.purple

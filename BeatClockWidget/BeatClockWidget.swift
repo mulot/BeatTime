@@ -86,7 +86,10 @@ struct BeatClockWidget: Widget {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color("WidgetBackground"))
  */
-            ContentView()
+            //ContentView()
+            BeatClockView()
+                //.background(Color.black)
+                .foregroundColor(.gray)
         }
         .configurationDisplayName("BeatClock")
         .description("Beat Internet Time widget.")

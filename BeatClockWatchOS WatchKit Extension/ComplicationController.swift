@@ -14,7 +14,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
 
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "mulot.org.BeatClockWatchOS", displayName: "Beats Time", supportedFamilies: CLKComplicationFamily.allCases),
+            CLKComplicationDescriptor(identifier: "mulot.org.BeatClockWatchOS", displayName: "Beats Time", supportedFamilies: [.circularSmall, .modularSmall, .modularLarge, .utilitarianSmall, .utilitarianSmallFlat, .graphicCircular, .graphicRectangular]),
             // Multiple complication support can be added here with more descriptors
         ]
         
@@ -46,7 +46,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .circularSmall:
             // Create a template from the circular small family.
-            print("*** Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
@@ -54,78 +53,54 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .modularSmall:
             // Create a template from the modular small family.
-            print("*** Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateModularSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .utilitarianSmall:
-            // Create a template from the modular small family.
-            print("*** Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+                shortText: "@")
+            let template = CLKComplicationTemplateUtilitarianSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .utilitarianSmallFlat:
-            // Create a template from the modular small family.
-            print("*** Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateUtilitarianSmallFlat(textProvider: beatProvider)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .graphicCircular:
-            // Create a template from the modular small family.
-            print("*** Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: UIColor.orange, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .modularLarge:
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
-        case .utilitarianLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
-        case .extraLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
-        case .graphicCorner:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
-        case .graphicBezel:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let dateProvider = CLKSimpleTextProvider(
+                text: "Local time " + DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short),
+                shortText: DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+             let template = CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, body2TextProvider: dateProvider)
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
         case .graphicRectangular:
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: UIColor.orange, fillFraction: (Float(beatTime)!/1000)))
             handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
+        case .utilitarianLarge:
+            handler(nil)
+        case .extraLarge:
+            handler(nil)
+        case .graphicCorner:
+            handler(nil)
+        case .graphicBezel:
+            handler(nil)
         case .graphicExtraLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(CLKComplicationTimelineEntry(date: Date(), complicationTemplate: template))
+            handler(nil)
         @unknown default:
             print("*** Unknown Complication Family: \(complication.family) ***")
             // Handle the error here.
@@ -150,8 +125,8 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             entry = CLKComplicationTimelineEntry(date: date, complicationTemplate: template)
             entries.append(entry)
         }
-        handler(entries)
-        //handler(nil)
+        //handler(entries)
+        handler(nil)
     }
 
     // MARK: - Sample Templates
@@ -162,7 +137,6 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         switch complication.family {
         case .circularSmall:
             // Create a template from the circular small family.
-            print("*** Template Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
@@ -170,78 +144,54 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
             handler(template)
         case .modularSmall:
             // Create a template from the modular small family.
-            print("*** Template Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateModularSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
             handler(template)
         case .utilitarianSmall:
-            // Create a template from the modular small family.
-            print("*** Template Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+                shortText: "@")
+            let template = CLKComplicationTemplateUtilitarianSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
             handler(template)
         case .utilitarianSmallFlat:
-            // Create a template from the modular small family.
-            print("*** Template Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateUtilitarianSmallFlat(textProvider: beatProvider)
             handler(template)
         case .graphicCircular:
-            // Create a template from the modular small family.
-            print("*** Template Complication Family: \(complication.family) ***")
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+             let template = CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: UIColor.orange, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
             handler(template)
         case .modularLarge:
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(template)
-        case .utilitarianLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(template)
-        case .extraLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(template)
-        case .graphicCorner:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(template)
-        case .graphicBezel:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let dateProvider = CLKSimpleTextProvider(
+                text: "Local time " + DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short),
+                shortText: DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+             let template = CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, body2TextProvider: dateProvider)
             handler(template)
         case .graphicRectangular:
             let beatProvider = CLKSimpleTextProvider(
                 text: "@" + beatTime,
                 shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+            let template = CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: UIColor.orange, fillFraction: (Float(beatTime)!/1000)))
             handler(template)
+        case .utilitarianLarge:
+            handler(nil)
+        case .extraLarge:
+            handler(nil)
+        case .graphicCorner:
+            handler(nil)
+        case .graphicBezel:
+            handler(nil)
         case .graphicExtraLarge:
-            let beatProvider = CLKSimpleTextProvider(
-                text: "@" + beatTime,
-                shortText: beatTime)
-             let template = CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
-            handler(template)
+            handler(nil)
         @unknown default:
             print("*** Unknown Complication Family: \(complication.family) ***")
             // Handle the error here.

@@ -9,21 +9,28 @@ import SwiftUI
 
 @main
 struct BeatClockApp: App {
-    let fgColors: [Color] = [.gray, .red, .orange, .yellow,
-                             Color.timeLine, .blue, .purple, .pink]
-    @State private var fgColor: Color = Color.timeLine
+    let fgColors: [Color] = [.white, .gray, .red, .orange, .yellow, .green, .blue, .purple, .pink]
+    @State private var index = 0.0
+    //@State private var fgColor = Color.gray
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
-                //ContentView()
             BeatClockView()
                 .background(Color.black)
-                .foregroundColor(fgColor)
-                .onTapGesture(perform: {
-                    fgColor = fgColors.randomElement()!
-                })
+                .foregroundColor(fgColors[Int(index)])
+                /*
+                 .onTapGesture(perform: {
+                 fgColor = fgColors[index]
+                 index += 1
+                 if (index >= fgColors.count) {
+                 index = 0
+                 }
+                 })
+                 */
+                //Text("Index : \(index)")
+                .focusable()
+                .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
         }
-
-        WKNotificationScene(controller: NotificationController.self, category: "myCategory")
+        WKNotificationScene(controller: NotificationController.self, category: "mulot.org.BeatClock.time")
     }
 }

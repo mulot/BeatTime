@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94447B05264AAD7500A062CF /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
 		9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9476F32E2639D662006FBF66 /* Assets.xcassets */; };
@@ -15,7 +16,6 @@
 		9476F33D2639ED7C006FBF66 /* ViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* ViewDraw.swift */; };
 		947C562E264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 947C562D264814E9007E6B4A /* BeatClockWatchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		947C5633264814F0007E6B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5632264814F0007E6B4A /* Assets.xcassets */; };
-		947C563A264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		947C563F264814F1007E6B4A /* BeatClockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C563E264814F1007E6B4A /* BeatClockApp.swift */; };
 		947C5643264814F1007E6B4A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5642264814F1007E6B4A /* NotificationController.swift */; };
 		947C5645264814F1007E6B4A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5644264814F1007E6B4A /* NotificationView.swift */; };
@@ -44,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		94447B06264AAD7500A062CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 947C5638264814F0007E6B4A;
+			remoteInfo = "BeatClockWatchOS WatchKit Extension";
+		};
 		9476F3322639D662006FBF66 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
@@ -58,23 +65,16 @@
 			remoteGlobalIDString = 947C562C264814E9007E6B4A;
 			remoteInfo = "BeatClockWatchOS WatchKit App";
 		};
-		947C563B264814F0007E6B4A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 947C5638264814F0007E6B4A;
-			remoteInfo = "BeatClockWatchOS WatchKit Extension";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		947C5652264814F2007E6B4A /* Embed App Extensions */ = {
+		94447B08264AAD7500A062CF /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				947C563A264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */,
+				94447B05264AAD7500A062CF /* BeatClockWatchOS WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,7 +118,6 @@
 		947C5634264814F0007E6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947C5639264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BeatClockWatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		947C563E264814F1007E6B4A /* BeatClockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatClockApp.swift; sourceTree = "<group>"; };
-		947C5640264814F1007E6B4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		947C5642264814F1007E6B4A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		947C5644264814F1007E6B4A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		947C5646264814F1007E6B4A /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
@@ -220,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				947C563E264814F1007E6B4A /* BeatClockApp.swift */,
-				947C5640264814F1007E6B4A /* ContentView.swift */,
 				947C5642264814F1007E6B4A /* NotificationController.swift */,
 				947C5644264814F1007E6B4A /* NotificationView.swift */,
 				947C5646264814F1007E6B4A /* ComplicationController.swift */,
@@ -342,12 +340,12 @@
 			buildConfigurationList = 947C5653264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatClockWatchOS WatchKit App" */;
 			buildPhases = (
 				947C562B264814E9007E6B4A /* Resources */,
-				947C5652264814F2007E6B4A /* Embed App Extensions */,
+				94447B08264AAD7500A062CF /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				947C563C264814F0007E6B4A /* PBXTargetDependency */,
+				94447B07264AAD7500A062CF /* PBXTargetDependency */,
 			);
 			name = "BeatClockWatchOS WatchKit App";
 			productName = "BeatClockWatchOS WatchKit App";
@@ -565,6 +563,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		94447B07264AAD7500A062CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 947C5638264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */;
+			targetProxy = 94447B06264AAD7500A062CF /* PBXContainerItemProxy */;
+		};
 		9476F3332639D662006FBF66 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9476F3242639D65A006FBF66 /* BeatClockWidgetExtension */;
@@ -574,11 +577,6 @@
 			isa = PBXTargetDependency;
 			target = 947C562C264814E9007E6B4A /* BeatClockWatchOS WatchKit App */;
 			targetProxy = 947C562F264814E9007E6B4A /* PBXContainerItemProxy */;
-		};
-		947C563C264814F0007E6B4A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 947C5638264814F0007E6B4A /* BeatClockWatchOS WatchKit Extension */;
-			targetProxy = 947C563B264814F0007E6B4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -694,7 +692,6 @@
 		947C5654264814F2007E6B4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -714,7 +711,6 @@
 		947C5655264814F2007E6B4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;

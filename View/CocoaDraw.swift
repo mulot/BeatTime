@@ -1,6 +1,6 @@
 //
 //  ViewDraw.swift
-//  BeatClock
+//  BeatTime
 //
 //  Created by Julien Mulot on 28/04/2021.
 //

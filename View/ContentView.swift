@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  BeatClockiOS
+//  BeatTimeiOS
 //
 //  Created by Julien Mulot on 08/05/2021.
 //
@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        BeatClockView()
+        BeatTimeView()
     }
 }
 
@@ -20,9 +20,9 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct BeatClockView: View {
+struct BeatTimeView: View {
     
-    @State var beat: BeatClock = BeatClock()
+    @State var beat: BeatTime = BeatTime()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     //var background = Color.black
     //var lineColor = Color.timeLine
@@ -31,15 +31,15 @@ struct BeatClockView: View {
     
     var body: some View {
         ZStack {
-            if (Double(beat.beatTime()) != nil) {
-                DrawingArcCircle(arcFrag: Double(beat.beatTime())!, lineWidth: lineWidth)
+            if (Double(beat.beats()) != nil) {
+                DrawingArcCircle(arcFrag: Double(beat.beats())!, lineWidth: lineWidth)
                     //.background(background)
             }
-            Text("@" + beat.beatTime())
+            Text("@" + beat.beats())
                     //.foregroundColor(textColor)
                     .font(.largeTitle).bold()
         }.onReceive(timer) { _ in
-            beat = BeatClock()
+            beat = BeatTime()
         }
     }
 }

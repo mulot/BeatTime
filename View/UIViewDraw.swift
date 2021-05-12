@@ -1,6 +1,6 @@
 //
 //  UIViewDraw.swift
-//  BeatClockiOS
+//  BeatTimeiOS
 //
 //  Created by Julien Mulot on 08/05/2021.
 //
@@ -37,6 +37,6 @@ struct DrawingArcCircle: View {
 
 struct UIViewDraw_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingArcCircle(arcFrag: Double(BeatClock().beatTime())!)
+        DrawingArcCircle(arcFrag: Double(BeatTime().beats())!)
     }
 }

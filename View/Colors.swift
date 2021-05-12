@@ -1,6 +1,6 @@
 //
 //  Colors.swift
-//  BeatClockiOS
+//  BeatTimeiOS
 //
 //  Created by Julien Mulot on 08/05/2021.
 //

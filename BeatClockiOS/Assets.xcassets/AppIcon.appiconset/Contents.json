@@ -21,23 +21,25 @@
       "size" : "29x29"
     },
     {
+      "filename" : "BeatClock App Icon-iOS-80-v5.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
+      "filename" : "BeatClock App Icon-iOS-120-v5-1.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "BeatClock App Icon-120-v3.png",
+      "filename" : "BeatClock App Icon-iOS-120-v5.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "BeatClock App Icon-180-v3.png",
+      "filename" : "BeatClock App Icon-iOS-180-v5.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -88,7 +90,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "BeatClock App Icon-1024-v3.png",
+      "filename" : "BeatClock App Icon-iOS-1024-v5.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

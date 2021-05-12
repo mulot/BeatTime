@@ -32,7 +32,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         // Call the handler with the last entry date you can currently provide or nil if you can't support future timelines
-        handler(nil)
+        handler(Date.distantFuture)
     }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {
@@ -115,10 +115,12 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var entries: [CLKComplicationTimelineEntry] = []
         var entryDate: Date
         var entry: CLKComplicationTimelineEntry
+        var Offset = 1
         
         // Generate a timeline consisting of five entries a minute apart, starting from the date.
-        for Offset in 0 ..< limit {
+        while ( entries.count < limit) {
             entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: date)!
+            Offset += 1
             let beatTime = BeatClock().beatTime(date: entryDate)
             
             switch complication.family {

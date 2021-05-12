@@ -1,57 +1,61 @@
 {
   "images" : [
     {
+      "filename" : "BeatClock App Icon-16-v5.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "16x16"
     },
     {
+      "filename" : "BeatClock App Icon-32-v5-1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "16x16"
     },
     {
+      "filename" : "BeatClock App Icon-32-v5.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "32x32"
     },
     {
+      "filename" : "BeatClock App Icon-64-v5.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "32x32"
     },
     {
-      "filename" : "BeatClock App Icon-128-v3.png",
+      "filename" : "BeatClock App Icon-128-v5.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "128x128"
     },
     {
-      "filename" : "BeatClock App Icon-256-v3-1.png",
+      "filename" : "BeatClock App Icon-256-v5-1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
-      "filename" : "BeatClock App Icon-256-v3.png",
+      "filename" : "BeatClock App Icon-256-v5.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "BeatClock App Icon-512-v3.png",
+      "filename" : "BeatClock App Icon-512-v5-1.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "BeatClock App Icon-512-v3-1.png",
+      "filename" : "BeatClock App Icon-512-v5.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "BeatClock App Icon-1024-v3.png",
+      "filename" : "BeatClock App Icon-1024-v5.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"

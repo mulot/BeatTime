@@ -7,6 +7,47 @@
 
 import ClockKit
 
+extension ComplicationController {
+  func makeTemplate(
+    for beatTime: String,
+    complication: CLKComplication
+  ) -> CLKComplicationTemplate? {
+    var beatProvider = CLKSimpleTextProvider(
+        text: "@" + beatTime,
+        shortText: beatTime)
+    switch complication.family {
+    case .circularSmall:
+        // Create a template from the circular small family.
+        return CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+    case .modularSmall:
+        // Create a template from the modular small family.
+        return CLKComplicationTemplateModularSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
+    case .modularLarge:
+        // Create a template from the modular Large.
+        let dateProvider = CLKSimpleTextProvider(
+            text: "Local time " + DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short),
+            shortText: DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+        return CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, body2TextProvider: dateProvider)
+    case .utilitarianSmall:
+        // Create a template from the utilitarian small family.
+        beatProvider = CLKSimpleTextProvider(
+            text: "@" + beatTime,
+            shortText: "@")
+        return CLKComplicationTemplateUtilitarianSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
+    case .utilitarianSmallFlat:
+        // Create a template from the utilitarian small flat family.
+        return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: beatProvider)
+    case .graphicCircular:
+        // Create a template from the graphic Circular family.
+      return CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
+    case .graphicRectangular:
+        // Create a template from the graphic Rectangular family.
+        return CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)))
+    default:
+      return nil
+    }
+  }
+}
 
 class ComplicationController: NSObject, CLKComplicationDataSource {
     
@@ -32,7 +73,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getTimelineEndDate(for complication: CLKComplication, withHandler handler: @escaping (Date?) -> Void) {
         // Call the handler with the last entry date you can currently provide or nil if you can't support future timelines
-        handler(Date.distantFuture)
+        handler(Calendar.current.date(byAdding: .hour, value: 1, to: Date()))
     }
     
     func getPrivacyBehavior(for complication: CLKComplication, withHandler handler: @escaping (CLKComplicationPrivacyBehavior) -> Void) {

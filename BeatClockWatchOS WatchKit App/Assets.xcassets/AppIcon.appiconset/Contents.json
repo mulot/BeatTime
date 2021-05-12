@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "BeatClock App Icon-WatchOS-48-v5.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -8,6 +9,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "BeatClock App Icon-WatchOS-55-v5.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -15,20 +17,21 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "BeatClock App Icon-WatchOS-58-v3.png",
+      "filename" : "BeatClock App Icon-WatchOS-58-v5.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "BeatClock App Icon-WatchOS-87-v3.png",
+      "filename" : "BeatClock App Icon-WatchOS-87-v5.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
+      "filename" : "BeatClock App Icon-WatchOS-80-v5.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -36,6 +39,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "BeatClock App Icon-WatchOS-88-v5.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -43,7 +47,7 @@
       "subtype" : "40mm"
     },
     {
-      "filename" : "BeatClock App Icon-WatchOS-100-v3.png.png",
+      "filename" : "BeatClock App Icon-WatchOS-100-v5.png",
       "idiom" : "watch",
       "role" : "appLauncher",
       "scale" : "2x",
@@ -51,6 +55,7 @@
       "subtype" : "44mm"
     },
     {
+      "filename" : "BeatClock App Icon-WatchOS-172-v5.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -58,6 +63,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "BeatClock App Icon-WatchOS-196-v5.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -65,7 +71,7 @@
       "subtype" : "42mm"
     },
     {
-      "filename" : "BeatClock App Icon-WatchOS-216-v3.png",
+      "filename" : "BeatClock App Icon-WatchOS-216-v5.png",
       "idiom" : "watch",
       "role" : "quickLook",
       "scale" : "2x",
@@ -73,7 +79,7 @@
       "subtype" : "44mm"
     },
     {
-      "filename" : "BeatClock App Icon-WatchOS-1024-v1.png",
+      "filename" : "BeatClock App Icon-WatchOS-1024-v5.png",
       "idiom" : "watch-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

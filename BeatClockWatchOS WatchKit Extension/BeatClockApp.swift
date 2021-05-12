@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct BeatClockApp: App {
-    let fgColors: [Color] = [.white, .gray, .red, .orange, .yellow, .green, .blue, .purple, .pink]
+    let fgColors: [Color] = [.orange, .white, .gray, .red, .yellow, .green, .blue, .purple, .pink]
     @State private var index = 0.0
     //@State private var fgColor = Color.gray
     

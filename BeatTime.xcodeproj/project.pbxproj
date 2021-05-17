@@ -30,6 +30,7 @@
 		947C56682648405F007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		947C566926484069007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		947C566A26484217007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		94A89355264D863700C86B3E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A89354264D863700C86B3E /* ExtensionDelegate.swift */; };
 		94BEB1BD2646D9C500A5D811 /* BeatTimeiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */; };
 		94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
 		94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C02646D9CA00A5D811 /* Assets.xcassets */; };
@@ -37,6 +38,14 @@
 		94BEB1CA2646DBBC00A5D811 /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94BEB2112647D12D00A5D811 /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
+		94CBA0BF2652DC5A0032CA8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5632264814F0007E6B4A /* Assets.xcassets */; };
+		94CBA0C7265308370032CA8B /* BeatTimeTvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CBA0C6265308370032CA8B /* BeatTimeTvOSApp.swift */; };
+		94CBA0CB2653083E0032CA8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CBA0CA2653083E0032CA8B /* Assets.xcassets */; };
+		94CBA0CE2653083E0032CA8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CBA0CD2653083E0032CA8B /* Preview Assets.xcassets */; };
+		94CBA0D32653086D0032CA8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		94CBA0D4265308740032CA8B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
+		94CBA0D5265308780032CA8B /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
+		94CBA0D626530A3F0032CA8B /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		94DA1E892634757300F83E86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E882634757300F83E86 /* AppDelegate.swift */; };
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
@@ -125,6 +134,7 @@
 		947C564B264814F2007E6B4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		947C564D264814F2007E6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		947C564E264814F2007E6B4A /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		94A89354264D863700C86B3E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		94BEB1BA2646D9C500A5D811 /* BeatTimeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTimeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTimeiOSApp.swift; sourceTree = "<group>"; };
 		94BEB1BE2646D9C500A5D811 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -133,6 +143,11 @@
 		94BEB1C52646D9CA00A5D811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewDraw.swift; sourceTree = "<group>"; };
 		94BEB20E2646E92E00A5D811 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		94CBA0C4265308370032CA8B /* BeatTimeTvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTimeTvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94CBA0C6265308370032CA8B /* BeatTimeTvOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTimeTvOSApp.swift; sourceTree = "<group>"; };
+		94CBA0CA2653083E0032CA8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94CBA0CD2653083E0032CA8B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94CBA0CF2653083E0032CA8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94DA1E852634757300F83E86 /* BeatTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94DA1E882634757300F83E86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94DA1E8A2634757700F83E86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,6 +175,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		94BEB1B72646D9C500A5D811 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94CBA0C1265308370032CA8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				947C563E264814F1007E6B4A /* BeatTimeApp.swift */,
+				94A89354264D863700C86B3E /* ExtensionDelegate.swift */,
 				947C5642264814F1007E6B4A /* NotificationController.swift */,
 				947C5644264814F1007E6B4A /* NotificationView.swift */,
 				947C5646264814F1007E6B4A /* ComplicationController.swift */,
@@ -266,6 +289,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		94CBA0C5265308370032CA8B /* BeatTimeTvOS */ = {
+			isa = PBXGroup;
+			children = (
+				94CBA0C6265308370032CA8B /* BeatTimeTvOSApp.swift */,
+				94CBA0CA2653083E0032CA8B /* Assets.xcassets */,
+				94CBA0CF2653083E0032CA8B /* Info.plist */,
+				94CBA0CC2653083E0032CA8B /* Preview Content */,
+			);
+			path = BeatTimeTvOS;
+			sourceTree = "<group>";
+		};
+		94CBA0CC2653083E0032CA8B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				94CBA0CD2653083E0032CA8B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		94DA1E7C2634757300F83E86 = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +317,7 @@
 				94BEB1BB2646D9C500A5D811 /* BeatTimeiOS */,
 				947C5631264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */,
 				947C563D264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */,
+				94CBA0C5265308370032CA8B /* BeatTimeTvOS */,
 				947C562726480050007E6B4A /* View */,
 				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
@@ -290,6 +333,7 @@
 				947C562A264814E9007E6B4A /* BeatTime.app */,
 				947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */,
 				947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */,
+				94CBA0C4265308370032CA8B /* BeatTimeTvOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -394,6 +438,23 @@
 			productReference = 94BEB1BA2646D9C500A5D811 /* BeatTimeiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
+		94CBA0C3265308370032CA8B /* BeatTimeTvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94CBA0D02653083E0032CA8B /* Build configuration list for PBXNativeTarget "BeatTimeTvOS" */;
+			buildPhases = (
+				94CBA0C0265308370032CA8B /* Sources */,
+				94CBA0C1265308370032CA8B /* Frameworks */,
+				94CBA0C2265308370032CA8B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatTimeTvOS;
+			productName = BeatTimeTvOS;
+			productReference = 94CBA0C4265308370032CA8B /* BeatTimeTvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		94DA1E842634757300F83E86 /* BeatTime */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 94DA1E932634757700F83E86 /* Build configuration list for PBXNativeTarget "BeatTime" */;
@@ -437,6 +498,9 @@
 					94BEB1B92646D9C500A5D811 = {
 						CreatedOnToolsVersion = 12.5;
 					};
+					94CBA0C3265308370032CA8B = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					94DA1E842634757300F83E86 = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -461,6 +525,7 @@
 				947C5629264814E9007E6B4A /* BeatTimeWatchOS */,
 				947C562C264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */,
 				947C5638264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */,
+				94CBA0C3265308370032CA8B /* BeatTimeTvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -494,6 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				947C564C264814F2007E6B4A /* Preview Assets.xcassets in Resources */,
+				94CBA0BF2652DC5A0032CA8B /* Assets.xcassets in Resources */,
 				947C5649264814F2007E6B4A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,6 +570,15 @@
 			files = (
 				94BEB1C42646D9CA00A5D811 /* Preview Assets.xcassets in Resources */,
 				94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94CBA0C2265308370032CA8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94CBA0CE2653083E0032CA8B /* Preview Assets.xcassets in Resources */,
+				94CBA0CB2653083E0032CA8B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,6 +612,7 @@
 			files = (
 				947C5643264814F1007E6B4A /* NotificationController.swift in Sources */,
 				947C566226481A68007E6B4A /* Colors.swift in Sources */,
+				94A89355264D863700C86B3E /* ExtensionDelegate.swift in Sources */,
 				947C566326481B22007E6B4A /* ContentView.swift in Sources */,
 				947C5660264819F8007E6B4A /* BeatTime.swift in Sources */,
 				947C5647264814F1007E6B4A /* ComplicationController.swift in Sources */,
@@ -555,6 +631,18 @@
 				94BEB1BD2646D9C500A5D811 /* BeatTimeiOSApp.swift in Sources */,
 				94BEB1CA2646DBBC00A5D811 /* BeatTime.swift in Sources */,
 				94BEB2112647D12D00A5D811 /* UIViewDraw.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94CBA0C0265308370032CA8B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94CBA0D4265308740032CA8B /* Colors.swift in Sources */,
+				94CBA0D626530A3F0032CA8B /* BeatTime.swift in Sources */,
+				94CBA0C7265308370032CA8B /* BeatTimeTvOSApp.swift in Sources */,
+				94CBA0D32653086D0032CA8B /* ContentView.swift in Sources */,
+				94CBA0D5265308780032CA8B /* UIViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +900,53 @@
 			};
 			name = Release;
 		};
+		94CBA0D12653083E0032CA8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeTvOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatTimeTvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeTvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+			};
+			name = Debug;
+		};
+		94CBA0D22653083E0032CA8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeTvOS/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatTimeTvOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeTvOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 14.5;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		94DA1E912634757700F83E86 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1021,6 +1156,15 @@
 			buildConfigurations = (
 				94BEB1C62646D9CA00A5D811 /* Debug */,
 				94BEB1C72646D9CA00A5D811 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94CBA0D02653083E0032CA8B /* Build configuration list for PBXNativeTarget "BeatTimeTvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94CBA0D12653083E0032CA8B /* Debug */,
+				94CBA0D22653083E0032CA8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -12,7 +12,7 @@ struct BeatTimeiOSApp: App {
     
     let fgColors: [Color] = [.gray, .red, .orange, .yellow,
                                .green, .blue, .purple, .pink]
-    @State private var fgColor: Color = .gray
+    @State private var fgColor: Color = fgColors[0]
     @State private var index = 1
     
     var body: some Scene {

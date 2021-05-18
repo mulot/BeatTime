@@ -21,25 +21,25 @@
       "size" : "29x29"
     },
     {
-      "filename" : "BeatClock App Icon-iOS-80-v5.png",
+      "filename" : "BeatTime App Icon-v7-iOS-80.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "BeatClock App Icon-iOS-120-v5-1.png",
+      "filename" : "BeatTime App Icon-v7-iOS-120.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "BeatClock App Icon-iOS-120-v5.png",
+      "filename" : "BeatTime App Icon-v7-iOS-121.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "BeatClock App Icon-iOS-180-v5.png",
+      "filename" : "BeatTime App Icon-v7-iOS-180.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -75,22 +75,25 @@
       "size" : "40x40"
     },
     {
+      "filename" : "BeatTime App Icon-v7-iOS-76.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
     },
     {
+      "filename" : "BeatTime App Icon-v7-iOS-152.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
+      "filename" : "BeatTime App Icon-v7-iOS-167.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "BeatClock App Icon-iOS-1024-v5.png",
+      "filename" : "BeatTime App Icon-v7-iOS-1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

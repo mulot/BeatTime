@@ -9,15 +9,13 @@ import SwiftUI
 
 @main
 struct BeatTimeiOSApp: App {
-    
     let fgColors: [Color] = [.gray, .red, .orange, .yellow,
                                .green, .blue, .purple, .pink]
-    @State private var fgColor: Color = fgColors[0]
+    @State private var fgColor: Color = .gray
     @State private var index = 1
     
     var body: some Scene {
         WindowGroup {
-            
             BeatTimeView(lineWidth: 25)
                 .background(Color.black)
                 .foregroundColor(fgColor)

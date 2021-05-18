@@ -98,17 +98,13 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     func getTimelineEntries(for complication: CLKComplication, after date: Date, limit: Int, withHandler handler: @escaping ([CLKComplicationTimelineEntry]?) -> Void) {
         // Call the handler with the timeline entries after the given date
         var entries: [CLKComplicationTimelineEntry] = []
-        //var entryDate: Date
         var entry: CLKComplicationTimelineEntry
-        //var Offset = 1
         var current = date.addingTimeInterval(60.0)
         let endDate = date.addingTimeInterval(60.0 * 60.0)
         
         print("Limit: \(limit) Date:" + DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
         // Generate a timeline consisting of five entries a minute apart, starting from the date.
         while ((current.compare(endDate) == .orderedAscending) && (entries.count < limit)) {
-            //entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: date)!
-            //Offset += 1
             let beatTime = BeatTime().beats(date: current)
             print("Entry Date:" + DateFormatter.localizedString(from: current, dateStyle: .short, timeStyle: .short) + " Beats: \(beatTime)")
             if let template = makeTemplate(for: beatTime, complication: complication) {

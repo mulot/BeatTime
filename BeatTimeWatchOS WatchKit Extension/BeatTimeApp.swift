@@ -13,15 +13,18 @@ struct BeatTimeApp: App {
     @WKExtensionDelegateAdaptor private var appDelegate: ExtensionDelegate
     @Environment(\.scenePhase) private var scenePhase
     
-    let fgColors: [Color] = [.orange, .white, .gray, .red, .yellow, .green, .blue, .purple, .pink]
+    let fgColors: [Color] = [.orange, .gray, .red, .yellow, .green, .blue, .purple, .pink]
     @State private var index = 0.0
     let logger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "App View")
     //@State private var fgColor = Color.gray
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
+            ZStack {
+                DrawingArcCircle(arcFrag: 999)
+                    .foregroundColor(.circleLine)
             BeatTimeView()
-                .background(Color.black)
+                //.background(Color.black)
                 .foregroundColor(fgColors[Int(index)])
                 /*
                  .onTapGesture(perform: {
@@ -51,6 +54,7 @@ struct BeatTimeApp: App {
                         assertionFailure()
                     }
                 }
+        }
         }
         WKNotificationScene(controller: NotificationController.self, category: "mulot.org.BeatTime.time")
     }

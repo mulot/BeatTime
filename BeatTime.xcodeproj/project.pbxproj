@@ -25,14 +25,14 @@
 		947C5660264819F8007E6B4A /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		947C566126481A5E007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		947C566226481A68007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
-		947C566326481B22007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		947C566326481B22007E6B4A /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		947C5665264839A6007E6B4A /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		947C56682648405F007E6B4A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		947C566926484069007E6B4A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
-		947C566A26484217007E6B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		947C566A26484217007E6B4A /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		94A89355264D863700C86B3E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A89354264D863700C86B3E /* ExtensionDelegate.swift */; };
 		94BEB1BD2646D9C500A5D811 /* BeatTimeiOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */; };
-		94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		94BEB1BF2646D9C500A5D811 /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		94BEB1C12646D9CA00A5D811 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C02646D9CA00A5D811 /* Assets.xcassets */; };
 		94BEB1C42646D9CA00A5D811 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */; };
 		94BEB1CA2646DBBC00A5D811 /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
@@ -42,7 +42,7 @@
 		94CBA0C7265308370032CA8B /* BeatTimeTvOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CBA0C6265308370032CA8B /* BeatTimeTvOSApp.swift */; };
 		94CBA0CB2653083E0032CA8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CBA0CA2653083E0032CA8B /* Assets.xcassets */; };
 		94CBA0CE2653083E0032CA8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94CBA0CD2653083E0032CA8B /* Preview Assets.xcassets */; };
-		94CBA0D32653086D0032CA8B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* ContentView.swift */; };
+		94CBA0D32653086D0032CA8B /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		94CBA0D4265308740032CA8B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94CBA0D5265308780032CA8B /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		94CBA0D626530A3F0032CA8B /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
@@ -137,7 +137,7 @@
 		94A89354264D863700C86B3E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		94BEB1BA2646D9C500A5D811 /* BeatTimeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTimeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTimeiOSApp.swift; sourceTree = "<group>"; };
-		94BEB1BE2646D9C500A5D811 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTImeView.swift; sourceTree = "<group>"; };
 		94BEB1C02646D9CA00A5D811 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		94BEB1C32646D9CA00A5D811 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		94BEB1C52646D9CA00A5D811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				9476F33C2639ED7C006FBF66 /* CocoaDraw.swift */,
-				94BEB1BE2646D9C500A5D811 /* ContentView.swift */,
+				94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */,
 				94BEB20E2646E92E00A5D811 /* Colors.swift */,
 				94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */,
 			);
@@ -599,7 +599,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				947C56682648405F007E6B4A /* UIViewDraw.swift in Sources */,
-				947C566A26484217007E6B4A /* ContentView.swift in Sources */,
+				947C566A26484217007E6B4A /* BeatTImeView.swift in Sources */,
 				947C566926484069007E6B4A /* Colors.swift in Sources */,
 				947C5665264839A6007E6B4A /* BeatTimeWidget.swift in Sources */,
 				9476F33B2639DF0C006FBF66 /* BeatTime.swift in Sources */,
@@ -613,7 +613,7 @@
 				947C5643264814F1007E6B4A /* NotificationController.swift in Sources */,
 				947C566226481A68007E6B4A /* Colors.swift in Sources */,
 				94A89355264D863700C86B3E /* ExtensionDelegate.swift in Sources */,
-				947C566326481B22007E6B4A /* ContentView.swift in Sources */,
+				947C566326481B22007E6B4A /* BeatTImeView.swift in Sources */,
 				947C5660264819F8007E6B4A /* BeatTime.swift in Sources */,
 				947C5647264814F1007E6B4A /* ComplicationController.swift in Sources */,
 				947C566126481A5E007E6B4A /* UIViewDraw.swift in Sources */,
@@ -626,7 +626,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94BEB1BF2646D9C500A5D811 /* ContentView.swift in Sources */,
+				94BEB1BF2646D9C500A5D811 /* BeatTImeView.swift in Sources */,
 				94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */,
 				94BEB1BD2646D9C500A5D811 /* BeatTimeiOSApp.swift in Sources */,
 				94BEB1CA2646DBBC00A5D811 /* BeatTime.swift in Sources */,
@@ -641,7 +641,7 @@
 				94CBA0D4265308740032CA8B /* Colors.swift in Sources */,
 				94CBA0D626530A3F0032CA8B /* BeatTime.swift in Sources */,
 				94CBA0C7265308370032CA8B /* BeatTimeTvOSApp.swift in Sources */,
-				94CBA0D32653086D0032CA8B /* ContentView.swift in Sources */,
+				94CBA0D32653086D0032CA8B /* BeatTImeView.swift in Sources */,
 				94CBA0D5265308780032CA8B /* UIViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

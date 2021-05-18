@@ -102,11 +102,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         var current = date.addingTimeInterval(60.0)
         let endDate = date.addingTimeInterval(60.0 * 60.0)
         
-        print("Limit: \(limit) Date:" + DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
+        //print("Limit: \(limit) Date:" + DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
         // Generate a timeline consisting of five entries a minute apart, starting from the date.
         while ((current.compare(endDate) == .orderedAscending) && (entries.count < limit)) {
             let beatTime = BeatTime().beats(date: current)
-            print("Entry Date:" + DateFormatter.localizedString(from: current, dateStyle: .short, timeStyle: .short) + " Beats: \(beatTime)")
+            //print("Entry Date:" + DateFormatter.localizedString(from: current, dateStyle: .short, timeStyle: .short) + " Beats: \(beatTime)")
             if let template = makeTemplate(for: beatTime, complication: complication) {
                 entry = CLKComplicationTimelineEntry(date: current, complicationTemplate: template)
                 entries.append(entry)

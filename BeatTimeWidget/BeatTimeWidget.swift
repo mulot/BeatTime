@@ -63,7 +63,7 @@ struct BeatTimeWidgetEntryView : View {
                 .foregroundColor(.circleLine)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
-                .mask(BeatTimeView(beats: entry.beat, lineWidth: 10))
+                .mask(DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10))
             Text("@" + entry.beat)
                 .font(.title.bold())
         }

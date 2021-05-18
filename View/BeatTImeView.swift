@@ -39,13 +39,10 @@ struct Gradient_Previews: PreviewProvider {
 struct BeatTimeView: View {
     
     @State var beats: String = BeatTime().beats()
-    #if os(iOS) || os(watchOS) || os(tvOS)
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    #endif
     var lineWidth: CGFloat = 10
     
     var body: some View {
-        #if os(iOS) || os(watchOS) || os(tvOS)
         ZStack {
             if (Double(beats) != nil) {
                 DrawingArcCircle(arcFrag: Double(beats)!, lineWidth: lineWidth)
@@ -57,13 +54,5 @@ struct BeatTimeView: View {
         }.onReceive(timer) { _ in
             beats = BeatTime().beats()
         }
-        #else
-        ZStack {
-            if (Double(beats) != nil) {
-                DrawingArcCircle(arcFrag: Double(beats)!, lineWidth: lineWidth)
-                //.background(background)
-            }
-        }
-        #endif
     }
 }

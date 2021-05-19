@@ -8,17 +8,26 @@
 //import Foundation
 import SwiftUI
 
+extension View {
+    public func gradientForeground(colors: [Color], startPoint: UnitPoint = .top, endPoint: UnitPoint = .bottom) -> some View {
+        self.overlay(LinearGradient(gradient: .init(colors: colors),
+                                    startPoint: startPoint,
+                                    endPoint: endPoint))
+            .mask(self)
+    }
+}
+
 struct DrawingArcCircle: View {
     
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10
     /*
-    var lineColor: Color = Color.timeLine
-    var startColor =  Color(red: 0, green: 30/255, blue: 50/255)
-    var midColor = Color.purple
-    var mid2Color = Color(red: 247/255, green: 186/255, blue: 0)
-    var endColor = Color.yellow
-    var isShadow: Bool = false
+     var lineColor: Color = Color.timeLine
+     var startColor =  Color(red: 0, green: 30/255, blue: 50/255)
+     var midColor = Color.purple
+     var mid2Color = Color(red: 247/255, green: 186/255, blue: 0)
+     var endColor = Color.yellow
+     var isShadow: Bool = false
      */
     var body: some View {
         GeometryReader { geometry in

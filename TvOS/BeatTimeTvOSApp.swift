@@ -26,11 +26,20 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            /*
+            let beats: String = BeatTime().beats()
+            
             DrawingArcCircle(arcFrag: 999, lineWidth: 40)
                 .foregroundColor(.circleLine)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-            LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
-                .mask(BeatTimeView(lineWidth: 40))
+            DrawingArcCircle(arcFrag: Double(beats)!, lineWidth: 40)
+                .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+            Text("@" + beats)
+                .font(.title.bold())
+                .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                */
+            BeatTimeView(lineWidth: 40)
+
         }
     }
 }

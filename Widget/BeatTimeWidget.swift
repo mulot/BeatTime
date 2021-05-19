@@ -31,14 +31,14 @@ struct BeatTimeProvider: TimelineProvider {
             let beat = BeatTime().beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")
             /*
-            if (Int(beat) != nil) {
-                if (Int(beat)! <= 250 || Int(beat)! >= 750) {
-                    dialColor = Color.gray
-                }
-                else {
-                    dialColor = Color.white
-                }
-            }
+             if (Int(beat) != nil) {
+             if (Int(beat)! <= 250 || Int(beat)! >= 750) {
+             dialColor = Color.gray
+             }
+             else {
+             dialColor = Color.white
+             }
+             }
              */
             entry = BeatEntry(date: entryDate, beat: beat)
             entries.append(entry)
@@ -61,27 +61,31 @@ struct BeatTimeWidgetEntryView : View {
         ZStack {
             DrawingArcCircle(arcFrag: 999, lineWidth: 10)
                 .foregroundColor(.circleLine)
-                //.shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-            LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
-                .mask(DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10))
+            //.shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+            /*
+             LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
+             .mask(DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10))
+             */
+            DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10)
+                .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
             Text("@" + entry.beat)
                 .font(.title.bold())
         }
         /*
-        ZStack {
-            Circle().fill(entry.dialColor)
-                .frame(maxWidth: 150, maxHeight:150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            VStack {
-                Text("@\(entry.beat)")
-                    //.foregroundColor(.accentColor)
-                    //.foregroundColor(.orange)
-                    .font(.system(size: 32)
-                            .bold())
-                Text(DateFormatter.localizedString(from: entry.date, dateStyle: .none, timeStyle: .short))
-                    .font(.headline)
-            }
-        }
-        */
+         ZStack {
+         Circle().fill(entry.dialColor)
+         .frame(maxWidth: 150, maxHeight:150, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+         VStack {
+         Text("@\(entry.beat)")
+         //.foregroundColor(.accentColor)
+         //.foregroundColor(.orange)
+         .font(.system(size: 32)
+         .bold())
+         Text(DateFormatter.localizedString(from: entry.date, dateStyle: .none, timeStyle: .short))
+         .font(.headline)
+         }
+         }
+         */
     }
 }
 
@@ -95,11 +99,11 @@ struct BeatTimeWidget: Widget {
             provider: BeatTimeProvider()
         ) { entry in
             BeatTimeWidgetEntryView(entry: entry)
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                //.background(Color("WidgetBackground"))
+            //.frame(maxWidth: .infinity, maxHeight: .infinity)
+            //.background(Color("WidgetBackground"))
             //BeatTimeView()
-                //.background(Color.black)
-                //.foregroundColor(.gray)
+            //.background(Color.black)
+            //.foregroundColor(.gray)
         }
         .configurationDisplayName("BeatTime")
         .description("Swatch Internet Time aka .beat time")
@@ -108,11 +112,11 @@ struct BeatTimeWidget: Widget {
 }
 
 /*
-struct BeatTimeWidget_Previews: PreviewProvider {
-    static var previews: some View {
-        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "342"))
-        .previewContext(WidgetPreviewContext(family: .systemSmall))
-    }
-}
-*/
+ struct BeatTimeWidget_Previews: PreviewProvider {
+ static var previews: some View {
+ BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "342"))
+ .previewContext(WidgetPreviewContext(family: .systemSmall))
+ }
+ }
+ */
 

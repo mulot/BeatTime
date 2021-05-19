@@ -43,20 +43,24 @@ struct ContentView: View {
         VStack {
             HStack{
                 Button(action: { self.showSettings.toggle() }) {
-                Image(systemName: "gear")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .foregroundColor(.gray)
+                    Image(systemName: "gear")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.gray)
                 }
                 Spacer()
             }
             .padding(.leading)
-            ZStack {
-                DrawingArcCircle(arcFrag: 999, lineWidth: 25)
-                    .foregroundColor(.circleLine)
-                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
-                    .mask(BeatTimeView(lineWidth: 25))
-            }
+            //ZStack {
+            /*
+             DrawingArcCircle(arcFrag: 999, lineWidth: 25)
+             .foregroundColor(.circleLine)
+             .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+             LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
+             .mask(BeatTimeView(lineWidth: 25))
+             */
+            BeatTimeView(lineWidth: 25)
+            //.background(Color.blue)
+            //}
             Button(action: { self.showConvert.toggle() }) {
                 Text("Convert")
                     .font(.title)
@@ -87,15 +91,15 @@ struct ConvertView: View {
                 Spacer()
                 TabView {
                     ConverTimeView()
-                    .tabItem {
-                        Image(systemName: "clock.fill")
-                        Text("Time")
-                    }
+                        .tabItem {
+                            Image(systemName: "clock.fill")
+                            Text("Time")
+                        }
                     ConvertBeatView()
-                    .tabItem {
-                        Image(systemName: "at.circle.fill")
-                        Text("Beats")
-                    }
+                        .tabItem {
+                            Image(systemName: "at.circle.fill")
+                            Text("Beats")
+                        }
                 }
                 .font(.headline)
                 Spacer()
@@ -112,10 +116,10 @@ struct ConvertBeatView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-        HStack {
-            Text("Beat Time:")
-            Text(BeatTime().beats())
-        }
+            HStack {
+                Text("Beat Time:")
+                Text(BeatTime().beats())
+            }
             HStack {
                 Text("Local Time:")
                 Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
@@ -128,14 +132,14 @@ struct ConverTimeView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-        HStack {
-            Text("Local Time:")
-            Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
-        }
-        HStack {
-            Text("Beat Time:")
-            Text("@" + BeatTime().beats(date: Date()))
-        }
+            HStack {
+                Text("Local Time:")
+                Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+            }
+            HStack {
+                Text("Beat Time:")
+                Text("@" + BeatTime().beats(date: Date()))
+            }
         }
     }
 }
@@ -173,11 +177,14 @@ struct ContentView_Previews: PreviewProvider {
             }
             .padding(.leading)
             ZStack {
-                DrawingArcCircle(arcFrag: 999, lineWidth: 25)
-                    .foregroundColor(.circleLine)
-                    .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
-                LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
-                    .mask(BeatTimeView(lineWidth: 25))
+                /*
+                 DrawingArcCircle(arcFrag: 999, lineWidth: 25)
+                 .foregroundColor(.circleLine)
+                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                 LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
+                 .mask(BeatTimeView(lineWidth: 25))
+                 */
+                BeatTimeView(lineWidth: 25)
             }
             Button(action: {  }) {
                 Text("Convert")
@@ -200,15 +207,15 @@ struct ConvertView_Previews: PreviewProvider {
                 Spacer()
                 TabView {
                     ConverTimeView()
-                    .tabItem {
-                        Image(systemName: "clock.fill")
-                        Text("Time")
-                    }
+                        .tabItem {
+                            Image(systemName: "clock.fill")
+                            Text("Time")
+                        }
                     ConvertBeatView()
-                    .tabItem {
-                        Image(systemName: "at.circle.fill")
-                        Text("Beats")
-                    }
+                        .tabItem {
+                            Image(systemName: "at.circle.fill")
+                            Text("Beats")
+                        }
                 }
                 .font(.headline)
                 Spacer()

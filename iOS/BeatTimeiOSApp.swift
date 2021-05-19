@@ -113,33 +113,38 @@ struct ConvertView: View {
 }
 
 struct ConvertBeatView: View {
+    @State private var beats: String = BeatTime().beats()
     
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                Text("Beat Time:")
-                Text(BeatTime().beats())
-            }
+                Text(".beats:")
+                TextField("Beat Time", text: $beats)
+                    .foregroundColor(.accentColor)
+                    //.textFieldStyle(RoundedBorderTe(xtFieldStyle())
+            }.padding(.leading)
             HStack {
-                Text("Local Time:")
-                Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
-            }
+                Text("Time:")
+                Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
+            }.padding(.leading)
         }
     }
 }
 
 struct ConverTimeView: View {
-    
+    @State private var date = Date()
+
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                Text("Local Time:")
-                Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
-            }
+                //Text("Local Time:")
+                DatePicker("Time", selection: $date, displayedComponents: [.hourAndMinute])
+                //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+            }.padding(.leading)
             HStack {
-                Text("Beat Time:")
-                Text("@" + BeatTime().beats(date: Date()))
-            }
+                Text(".beats:")
+                Text("@" + BeatTime().beats(date: date))
+            }.padding(.leading)
         }
     }
 }
@@ -206,7 +211,7 @@ struct ConvertView_Previews: PreviewProvider {
             VStack {
                 Spacer()
                 TabView {
-                    ConverTimeView()
+                    ConvertBeatView()
                         .tabItem {
                             Image(systemName: "clock.fill")
                             Text("Time")

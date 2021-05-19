@@ -8,13 +8,11 @@
 import ClockKit
 
 extension ComplicationController {
-  func makeTemplate(
-    for beatTime: String,
-    complication: CLKComplication
-  ) -> CLKComplicationTemplate? {
+  func makeTemplate(for beatTime: String, complication: CLKComplication) -> CLKComplicationTemplate? {
     var beatProvider = CLKSimpleTextProvider(
         text: "@" + beatTime,
         shortText: beatTime)
+    
     switch complication.family {
     case .circularSmall:
         // Create a template from the circular small family.

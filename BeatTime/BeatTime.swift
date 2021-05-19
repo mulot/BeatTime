@@ -30,4 +30,17 @@ class BeatTime: NSObject {
             return(String(Int(beats)))
         }
     }
+    
+    func date(beats: String) -> Date
+    {
+        var seconds: Double
+        
+        if let beattime = Double(beats) {
+            if (beattime >= 0 && beattime <= 1000) {
+                seconds = beattime / 1000 * 86400
+                return(Date(timeIntervalSinceReferenceDate: seconds))
+            }
+        }
+        return(Date())
+    }
 }

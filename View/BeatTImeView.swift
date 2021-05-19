@@ -29,7 +29,7 @@ struct Gradient_Previews: PreviewProvider {
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
                 //.frame(width: circleDiameter, height: circleDiameter, alignment: .center)
-                .mask(BeatTimeView(lineWidth: 25))
+                .mask(BeatTimeView(beats: "642", lineWidth: 25))
         }
         //}
         //BeatTimeView(lineWidth: 25)

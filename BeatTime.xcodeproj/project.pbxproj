@@ -237,13 +237,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		945F06BA26543E1700391A7D /* BeatTimeWidgetiOS */ = {
+		945F06BA26543E1700391A7D /* Widget iOS */ = {
 			isa = PBXGroup;
 			children = (
 				945F06BD26543E1D00391A7D /* Assets.xcassets */,
 				945F06BF26543E1D00391A7D /* Info.plist */,
 			);
-			path = BeatTimeWidgetiOS;
+			path = "Widget iOS";
 			sourceTree = "<group>";
 		};
 		9476F3262639D65A006FBF66 /* Frameworks */ = {
@@ -255,7 +255,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9476F32B2639D65A006FBF66 /* BeatTimeWidget */ = {
+		9476F32B2639D65A006FBF66 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
 				9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */,
@@ -263,7 +263,7 @@
 				9476F3302639D662006FBF66 /* Info.plist */,
 				9476F3312639D662006FBF66 /* BeatTimeWidget.entitlements */,
 			);
-			path = BeatTimeWidget;
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		947C562726480050007E6B4A /* View */ = {
@@ -277,16 +277,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		947C5631264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */ = {
+		947C5631264814E9007E6B4A /* WatchOS WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
 				947C5632264814F0007E6B4A /* Assets.xcassets */,
 				947C5634264814F0007E6B4A /* Info.plist */,
 			);
-			path = "BeatTimeWatchOS WatchKit App";
+			path = "WatchOS WatchKit App";
 			sourceTree = "<group>";
 		};
-		947C563D264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */ = {
+		947C563D264814F0007E6B4A /* WatchOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
 				947C563E264814F1007E6B4A /* BeatTimeApp.swift */,
@@ -299,7 +299,7 @@
 				947C564E264814F2007E6B4A /* PushNotificationPayload.apns */,
 				947C564A264814F2007E6B4A /* Preview Content */,
 			);
-			path = "BeatTimeWatchOS WatchKit Extension";
+			path = "WatchOS WatchKit Extension";
 			sourceTree = "<group>";
 		};
 		947C564A264814F2007E6B4A /* Preview Content */ = {
@@ -318,7 +318,7 @@
 			path = BeatTime;
 			sourceTree = "<group>";
 		};
-		94BEB1BB2646D9C500A5D811 /* BeatTimeiOS */ = {
+		94BEB1BB2646D9C500A5D811 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */,
@@ -326,7 +326,7 @@
 				94BEB1C52646D9CA00A5D811 /* Info.plist */,
 				94BEB1C22646D9CA00A5D811 /* Preview Content */,
 			);
-			path = BeatTimeiOS;
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		94BEB1C22646D9CA00A5D811 /* Preview Content */ = {
@@ -337,7 +337,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		94CBA0C5265308370032CA8B /* BeatTimeTvOS */ = {
+		94CBA0C5265308370032CA8B /* TvOS */ = {
 			isa = PBXGroup;
 			children = (
 				94CBA0C6265308370032CA8B /* BeatTimeTvOSApp.swift */,
@@ -345,7 +345,7 @@
 				94CBA0CF2653083E0032CA8B /* Info.plist */,
 				94CBA0CC2653083E0032CA8B /* Preview Content */,
 			);
-			path = BeatTimeTvOS;
+			path = TvOS;
 			sourceTree = "<group>";
 		};
 		94CBA0CC2653083E0032CA8B /* Preview Content */ = {
@@ -361,12 +361,12 @@
 			children = (
 				94A89353264C320100C86B3E /* BeatTime */,
 				94DA1E872634757300F83E86 /* MacOS */,
-				9476F32B2639D65A006FBF66 /* BeatTimeWidget */,
-				94BEB1BB2646D9C500A5D811 /* BeatTimeiOS */,
-				945F06BA26543E1700391A7D /* BeatTimeWidgetiOS */,
-				947C5631264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */,
-				947C563D264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */,
-				94CBA0C5265308370032CA8B /* BeatTimeTvOS */,
+				9476F32B2639D65A006FBF66 /* Widget */,
+				94BEB1BB2646D9C500A5D811 /* iOS */,
+				945F06BA26543E1700391A7D /* Widget iOS */,
+				947C5631264814E9007E6B4A /* WatchOS WatchKit App */,
+				947C563D264814F0007E6B4A /* WatchOS WatchKit Extension */,
+				94CBA0C5265308370032CA8B /* TvOS */,
 				947C562726480050007E6B4A /* View */,
 				9476F3262639D65A006FBF66 /* Frameworks */,
 				94DA1E862634757300F83E86 /* Products */,
@@ -793,7 +793,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
-				INFOPLIST_FILE = BeatTimeWidgetiOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Widget iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -816,7 +816,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
-				INFOPLIST_FILE = BeatTimeWidgetiOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Widget iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -838,12 +838,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = BeatTimeWidget/BeatTimeWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/BeatTimeWidget.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWidget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -862,12 +862,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_ENTITLEMENTS = BeatTimeWidget/BeatTimeWidget.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/BeatTimeWidget.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWidget/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Widget/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -886,10 +886,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeWatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WatchOS WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWatchOS WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -910,10 +910,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeWatchOS WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"WatchOS WatchKit Extension/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWatchOS WatchKit Extension/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -938,7 +938,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				IBSC_MODULE = BeatTimeWatchOS_WatchKit_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWatchOS WatchKit App/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeWatchOS.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -957,7 +957,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				IBSC_MODULE = BeatTimeWatchOS_WatchKit_Extension;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeWatchOS WatchKit App/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeWatchOS.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1005,10 +1005,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeiOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeiOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1029,10 +1029,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeiOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/BeatTimeiOS/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1053,10 +1053,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeTvOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TvOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BeatTimeTvOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1076,10 +1076,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeTvOS/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TvOS/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = BeatTimeTvOS/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

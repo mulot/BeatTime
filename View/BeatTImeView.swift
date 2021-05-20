@@ -41,6 +41,7 @@ struct BeatTimeView: View {
     @State var beats: String = BeatTime().beats()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var lineWidth: CGFloat = 10
+    var centiBeats: Bool = false
     
     var body: some View {
         ZStack {
@@ -64,7 +65,7 @@ struct BeatTimeView: View {
                 .font(.title.bold())
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
         }.onReceive(timer) { _ in
-            beats = BeatTime().beats()
+            beats = BeatTime(isCentiBeats: centiBeats).beats()
         }
     }
 }

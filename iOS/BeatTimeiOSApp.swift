@@ -38,6 +38,7 @@ struct BeatTimeiOSApp: App {
 struct ContentView: View {
     @State var showConvert = false
     @State var showSettings = false
+    @State var isCentiBeats = false
     
     var body: some View {
         VStack {
@@ -58,7 +59,10 @@ struct ContentView: View {
              LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
              .mask(BeatTimeView(lineWidth: 25))
              */
-            BeatTimeView(lineWidth: 25)
+            ZStack {
+                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats)
+                //BeatTimeView(lineWidth: 25)
+            }
             //.background(Color.blue)
             //}
             Button(action: { self.showConvert.toggle() }) {
@@ -70,7 +74,7 @@ struct ContentView: View {
             ConvertView(isPresented: $showConvert)
         }
         .sheet(isPresented: $showSettings) {
-            SettingsView(isPresented: $showSettings)
+            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats)
         }
     }
 }
@@ -104,8 +108,8 @@ struct ConvertView: View {
                 .font(.headline)
                 Spacer()
                 Button(action: { isPresented.toggle() }) {
-                    Text("Done")
-                        .font(.title)
+                    Text("Close")
+                    //.font(.title)
                 }
             }
         }
@@ -117,58 +121,103 @@ struct ConvertBeatView: View {
     
     var body: some View {
         VStack (alignment: .leading) {
-            HStack {
-                Text(".beats:")
-                TextField("Beat Time", text: $beats)
+            HStack{
+                Text(".beats to time")
+                    .font(.subheadline)
+                Spacer()
+            }.padding(.leading)
+            List {
+                HStack {
+                    Text(".beats:")
+                    TextField("Beat Time", text: $beats, onCommit: {
+                        if (!validate(beats)) {
+                            beats = BeatTime().beats()
+                        }
+                    })
                     .foregroundColor(.accentColor)
                     //.textFieldStyle(RoundedBorderTe(xtFieldStyle())
-            }.padding(.leading)
-            HStack {
-                Text("Time:")
-                Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
-            }.padding(.leading)
+                }//.padding(.leading)
+                HStack {
+                    Text("Time:")
+                    Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
+                }//.padding(.leading)
+            }
         }
+    }
+    
+    private func validate(_ beats: String) -> Bool {
+        if let beattime = Int(beats) {
+            if (beattime >= 0 && beattime <= 1000) {
+                return true
+            }
+        }
+        return false
     }
 }
 
 struct ConverTimeView: View {
     @State private var date = Date()
-
+    
     var body: some View {
+        
         VStack (alignment: .leading) {
-            HStack {
-                //Text("Local Time:")
-                DatePicker("Time", selection: $date, displayedComponents: [.hourAndMinute])
-                //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+            HStack{
+                Text("Time to .beats")
+                    .font(.subheadline)
+                Spacer()
             }.padding(.leading)
-            HStack {
-                Text(".beats:")
-                Text("@" + BeatTime().beats(date: date))
-            }.padding(.leading)
+            List {
+                HStack {
+                    //Text("Local Time:")
+                    DatePicker("Time:", selection: $date, displayedComponents: [.hourAndMinute])
+                    //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+                    Spacer()
+                }//.padding(.leading)
+                HStack {
+                    Text(".beats:")
+                    Text("@" + BeatTime().beats(date: date))
+                    
+                }//.padding(.leading)
+            }
         }
     }
 }
 
 struct SettingsView: View {
     @Binding var isPresented: Bool
+    @Binding var isCentiBeats: Bool
     
     var body: some View {
-        VStack {
-            HStack{
-                Text("Settings")
-                    .font(.largeTitle.bold())
-                Spacer()
-            }
-            .padding(.leading)
-            VStack {
-                Spacer()
-                Button(action: { isPresented.toggle() }) {
-                    Text("Done")
-                        .font(.title)
+        NavigationView {
+            Form {
+                Section(header: Text("Display")) {
+                    Toggle(isOn: $isCentiBeats) {
+                        Text("Centi .beats")
+                    }
                 }
-            }
+            }.navigationTitle("Settings")
+        }
+        Button(action: { isPresented.toggle() }) {
+            Text("Close")
         }
     }
+    /*
+     VStack {
+     HStack{
+     Text("Settings")
+     .font(.largeTitle.bold())
+     Spacer()
+     }
+     .padding(.leading)
+     VStack {
+     Spacer()
+     Button(action: { isPresented.toggle() }) {
+     Text("Done")
+     .font(.title)
+     }
+     }
+     }
+     */
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -190,6 +239,7 @@ struct ContentView_Previews: PreviewProvider {
                  .mask(BeatTimeView(lineWidth: 25))
                  */
                 BeatTimeView(lineWidth: 25)
+                //Text("Centi")
             }
             Button(action: {  }) {
                 Text("Convert")
@@ -208,28 +258,27 @@ struct ConvertView_Previews: PreviewProvider {
                 Spacer()
             }
             .padding(.leading)
-            VStack {
-                Spacer()
-                TabView {
-                    ConvertBeatView()
-                        .tabItem {
-                            Image(systemName: "clock.fill")
-                            Text("Time")
-                        }
-                    ConvertBeatView()
-                        .tabItem {
-                            Image(systemName: "at.circle.fill")
-                            Text("Beats")
-                        }
-                }
-                .font(.headline)
-                Spacer()
-                Button(action: { }) {
-                    Text("Done")
-                        .font(.title)
-                }
+            TabView {
+                ConverTimeView()
+                    .tabItem {
+                        Image(systemName: "clock.fill")
+                        Text("Time")
+                    }
+                ConvertBeatView()
+                    .tabItem {
+                        Image(systemName: "at.circle.fill")
+                        Text("Beats")
+                    }
+            }
+            .font(.headline)
+            Spacer()
+            Button(action: { }) {
+                Text("Close")
+                //.font(.title)
             }
         }
+        
         //.background(Color.orange)
     }
 }
+

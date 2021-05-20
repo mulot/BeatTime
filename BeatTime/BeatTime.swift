@@ -9,7 +9,7 @@ import Foundation
 
 class BeatTime: NSObject {
     private static let UTCplus1Offset:Double = 3600
-    var isCentiBeat = false
+    var centiBeats = false
 
     func beats(date: Date = Date()) -> String
     {
@@ -21,7 +21,7 @@ class BeatTime: NSObject {
         daySeconds = timeSeconds.truncatingRemainder(dividingBy: 86400)
         beats = (daySeconds * 1000) / 86400
         //print(".beat @\(Int(beats))")
-        if (isCentiBeat) {
+        if (centiBeats) {
             //print(".beat @\(String(format: "%.2f", beats))")
             return String(format: "%.2f", beats)
         }
@@ -42,5 +42,10 @@ class BeatTime: NSObject {
             }
         }
         return(Date())
+    }
+    
+    convenience init(isCentiBeats: Bool) {
+        self.init()
+        self.centiBeats = isCentiBeats
     }
 }

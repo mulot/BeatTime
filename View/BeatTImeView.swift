@@ -65,7 +65,7 @@ struct BeatTimeView: View {
                 .font(.title.bold())
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
         }.onReceive(timer) { _ in
-            beats = BeatTime(isCentiBeats: centiBeats).beats()
+            beats = BeatTime().beats(centiBeats: centiBeats)
         }
     }
 }

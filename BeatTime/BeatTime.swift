@@ -9,9 +9,8 @@ import Foundation
 
 class BeatTime: NSObject {
     private static let UTCplus1Offset:Double = 3600
-    var centiBeats = false
 
-    func beats(date: Date = Date()) -> String
+    func beats(date: Date = Date(), centiBeats: Bool = false) -> String
     {
         var beats: Double
         var timeSeconds: TimeInterval
@@ -42,10 +41,5 @@ class BeatTime: NSObject {
             }
         }
         return(Date())
-    }
-    
-    convenience init(isCentiBeats: Bool) {
-        self.init()
-        self.centiBeats = isCentiBeats
     }
 }

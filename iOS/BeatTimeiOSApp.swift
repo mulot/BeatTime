@@ -122,23 +122,24 @@ struct ConvertBeatView: View {
     var body: some View {
         VStack (alignment: .leading) {
             HStack{
-                Text(".beats to time")
+                Text("Beat time to 24-hour time")
                     .font(.subheadline)
                 Spacer()
             }.padding(.leading)
             List {
                 HStack {
-                    Text(".beats:")
                     TextField("Beat Time", text: $beats, onCommit: {
                         if (!validate(beats)) {
                             beats = BeatTime().beats()
                         }
                     })
                     .foregroundColor(.accentColor)
+                    Text(".beats")
+                    Spacer()
                     //.textFieldStyle(RoundedBorderTe(xtFieldStyle())
                 }//.padding(.leading)
                 HStack {
-                    Text("Time:")
+                    Text("24-hour time:")
                     Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
                 }//.padding(.leading)
             }
@@ -162,20 +163,20 @@ struct ConverTimeView: View {
         
         VStack (alignment: .leading) {
             HStack{
-                Text("Time to .beats")
+                Text("24-hour time to Beat time")
                     .font(.subheadline)
                 Spacer()
             }.padding(.leading)
             List {
                 HStack {
                     //Text("Local Time:")
-                    DatePicker("Time:", selection: $date, displayedComponents: [.hourAndMinute])
+                    DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
                     //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
                     Spacer()
                 }//.padding(.leading)
                 HStack {
-                    Text(".beats:")
                     Text("@" + BeatTime().beats(date: date))
+                    Text(".beats")
                     
                 }//.padding(.leading)
             }
@@ -192,7 +193,7 @@ struct SettingsView: View {
             Form {
                 Section(header: Text("Display")) {
                     Toggle(isOn: $isCentiBeats) {
-                        Text("Centi .beats")
+                        Text("Centibeats")
                     }
                 }
             }.navigationTitle("Settings")
@@ -259,7 +260,7 @@ struct ConvertView_Previews: PreviewProvider {
             }
             .padding(.leading)
             TabView {
-                ConverTimeView()
+                ConvertBeatView()
                     .tabItem {
                         Image(systemName: "clock.fill")
                         Text("Time")

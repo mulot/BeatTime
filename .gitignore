@@ -89,5 +89,9 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+Icons/
+
 __MACOSX
 .DS_Store
+*.pxd
+

@@ -48,19 +48,36 @@ struct BeatTimeApp: App {
     }
 }
 
-struct ConvertView: View {
-    @State private var date = Date()
-    @State var clock: [(String, [String])] = [
+struct Clock {
+    static let clock: [(String, [String])] = [
         ("Beats", Array(0...999).map{"@\($0)"}),
         ("Hour", Array(0...23).map{"\($0)"}),
-        ("Minute", Array(0...59).map{"\($0)"})
+        ("Minute", Array(0...59).map{"\(String(format: "%02d",$0))"})
     ]
-    @State var selection: [String] = ["@642", "12", "30"]
+    
+    static func currentClock(date: Date = Date()) -> [String] {
+        let beats:String = "@\(BeatTime().beats())"
+        var hours:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
+        let minutes:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
+        let ampm: String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)[1])"
+        
+        if (ampm == "PM") {
+            if let digitHours = Int(hours) {
+                hours = String(digitHours + 12)
+            }
+        }
+        return [beats, hours, minutes]
+    }
+}
+
+struct ConvertView: View {
+    @State private var date = Date()
+    @State var clock: [(String, [String])] = Clock.clock
+    @State var selection: [String] = Clock.currentClock()
     
     var body: some View {
         VStack {
             HStack {
-                //Text("Local Time:")
                 Picker(selection: $selection[0], label: Text(".beats")) {
                     ForEach(0..<self.clock[0].1.count) { index in
                         Text(verbatim: self.clock[0].1[index])
@@ -70,18 +87,21 @@ struct ConvertView: View {
             }
             HStack {
                 Picker("Hours", selection: $selection[1]) {
+                    //Text(selection[1])
                     ForEach(0..<self.clock[1].1.count) { index in
                         Text(verbatim: self.clock[1].1[index])
                             .tag(self.clock[1].1[index])
                     }
                 }.font(.title.bold())
                 Picker("Minutes", selection: $selection[2]) {
+                    //Text(selection[2])
                     ForEach(0..<self.clock[2].1.count) { index in
                         Text(verbatim: self.clock[2].1[index])
                             .tag(self.clock[2].1[index])
                     }
                 }.font(.title.bold())
             }
+            Text("Selected: \(selection[0]) \(selection[1]) \(selection[2])")
         }
     }
 }

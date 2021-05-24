@@ -59,11 +59,13 @@ struct Clock {
         let beats:String = "@\(BeatTime().beats())"
         var hours:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
         let minutes:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
-        let ampm: String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)[1])"
+        let ampm: [Substring] = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)
         
-        if (ampm == "PM") {
-            if let digitHours = Int(hours) {
-                hours = String(digitHours + 12)
+        if (ampm.count == 2) {
+            if (ampm[1] == "PM") {
+                if let digitHours = Int(hours) {
+                    hours = String(digitHours + 12)
+                }
             }
         }
         return [beats, hours, minutes]
@@ -103,6 +105,10 @@ struct ConvertView: View {
             }
             Text("Selected: \(selection[0]) \(selection[1]) \(selection[2])")
         }
+    }
+    
+    private func updateClock() {
+        
     }
 }
 

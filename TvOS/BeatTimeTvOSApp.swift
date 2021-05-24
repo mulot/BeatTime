@@ -11,11 +11,6 @@ import SwiftUI
 struct BeatTimeTvOSApp: App {
     var body: some Scene {
         WindowGroup {
-            /*
-            BeatTimeView(lineWidth: 40)
-                .foregroundColor(.orange)
-                .font(.largeTitle)
- */
             ContentView()
             
         }

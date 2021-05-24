@@ -85,6 +85,17 @@ struct ConvertView: View {
     var body: some View {
         
         VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { isPresented.toggle() }) {
+                    Image(systemName: "xmark.circle.fill")
+                        //.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
             HStack{
                 Text("Converter")
                     .font(.largeTitle.bold())
@@ -106,11 +117,6 @@ struct ConvertView: View {
                         }
                 }
                 .font(.headline)
-                Spacer()
-                Button(action: { isPresented.toggle() }) {
-                    Text("Close")
-                    //.font(.title)
-                }
             }
         }
     }
@@ -189,6 +195,7 @@ struct SettingsView: View {
     @Binding var isCentiBeats: Bool
     
     var body: some View {
+        
         NavigationView {
             Form {
                 Section(header: Text("Display")) {
@@ -250,13 +257,49 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+struct Settings_Preview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { }) {
+                    Image(systemName: "xmark.circle.fill")
+                        //.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
+        NavigationView {
+            Form {
+                Section(header: Text("Display")) {
+                    Toggle(isOn: /*@START_MENU_TOKEN@*/.constant(true)/*@END_MENU_TOKEN@*/, label: {
+                        Text("Centibeats")
+                    })
+                }
+            }.navigationTitle("Settings")
+        }
+        }
+    }
+}
+
 struct ConvertView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Image(systemName: "xmark.circle.fill")
+                    //.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .foregroundColor(.gray)
+            } .padding(.trailing)
             HStack{
                 Text("Converter")
                     .font(.largeTitle.bold())
                 Spacer()
+                //Spacer()
             }
             .padding(.leading)
             TabView {
@@ -272,11 +315,13 @@ struct ConvertView_Previews: PreviewProvider {
                     }
             }
             .font(.headline)
+            /*
             Spacer()
             Button(action: { }) {
                 Text("Close")
                 //.font(.title)
             }
+            */
         }
         
         //.background(Color.orange)

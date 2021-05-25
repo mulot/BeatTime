@@ -8,13 +8,6 @@
 import SwiftUI
 import os
 
-enum Hours: Int, CaseIterable, Identifiable {
-    case zero = 0
-    case one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirtheen, fourthteen, fifthteen, sixteen, seventeen, eigthteen, nineteen, twenty, twenty_one, twenty_two, twenty_three, twenty_four
-    
-    var id: Int { self.rawValue }
-}
-
 @main
 struct BeatTimeApp: App {
     @WKExtensionDelegateAdaptor private var appDelegate: ExtensionDelegate
@@ -50,21 +43,34 @@ struct BeatTimeApp: App {
 
 struct Clock {
     static let clock: [(String, [String])] = [
-        ("Beats", Array(0...999).map{"@\($0)"}),
+        ("Beats", Array(0...999).map{"\($0)"}),
         ("Hour", Array(0...23).map{"\($0)"}),
         ("Minute", Array(0...59).map{"\(String(format: "%02d",$0))"})
     ]
     
-    static func currentClock(date: Date = Date()) -> [String] {
-        let beats:String = "@\(BeatTime().beats())"
-        var hours:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
-        let minutes:String = "\(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
-        let ampm: [Substring] = DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)
+    static func getClock(date: Date = Date()) -> [String] {
+        let beats:String = "\(BeatTime().beats(date: date))"
+        //print("getClock Date: \(date) Beats: \(beats) Beatime: \(BeatTime().beats(date: date))")
+        var hours:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
+        let minutes:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
+        let ampm: [Substring] = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)
         
         if (ampm.count == 2) {
             if (ampm[1] == "PM") {
                 if let digitHours = Int(hours) {
-                    hours = String(digitHours + 12)
+                    if (digitHours == 12) {
+                        hours = "12"
+                    }
+                    else {
+                        hours = String(digitHours + 12)
+                    }
+                }
+            }
+            else if (ampm[1] == "AM") {
+                if let digitHours = Int(hours) {
+                    if (digitHours == 12) {
+                        hours = "0"
+                    }
                 }
             }
         }
@@ -75,17 +81,23 @@ struct Clock {
 struct ConvertView: View {
     @State private var date = Date()
     @State var clock: [(String, [String])] = Clock.clock
-    @State var selection: [String] = Clock.currentClock()
+    @State var selection: [String] = Clock.getClock()
+    @State var lastSelection: [String] = Clock.getClock()
+    @State private var beatsFocused = true
+    @State private var hoursFocused = false
+    @State private var minutesFocused = false
     
     var body: some View {
         VStack {
             HStack {
                 Picker(selection: $selection[0], label: Text(".beats")) {
                     ForEach(0..<self.clock[0].1.count) { index in
-                        Text(verbatim: self.clock[0].1[index])
+                        Text(verbatim: "@" + self.clock[0].1[index])
                             .tag(self.clock[0].1[index])
-                    }
-                }.font(.title.bold())
+                    }//.focusable() { )}
+                }
+                //.focusable() { state in print("Picker new state:\(state)")}
+                .font(.title.bold())
             }
             HStack {
                 Picker("Hours", selection: $selection[1]) {
@@ -93,8 +105,10 @@ struct ConvertView: View {
                     ForEach(0..<self.clock[1].1.count) { index in
                         Text(verbatim: self.clock[1].1[index])
                             .tag(self.clock[1].1[index])
+                        //.focusable(true) { state in print("Text: \(Text(verbatim: self.clock[1].1[index])) new state:\(state)") }
                     }
                 }.font(.title.bold())
+                //.onChange(of: selection) { time in updateTime(hours: time[1], minutes: time[2])}
                 Picker("Minutes", selection: $selection[2]) {
                     //Text(selection[2])
                     ForEach(0..<self.clock[2].1.count) { index in
@@ -102,13 +116,50 @@ struct ConvertView: View {
                             .tag(self.clock[2].1[index])
                     }
                 }.font(.title.bold())
+                //.onChange(of: selection) { time in updateTime(hours: time[1], minutes: time[2])}
             }
-            Text("Selected: \(selection[0]) \(selection[1]) \(selection[2])")
+            //Text("Selected: \(selection[0]) \(selection[1]) \(selection[2])")
+        }.onChange(of: selection) { time in
+            updateClock(time)
         }
     }
     
-    private func updateClock() {
-        
+    private func updateClock(_ selectedTime: [String]) {
+        //print("Beats: \(selectedTime[0]) Hours: \(selectedTime[1]) Minutes: \(selectedTime[2])")
+        if (self.lastSelection[0] != selectedTime[0]) {
+            //print("New beats: \(selectedTime[0])")
+            let newClock = Clock.getClock(date: BeatTime().date(beats: selectedTime[0]))
+            self.selection[1] = newClock[1]
+            self.selection[2] = newClock[2]
+            //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+        }
+        else if (self.lastSelection[1] != selectedTime[1]) {
+            //print("New hours: \(selectedTime[1])")
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd"
+            let day = dateFormatterGet.string(from: Date())
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+            if let daydate = dateFormatterGet.date(from: "\(day) \(selectedTime[1]):\(lastSelection[2])") {
+                let newClock = Clock.getClock(date: daydate)
+                self.selection[0] = newClock[0]
+                self.selection[2] = newClock[2]
+                //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+            }
+        }
+        else if (self.lastSelection[2] != selectedTime[2]) {
+            //print("New minutes: \(selectedTime[2])")
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd"
+            let day = dateFormatterGet.string(from: Date())
+            dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm"
+            if let daydate = dateFormatterGet.date(from: "\(day) \(lastSelection[1]):\(selectedTime[2])") {
+                let newClock = Clock.getClock(date: daydate)
+                self.selection[0] = newClock[0]
+                self.selection[1] = newClock[1]
+                //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+            }
+        }
+        self.lastSelection = self.selection
     }
 }
 

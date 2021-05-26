@@ -55,6 +55,10 @@ struct Clock {
         let minutes:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
         let ampm: [Substring] = DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: " ", omittingEmptySubsequences: true)
         
+        if (hours.hasPrefix("0")) {
+            hours.removeFirst()
+            //print("Updated hours: \(hours)")
+        }
         if (ampm.count == 2) {
             if (ampm[1] == "PM") {
                 if let digitHours = Int(hours) {
@@ -131,7 +135,7 @@ struct ConvertView: View {
             let newClock = Clock.getClock(date: BeatTime().date(beats: selectedTime[0]))
             self.selection[1] = newClock[1]
             self.selection[2] = newClock[2]
-            //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+            //print("UPDATED selection:  Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
         }
         else if (self.lastSelection[1] != selectedTime[1]) {
             //print("New hours: \(selectedTime[1])")

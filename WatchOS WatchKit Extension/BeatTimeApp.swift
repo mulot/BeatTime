@@ -165,7 +165,7 @@ struct ConvertView: View {
 
 struct ContentView: View {
     let fgColors: [Color] = [.orange, .gray, .red, .yellow, .green, .blue, .purple, .pink]
-    @State private var index = 0.0
+    @State private var index:Double = 0.0
     @State var beats: String = BeatTime().beats()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     //@State private var fgColor = Color.gray
@@ -176,10 +176,10 @@ struct ContentView: View {
                 .foregroundColor(.circleLine)
             //BeatTimeView()
             DrawingArcCircle(arcFrag: Double(beats)!)
-                .foregroundColor(fgColors[Int(index)])
+                .foregroundColor(fgColors[Int(index.rounded())])
             Text("@" + beats)
                 .font(.title.bold())
-                .foregroundColor(fgColors[Int(index)])
+                .foregroundColor(fgColors[Int(index.rounded())])
                 //.background(Color.black)
                 /*
                  .onTapGesture(perform: {
@@ -192,7 +192,8 @@ struct ContentView: View {
                  */
                 //Text("Index : \(index)")
                 .focusable()
-                .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
+                .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
+            
         }.onReceive(timer) { _ in
             beats = BeatTime().beats()
         }

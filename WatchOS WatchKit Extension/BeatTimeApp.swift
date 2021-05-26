@@ -57,7 +57,6 @@ struct Clock {
         
         if (hours.hasPrefix("0")) {
             hours.removeFirst()
-            //print("Updated hours: \(hours)")
         }
         if (ampm.count == 2) {
             if (ampm[1] == "PM") {
@@ -83,13 +82,10 @@ struct Clock {
 }
 
 struct ConvertView: View {
-    @State private var date = Date()
-    @State var clock: [(String, [String])] = Clock.clock
+    var clock: [(String, [String])] = Clock.clock
     @State var selection: [String] = Clock.getClock()
     @State var lastSelection: [String] = Clock.getClock()
-    @State private var beatsFocused = true
-    @State private var hoursFocused = false
-    @State private var minutesFocused = false
+    let logger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "ConvertView")
     
     var body: some View {
         VStack {
@@ -98,47 +94,39 @@ struct ConvertView: View {
                     ForEach(0..<self.clock[0].1.count) { index in
                         Text(verbatim: "@" + self.clock[0].1[index])
                             .tag(self.clock[0].1[index])
-                    }//.focusable() { )}
+                    }
                 }
-                //.focusable() { state in print("Picker new state:\(state)")}
                 .font(.title.bold())
             }
             HStack {
                 Picker("Hours", selection: $selection[1]) {
-                    //Text(selection[1])
                     ForEach(0..<self.clock[1].1.count) { index in
                         Text(verbatim: self.clock[1].1[index])
                             .tag(self.clock[1].1[index])
-                        //.focusable(true) { state in print("Text: \(Text(verbatim: self.clock[1].1[index])) new state:\(state)") }
                     }
                 }.font(.title.bold())
-                //.onChange(of: selection) { time in updateTime(hours: time[1], minutes: time[2])}
                 Picker("Minutes", selection: $selection[2]) {
-                    //Text(selection[2])
                     ForEach(0..<self.clock[2].1.count) { index in
                         Text(verbatim: self.clock[2].1[index])
                             .tag(self.clock[2].1[index])
                     }
                 }.font(.title.bold())
-                //.onChange(of: selection) { time in updateTime(hours: time[1], minutes: time[2])}
             }
-            //Text("Selected: \(selection[0]) \(selection[1]) \(selection[2])")
         }.onChange(of: selection) { time in
             updateClock(time)
         }
     }
     
     private func updateClock(_ selectedTime: [String]) {
-        //print("Beats: \(selectedTime[0]) Hours: \(selectedTime[1]) Minutes: \(selectedTime[2])")
+        logger.debug("updateclock Beats: \(selectedTime[0]) Hours: \(selectedTime[1]) Minutes: \(selectedTime[2])")
         if (self.lastSelection[0] != selectedTime[0]) {
-            //print("New beats: \(selectedTime[0])")
             let newClock = Clock.getClock(date: BeatTime().date(beats: selectedTime[0]))
             self.selection[1] = newClock[1]
             self.selection[2] = newClock[2]
-            //print("UPDATED selection:  Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+            logger.debug("Updated selection:  Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
         }
         else if (self.lastSelection[1] != selectedTime[1]) {
-            //print("New hours: \(selectedTime[1])")
+            logger.debug("updateclock hours: \(selectedTime[1])")
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd"
             let day = dateFormatterGet.string(from: Date())
@@ -147,11 +135,11 @@ struct ConvertView: View {
                 let newClock = Clock.getClock(date: daydate)
                 self.selection[0] = newClock[0]
                 self.selection[2] = newClock[2]
-                //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+                logger.debug("Updated selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
             }
         }
         else if (self.lastSelection[2] != selectedTime[2]) {
-            //print("New minutes: \(selectedTime[2])")
+            logger.debug("updateclock minutes: \(selectedTime[2])")
             let dateFormatterGet = DateFormatter()
             dateFormatterGet.dateFormat = "yyyy-MM-dd"
             let day = dateFormatterGet.string(from: Date())
@@ -160,7 +148,7 @@ struct ConvertView: View {
                 let newClock = Clock.getClock(date: daydate)
                 self.selection[0] = newClock[0]
                 self.selection[1] = newClock[1]
-                //print("UPDATED selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
+                logger.debug("Updated selection Date: \(daydate) Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
             }
         }
         self.lastSelection = self.selection
@@ -169,37 +157,45 @@ struct ConvertView: View {
 
 struct ContentView: View {
     let fgColors: [Color] = [.orange, .gray, .red, .yellow, .green, .blue, .purple, .pink]
-    @State private var index:Double = 0.0
+    @SceneStorage("ContentView.color") private var index:Double = 0.0
     @State var beats: String = BeatTime().beats()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    //@State private var fgColor = Color.gray
     
     var body: some View {
-        ZStack {
-            DrawingArcCircle(arcFrag: 999)
-                .foregroundColor(.circleLine)
-            //BeatTimeView()
-            DrawingArcCircle(arcFrag: Double(beats)!)
-                .foregroundColor(fgColors[Int(index.rounded())])
-            Text("@" + beats)
-                .font(.title.bold())
-                .foregroundColor(fgColors[Int(index.rounded())])
-                //.background(Color.black)
+        GeometryReader { geometry in
+            let frame = geometry.frame(in: .local)
+            ZStack (alignment: .center) {
                 /*
-                 .onTapGesture(perform: {
-                 fgColor = fgColors[index]
-                 index += 1
-                 if (index >= fgColors.count) {
-                 index = 0
-                 }
-                 })
+                 //Draw Progress View
+                 DrawingArcCircle(arcFrag: 999)
+                 .foregroundColor(.circleLine)
+                 DrawingArcCircle(arcFrag: Double(beats)!)
+                 .foregroundColor(fgColors[Int(index.rounded())])
                  */
+                ProgressView(value: Double(beats)!/1000)
+                    .progressViewStyle(CircularProgressViewStyle(tint: fgColors[Int(index.rounded())]))
+                    //.scaledToFit()
+                    .frame(width: frame.width, height: frame.height, alignment: .center)
+                    .scaleEffect(3.2, anchor: .center)
+                Text("@" + beats)
+                    .font(.title.bold())
+                    .foregroundColor(fgColors[Int(index.rounded())])
                 //Text("Index : \(index)")
-                .focusable()
-                .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
-            
-        }.onReceive(timer) { _ in
-            beats = BeatTime().beats()
+            }
+            .focusable()
+            .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
+            .onReceive(timer) { _ in
+                beats = BeatTime().beats()
+            }
+            /*
+             .onTapGesture(perform: {
+             fgColor = fgColors[index]
+             index += 1
+             if (index >= fgColors.count) {
+             index = 0
+             }
+             })
+             */
         }
     }
 }
@@ -215,6 +211,9 @@ struct Content_Preview: PreviewProvider {
 
 struct Convert_Preview: PreviewProvider {
     static var previews: some View {
-        ConvertView()
+        TabView {
+            ConvertView()
+            ContentView()
+        }.tabViewStyle(PageTabViewStyle())
     }
 }

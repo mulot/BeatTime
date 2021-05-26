@@ -101,7 +101,6 @@ struct BeatTimeWidget: Widget {
             BeatTimeWidgetEntryView(entry: entry)
             //.frame(maxWidth: .infinity, maxHeight: .infinity)
             //.background(Color("WidgetBackground"))
-            //BeatTimeView()
             //.background(Color.black)
             //.foregroundColor(.gray)
         }

@@ -16,20 +16,12 @@ struct BeatTimeiOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //BeatTimeView(lineWidth: 25)
             /*
-             BeatTimeView(lineWidth: 25)
              .background(Color.black)
              .foregroundColor(fgColor)
              .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
              .edgesIgnoringSafeArea(.all)
-             .onTapGesture(perform: {
-             //fgColor = fgColors.randomElement()!
-             fgColor = fgColors[index]
-             index += 1
-             if (index >= fgColors.count) {
-             index = 0
-             }
-             })
              */
         }
     }
@@ -38,7 +30,7 @@ struct BeatTimeiOSApp: App {
 struct ContentView: View {
     @State var showConvert = false
     @State var showSettings = false
-    @State var isCentiBeats = false
+    @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     
     var body: some View {
         VStack {
@@ -61,10 +53,8 @@ struct ContentView: View {
              */
             ZStack {
                 BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats)
-                //BeatTimeView(lineWidth: 25)
             }
             //.background(Color.blue)
-            //}
             Button(action: { self.showConvert.toggle() }) {
                 Text("Convert")
                     .font(.title)
@@ -76,6 +66,15 @@ struct ContentView: View {
         .sheet(isPresented: $showSettings) {
             SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats)
         }
+        /*
+        .onTapGesture(perform: {
+        fgColor = fgColors[index]
+            index += 1
+            if (index >= fgColors.count) {
+                index = 0
+            }
+        }
+        */
     }
 }
 
@@ -323,7 +322,6 @@ struct ConvertView_Previews: PreviewProvider {
             }
             */
         }
-        
         //.background(Color.orange)
     }
 }

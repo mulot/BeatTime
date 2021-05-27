@@ -43,7 +43,7 @@ class TextGradient: NSView {
     }
 }
     
-class DrawingArcCircle: NSView {
+class RingProgressView: NSView {
     
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 15

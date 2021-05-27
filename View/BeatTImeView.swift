@@ -16,11 +16,11 @@ struct BeatTimeView: View {
     
     var body: some View {
         ZStack {
-            DrawingArcCircle(arcFrag: 999, lineWidth: lineWidth)
+            RingProgressView(arcFrag: 999, lineWidth: lineWidth)
                 .foregroundColor(.circleLine)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             if (Double(beats) != nil) {
-                DrawingArcCircle(arcFrag: Double(beats)!, lineWidth: lineWidth)
+                RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
                     .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
             }
             Text("@" + beats)

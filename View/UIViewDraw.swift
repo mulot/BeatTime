@@ -17,7 +17,7 @@ extension View {
     }
 }
 
-struct DrawingArcCircle: View {
+struct RingProgressView: View {
     
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10
@@ -46,6 +46,6 @@ struct DrawingArcCircle: View {
 
 struct UIViewDraw_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingArcCircle(arcFrag: Double(BeatTime().beats())!)
+        RingProgressView(arcFrag: Double(BeatTime().beats())!)
     }
 }

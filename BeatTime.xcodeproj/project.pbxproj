@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94416F99265F896600A23369 /* alarm clock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94416F98265F896600A23369 /* alarm clock.ttf */; };
 		94447B05264AAD7500A062CF /* BeatTimeWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		945F06B826543E1700391A7D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		945F06B926543E1700391A7D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
@@ -140,6 +141,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		94416F98265F896600A23369 /* alarm clock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm clock.ttf"; sourceTree = "<group>"; };
 		945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BeatTimeWidgetiOSExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		945F06BD26543E1D00391A7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		945F06BF26543E1D00391A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 		94DA1E872634757300F83E86 /* MacOS */ = {
 			isa = PBXGroup;
 			children = (
+				94416F98265F896600A23369 /* alarm clock.ttf */,
 				94DA1E882634757300F83E86 /* AppDelegate.swift */,
 				94DA1E8A2634757700F83E86 /* Assets.xcassets */,
 				94DA1E8C2634757700F83E86 /* MainMenu.xib */,
@@ -668,6 +671,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */,
+				94416F99265F896600A23369 /* alarm clock.ttf in Resources */,
 				94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

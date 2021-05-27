@@ -59,14 +59,14 @@ struct BeatTimeWidgetEntryView : View {
     
     var body: some View {
         ZStack {
-            DrawingArcCircle(arcFrag: 999, lineWidth: 10)
+            RingProgressView(arcFrag: 999, lineWidth: 10)
                 .foregroundColor(.circleLine)
             //.shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             /*
              LinearGradient(gradient: Gradient(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient]), startPoint: UnitPoint(x: 0.5, y: 0.25), endPoint: UnitPoint(x: 0.5, y: 0.75))
              .mask(DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10))
              */
-            DrawingArcCircle(arcFrag: Double(entry.beat)!, lineWidth: 10)
+            RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
             Text("@" + entry.beat)
                 .font(.title.bold())

@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		94416F99265F896600A23369 /* alarm clock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94416F98265F896600A23369 /* alarm clock.ttf */; };
+		94416FA1265F967300A23369 /* BeatTimeMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA0265F967300A23369 /* BeatTimeMenuBarApp.swift */; };
+		94416FA3265F967300A23369 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA2265F967300A23369 /* ContentView.swift */; };
+		94416FA5265F967C00A23369 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416FA4265F967C00A23369 /* Assets.xcassets */; };
+		94416FA8265F967C00A23369 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94416FA7265F967C00A23369 /* Preview Assets.xcassets */; };
+		94416FAE265F974E00A23369 /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
+		94416FAF265FE42B00A23369 /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
+		94416FB0265FE43C00A23369 /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
+		94416FB1265FE44700A23369 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94447B05264AAD7500A062CF /* BeatTimeWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		945F06B826543E1700391A7D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		945F06B926543E1700391A7D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
@@ -142,6 +150,13 @@
 
 /* Begin PBXFileReference section */
 		94416F98265F896600A23369 /* alarm clock.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "alarm clock.ttf"; sourceTree = "<group>"; };
+		94416F9E265F967300A23369 /* BeatTimeMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeatTimeMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94416FA0265F967300A23369 /* BeatTimeMenuBarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTimeMenuBarApp.swift; sourceTree = "<group>"; };
+		94416FA2265F967300A23369 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		94416FA4265F967C00A23369 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94416FA7265F967C00A23369 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		94416FA9265F967C00A23369 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94416FAA265F967C00A23369 /* BeatTimeMenuBar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatTimeMenuBar.entitlements; sourceTree = "<group>"; };
 		945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BeatTimeWidgetiOSExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		945F06BD26543E1D00391A7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		945F06BF26543E1D00391A7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -190,6 +205,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		94416F9B265F967300A23369 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		945F06B426543E1700391A7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +261,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94416F9F265F967300A23369 /* BeatTimeMenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				94416FA0265F967300A23369 /* BeatTimeMenuBarApp.swift */,
+				94416FA2265F967300A23369 /* ContentView.swift */,
+				94416FA4265F967C00A23369 /* Assets.xcassets */,
+				94416FA9265F967C00A23369 /* Info.plist */,
+				94416FAA265F967C00A23369 /* BeatTimeMenuBar.entitlements */,
+				94416FA6265F967C00A23369 /* Preview Content */,
+			);
+			path = BeatTimeMenuBar;
+			sourceTree = "<group>";
+		};
+		94416FA6265F967C00A23369 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				94416FA7265F967C00A23369 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		945F06BA26543E1700391A7D /* Widget iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -363,6 +406,7 @@
 			children = (
 				94A89353264C320100C86B3E /* BeatTime */,
 				94DA1E872634757300F83E86 /* MacOS */,
+				94416F9F265F967300A23369 /* BeatTimeMenuBar */,
 				9476F32B2639D65A006FBF66 /* Widget */,
 				94BEB1BB2646D9C500A5D811 /* iOS */,
 				945F06BA26543E1700391A7D /* Widget iOS */,
@@ -386,6 +430,7 @@
 				947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */,
 				94CBA0C4265308370032CA8B /* BeatTimeTvOS.app */,
 				945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */,
+				94416F9E265F967300A23369 /* BeatTimeMenuBar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -406,6 +451,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		94416F9D265F967300A23369 /* BeatTimeMenuBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94416FAB265F967C00A23369 /* Build configuration list for PBXNativeTarget "BeatTimeMenuBar" */;
+			buildPhases = (
+				94416F9A265F967300A23369 /* Sources */,
+				94416F9B265F967300A23369 /* Frameworks */,
+				94416F9C265F967300A23369 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeatTimeMenuBar;
+			productName = BeatTimeMenuBar;
+			productReference = 94416F9E265F967300A23369 /* BeatTimeMenuBar.app */;
+			productType = "com.apple.product-type.application";
+		};
 		945F06B626543E1700391A7D /* BeatTimeWidgetiOSExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 945F06C626543E1D00391A7D /* Build configuration list for PBXNativeTarget "BeatTimeWidgetiOSExtension" */;
@@ -555,6 +617,9 @@
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					94416F9D265F967300A23369 = {
+						CreatedOnToolsVersion = 12.5;
+					};
 					945F06B626543E1700391A7D = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -602,11 +667,21 @@
 				947C5638264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */,
 				94CBA0C3265308370032CA8B /* BeatTimeTvOS */,
 				945F06B626543E1700391A7D /* BeatTimeWidgetiOSExtension */,
+				94416F9D265F967300A23369 /* BeatTimeMenuBar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		94416F9C265F967300A23369 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94416FA8265F967C00A23369 /* Preview Assets.xcassets in Resources */,
+				94416FA5265F967C00A23369 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		945F06B526543E1700391A7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -679,6 +754,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		94416F9A265F967300A23369 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94416FA3265F967300A23369 /* ContentView.swift in Sources */,
+				94416FB1265FE44700A23369 /* Colors.swift in Sources */,
+				94416FAE265F974E00A23369 /* BeatTime.swift in Sources */,
+				94416FA1265F967300A23369 /* BeatTimeMenuBarApp.swift in Sources */,
+				94416FAF265FE42B00A23369 /* BeatTImeView.swift in Sources */,
+				94416FB0265FE43C00A23369 /* UIViewDraw.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		945F06B326543E1700391A7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -790,6 +878,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		94416FAC265F967C00A23369 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BeatTimeMenuBar/BeatTimeMenuBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeMenuBar/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatTimeMenuBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeMenuBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		94416FAD265F967C00A23369 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BeatTimeMenuBar/BeatTimeMenuBar.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeMenuBar/Preview Content\"";
+				DEVELOPMENT_TEAM = VNLK894MAE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = BeatTimeMenuBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = mulot.org.BeatTimeMenuBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		945F06C426543E1D00391A7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1266,6 +1402,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		94416FAB265F967C00A23369 /* Build configuration list for PBXNativeTarget "BeatTimeMenuBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94416FAC265F967C00A23369 /* Debug */,
+				94416FAD265F967C00A23369 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		945F06C626543E1D00391A7D /* Build configuration list for PBXNativeTarget "BeatTimeWidgetiOSExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

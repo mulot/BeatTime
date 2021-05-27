@@ -20,6 +20,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     var circleBeatView: RingProgressView!
     var circleView: RingProgressView!
     var isCentiBeats: Bool = false
+    var statusItem: NSStatusItem?
     
     @IBAction func changeCentiBeats(_ sender: AnyObject) {
         if (beat != nil) {
@@ -78,13 +79,18 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        NSApp.hide(nil)
         beat = BeatTime()
         //beat.isCentiBeat = true
         beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"
         drawTimeCircle()
+        self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        //self.statusItem?.menu = menu
+        self.statusItem?.button?.title = "@" + BeatTime().beats()
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
             beatsWindow.stringValue = "@\(self.beat.beats(centiBeats: isCentiBeats))"
             drawTimeCircle()
+            self.statusItem?.button?.title = "@" + BeatTime().beats()
         }
     }
     
@@ -92,4 +98,3 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 }
-

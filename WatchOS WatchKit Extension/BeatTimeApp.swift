@@ -13,7 +13,7 @@ struct BeatTimeApp: App {
     @WKExtensionDelegateAdaptor private var appDelegate: ExtensionDelegate
     @Environment(\.scenePhase) private var scenePhase
     
-    let logger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "App View")
+    let logger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "App View")
     
     @SceneBuilder var body: some Scene {
         WindowGroup {
@@ -37,7 +37,7 @@ struct BeatTimeApp: App {
                 assertionFailure()
             }
         }
-        WKNotificationScene(controller: NotificationController.self, category: "mulot.org.BeatTime.time")
+        WKNotificationScene(controller: NotificationController.self, category: "org.mulot.beattime.time")
     }
 }
 
@@ -85,7 +85,7 @@ struct ConvertView: View {
     var clock: [(String, [String])] = Clock.clock
     @State var selection: [String] = Clock.getClock()
     @State var lastSelection: [String] = Clock.getClock()
-    let logger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "ConvertView")
+    let logger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "ConvertView")
     
     var body: some View {
         VStack {

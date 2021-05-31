@@ -75,11 +75,11 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     func windowWillClose(_ notification: Notification)
     {
-        NSApp.terminate(self)
+        //NSApp.terminate(self)
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        NSApp.hide(nil)
+        NSApp.hide(self)
         beat = BeatTime()
         //beat.isCentiBeat = true
         beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"

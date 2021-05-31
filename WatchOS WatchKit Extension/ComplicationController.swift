@@ -55,7 +55,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "mulot.org.BeatTimeWatchOS", displayName: "Beats Time", supportedFamilies: [.circularSmall, .modularSmall, .modularLarge, .utilitarianSmall, .utilitarianSmallFlat, .graphicCircular, .graphicRectangular]),
+            CLKComplicationDescriptor(identifier: "org.mulot.beattime.BeatTimeWatchOS", displayName: "Beats Time", supportedFamilies: [.circularSmall, .modularSmall, .modularLarge, .utilitarianSmall, .utilitarianSmallFlat, .graphicCircular, .graphicRectangular]),
             // Multiple complication support can be added here with more descriptors
         ]
         

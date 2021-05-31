@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "BeatTime App Icon-WatchOS-48.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -8,6 +9,7 @@
       "subtype" : "38mm"
     },
     {
+      "filename" : "BeatTime App Icon-WatchOS-55.png",
       "idiom" : "watch",
       "role" : "notificationCenter",
       "scale" : "2x",
@@ -15,12 +17,14 @@
       "subtype" : "42mm"
     },
     {
+      "filename" : "BeatTime App Icon-WatchOS-58.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "BeatTime App Icon-WatchOS-87.png",
       "idiom" : "watch",
       "role" : "companionSettings",
       "scale" : "3x",

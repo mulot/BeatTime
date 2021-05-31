@@ -95,7 +95,7 @@ struct BeatTimeWidget: Widget {
     
     var body: some WidgetConfiguration {
         StaticConfiguration(
-            kind: "mulot.org.BeatTime.BeatTimeWidget",
+            kind: "org.mulot.beattime.BeatTimeWidget",
             provider: BeatTimeProvider()
         ) { entry in
             BeatTimeWidgetEntryView(entry: entry)

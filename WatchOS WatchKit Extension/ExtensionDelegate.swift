@@ -17,7 +17,7 @@ import os
 // The app's extension delegate.
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
-    let logger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.ExtensionDelegate",
+    let logger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.ExtensionDelegate",
                         category: "Extension Delegate")
     
     // MARK: - Delegate Methods
@@ -60,7 +60,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
 }
 
 // Schedule the next background refresh task.
-let scheduleLogger = Logger(subsystem: "mulot.org.BeatTimeWatchOS.watchkitapp.watchkitextension.scheduleLogger",
+let scheduleLogger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.scheduleLogger",
                             category: "Scheduler")
 
 func scheduleBAR(first: Bool) {

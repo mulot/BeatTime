@@ -1,21 +1,25 @@
 {
   "images" : [
     {
+      "filename" : "BeatTime App Icon-iOS-42.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-60.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-59.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-87.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
@@ -45,31 +49,37 @@
       "size" : "60x60"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-20.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "20x20"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-40.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-29.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "29x29"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-58.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-41.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "40x40"
     },
     {
+      "filename" : "BeatTime App Icon-iOS-81.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"

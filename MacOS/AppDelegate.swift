@@ -71,7 +71,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     @objc func showApp(_ sender: AnyObject?) {
         //print("show App")
-            NSApp.unhide(sender)
+        NSApp.unhide(sender)
     }
     
     @objc func quitApp(_ sender: AnyObject?) {

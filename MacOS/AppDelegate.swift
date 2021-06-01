@@ -69,6 +69,27 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         }
     }
     
+    @objc func showApp(_ sender: AnyObject?) {
+        //print("show App")
+            NSApp.unhide(sender)
+    }
+    
+    @objc func quitApp(_ sender: AnyObject?) {
+        //print("Quit App")
+        NSApp.terminate(sender)
+    }
+    
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        //print("Should close")
+        NSApp.hide(sender)
+        return false
+    }
+    
+    func applicationDidBecomeActive(_ notification: Notification) {
+        //print("Become active")
+        NSApp.unhide(self)
+    }
+    
     func windowDidResize(_ notification: Notification) {
         drawTimeCircle()
     }
@@ -79,14 +100,16 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     }
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        NSApp.hide(self)
+        NSApp.hide(nil)
         beat = BeatTime()
         //beat.isCentiBeat = true
         beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"
         drawTimeCircle()
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        //self.statusItem?.menu = menu
         self.statusItem?.button?.title = "@" + BeatTime().beats()
+        self.statusItem?.menu = NSMenu()
+        self.statusItem?.menu?.addItem(withTitle: "Show App", action: #selector(showApp(_:)), keyEquivalent: "A")
+        self.statusItem?.menu?.addItem(withTitle: "Quit", action: #selector(quitApp(_:)), keyEquivalent: "Q")
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
             beatsWindow.stringValue = "@\(self.beat.beats(centiBeats: isCentiBeats))"
             drawTimeCircle()

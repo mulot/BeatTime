@@ -1,22 +1,22 @@
 {
   "images" : [
     {
-      "filename" : "BeatTime App Icon tvOS-1280.png",
+      "filename" : "BeatTime App Icon tvOS 1920x720-v8-1.png",
       "idiom" : "tv",
       "scale" : "1x"
     },
     {
-      "filename" : "BeatTime App Icon tvOS-1281.png",
+      "filename" : "BeatTime App Icon tvOS 3840x1440-v8-1.png",
       "idiom" : "tv",
       "scale" : "2x"
     },
     {
-      "filename" : "BeatTime App Icon tvOS-1282.png",
+      "filename" : "BeatTime App Icon tvOS 1920x720-v8.png",
       "idiom" : "tv-marketing",
       "scale" : "1x"
     },
     {
-      "filename" : "BeatTime App Icon tvOS-1283.png",
+      "filename" : "BeatTime App Icon tvOS 3840x1440-v8.png",
       "idiom" : "tv-marketing",
       "scale" : "2x"
     }

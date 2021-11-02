@@ -110,12 +110,12 @@ struct BeatTimeWidget: Widget {
     }
 }
 
-/*
- struct BeatTimeWidget_Previews: PreviewProvider {
- static var previews: some View {
- BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "342"))
- .previewContext(WidgetPreviewContext(family: .systemSmall))
- }
- }
- */
+
+struct BeatTimeWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "342"))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+    }
+}
+
 

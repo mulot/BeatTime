@@ -13,17 +13,20 @@ struct BeatTimeView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
-    var fontSize: CGFloat = 96
+    var fullCircleBg: Bool = true
+    //var fontSize: CGFloat = 96
     
     var body: some View {
         GeometryReader { geometry in
         let frame = geometry.frame(in: .local)
-        let lenght = min(frame.width, frame.height)
+        let lenght = min(frame.width, frame.height) - (lineWidth * 2)
         ZStack {
-            RingProgressView(arcFrag: 999, lineWidth: lineWidth)
+            if (fullCircleBg) {
+                RingProgressView(arcFrag: 999, lineWidth: lineWidth)
                 .foregroundColor(.circleLine)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 //.background(Color.blue)
+            }
             if (Double(beats) != nil) {
                 RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
                     .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
@@ -56,6 +59,7 @@ struct Gradient_Previews: PreviewProvider {
                 .mask(BeatTimeView(beats: "642", lineWidth: 15))
             */
             BeatTimeView(beats: "642", lineWidth: 15)
+                //.background(Color.blue)
         }
         //}
     }

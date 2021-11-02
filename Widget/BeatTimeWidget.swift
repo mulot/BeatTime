@@ -70,7 +70,6 @@ struct BeatTimeWidgetEntryView : View {
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
             Text("@" + entry.beat)
                 .font(.title.bold())
-                .foregroundColor(.startGradient)
         }
         /*
          ZStack {

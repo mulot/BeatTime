@@ -50,7 +50,7 @@ struct TextBeatsView: View {
     var size: CGFloat
    
     var body: some View {
-        let fontSize: CGFloat = size / 4
+        let fontSize: CGFloat = size / CGFloat(text.count)
             Text(text)
             .font(.system(size: fontSize, weight: .bold))
     }

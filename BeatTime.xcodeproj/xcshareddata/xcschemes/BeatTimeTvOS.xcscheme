@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1250"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "947C562C264814E9007E6B4A"
-               BuildableName = "BeatTimeWatchOS WatchKit App.app"
-               BlueprintName = "BeatTimeWatchOS WatchKit App"
-               ReferencedContainer = "container:BeatTime.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "947C5629264814E9007E6B4A"
-               BuildableName = "BeatTime.app"
-               BlueprintName = "BeatTimeWatchOS"
+               BlueprintIdentifier = "94CBA0C3265308370032CA8B"
+               BuildableName = "BeatTimeTvOS.app"
+               BlueprintName = "BeatTimeTvOS"
                ReferencedContainer = "container:BeatTime.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,16 +39,14 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "WatchOS WatchKit Extension/PushNotificationPayload.apns">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "947C562C264814E9007E6B4A"
-            BuildableName = "BeatTimeWatchOS WatchKit App.app"
-            BlueprintName = "BeatTimeWatchOS WatchKit App"
+            BlueprintIdentifier = "94CBA0C3265308370032CA8B"
+            BuildableName = "BeatTimeTvOS.app"
+            BlueprintName = "BeatTimeTvOS"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -72,16 +56,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      launchAutomaticallySubstyle = "8"
-      notificationPayloadFile = "WatchOS WatchKit Extension/PushNotificationPayload.apns">
+      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "947C562C264814E9007E6B4A"
-            BuildableName = "BeatTimeWatchOS WatchKit App.app"
-            BlueprintName = "BeatTimeWatchOS WatchKit App"
+            BlueprintIdentifier = "94CBA0C3265308370032CA8B"
+            BuildableName = "BeatTimeTvOS.app"
+            BlueprintName = "BeatTimeTvOS"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

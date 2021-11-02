@@ -30,6 +30,7 @@ struct BeatTimeiOSApp: App {
 struct ContentView: View {
     @State var showConvert = false
     @State var showSettings = false
+    @State var bgCircleColor = Color.circleLine
     @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
     
@@ -53,7 +54,7 @@ struct ContentView: View {
              .mask(BeatTimeView(lineWidth: 25))
              */
             ZStack {
-                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg)
+                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, bgCircleColor: bgCircleColor)
             }
             //.background(Color.blue)
             Button(action: { self.showConvert.toggle() }) {
@@ -65,7 +66,7 @@ struct ContentView: View {
             ConvertView(isPresented: $showConvert)
         }
         .sheet(isPresented: $showSettings) {
-            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg)
+            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, bgCircleColor: $bgCircleColor)
         }
         /*
         .onTapGesture(perform: {
@@ -194,6 +195,7 @@ struct SettingsView: View {
     @Binding var isPresented: Bool
     @Binding var isCentiBeats: Bool
     @Binding var isFullCircleBg: Bool
+    @Binding var bgCircleColor: Color
     
     var body: some View {
         
@@ -204,7 +206,10 @@ struct SettingsView: View {
                         Text("Centibeats")
                     }
                     Toggle(isOn: $isFullCircleBg) {
-                        Text("Background circle")
+                        Text("Back circle")
+                    }
+                    if (isFullCircleBg) {
+                        ColorPicker("Back circle color", selection: $bgCircleColor)
                     }
                 }
             }.navigationTitle("Settings")
@@ -282,8 +287,9 @@ struct Settings_Preview: PreviewProvider {
                         Text("Centibeats")
                     })
                     Toggle(isOn: .constant(true), label: {
-                        Text("Background circle")
+                        Text("Back circle")
                     })
+                    ColorPicker("Back circle color", selection: .constant(.circleLine))
                 }
             }.navigationTitle("Settings")
         }

@@ -14,6 +14,7 @@ struct BeatTimeView: View {
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
     var fullCircleBg: Bool = true
+    var bgCircleColor: Color = Color.circleLine
     //var fontSize: CGFloat = 96
     
     var body: some View {
@@ -23,7 +24,7 @@ struct BeatTimeView: View {
         ZStack {
             if (fullCircleBg) {
                 RingProgressView(arcFrag: 999, lineWidth: lineWidth)
-                .foregroundColor(.circleLine)
+                .foregroundColor(bgCircleColor)
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 //.background(Color.blue)
             }

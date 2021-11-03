@@ -29,6 +29,7 @@ struct RingProgressView: View {
      var endColor = Color.yellow
      var isShadow: Bool = false
      */
+    
     var body: some View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
@@ -38,8 +39,9 @@ struct RingProgressView: View {
             Path { path in
                 path.addArc(center: CGPoint(x: frame.width/2, y: frame.height/2), radius: (circleDiameter/2 - (lineWidth)), startAngle: Angle.degrees(270), endAngle: Angle.degrees(arcLength), clockwise: false)
             }
-            //.stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
             .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
+            //.stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
+            
         }
     }
 }
@@ -48,10 +50,10 @@ struct TextBeatsView: View {
     
     var text: String
     var size: CGFloat
-   
+    
     var body: some View {
         let fontSize: CGFloat = size / CGFloat(text.count)
-            Text(text)
+        Text(text)
             .font(.system(size: fontSize, weight: .bold))
     }
 }
@@ -59,13 +61,13 @@ struct TextBeatsView: View {
 struct UIViewDraw_Previews: PreviewProvider {
     static var previews: some View {
         RingProgressView(arcFrag: Double(BeatTime().beats())!)
-            //.background(Color.blue)
+        //.background(Color.blue)
     }
 }
 
 struct TextBeatsView_Previews: PreviewProvider {
     static var previews: some View {
         TextBeatsView(text: "@642", size: 200)
-            //.background(Color.blue)
+        //.background(Color.blue)
     }
 }

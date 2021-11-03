@@ -46,7 +46,7 @@ struct RingProgressView: View {
     }
 }
 
-struct TextBeatsView: View {
+struct TextFitView: View {
     
     var text: String
     var size: CGFloat
@@ -58,16 +58,16 @@ struct TextBeatsView: View {
     }
 }
 
-struct UIViewDraw_Previews: PreviewProvider {
+struct RingProgressView_Previews: PreviewProvider {
     static var previews: some View {
         RingProgressView(arcFrag: Double(BeatTime().beats())!)
         //.background(Color.blue)
     }
 }
 
-struct TextBeatsView_Previews: PreviewProvider {
+struct TextFitView_Previews: PreviewProvider {
     static var previews: some View {
-        TextBeatsView(text: "@642", size: 200)
+        TextFitView(text: "@642", size: 200)
         //.background(Color.blue)
     }
 }

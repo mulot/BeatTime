@@ -20,8 +20,7 @@ struct BeatTimeView: View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
             let displayLenght = min(frame.width, frame.height) - (lineWidth * 2)
-            let startGradient = UnitPoint(x: 0, y: (1 - (displayLenght / frame.height)) / 2)
-            let endGradient = UnitPoint(x: 0, y: 1 - ((1 - (displayLenght / frame.height)) / 2))
+            let (startGradient, endGradient) = gradientPosition(frame: frame, lenght: displayLenght)
             ZStack {
                 if (fullCircleBg) {
                     RingProgressView(arcFrag: 999, lineWidth: lineWidth)
@@ -33,12 +32,17 @@ struct BeatTimeView: View {
                     RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
                         .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                 }
-                TextBeatsView(text: "@" + beats, size: displayLenght)
+                TextFitView(text: "@" + beats, size: displayLenght)
                     .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 /*Text("@" + beats)
                 .font(.largeTitle.bold())
                 .font(.system(size: fontSize, weight: .bold))*/
-                    
+                Circle()
+                    .scaleEffect(0.05, anchor: startGradient)
+                    .foregroundColor(Color.blue)
+                Circle()
+                    .scaleEffect(0.05, anchor: endGradient)
+                    .foregroundColor(Color.red)
             }.onReceive(timer) { _ in
                 beats = BeatTime().beats(centiBeats: centiBeats)
             }
@@ -48,6 +52,24 @@ struct BeatTimeView: View {
             }
              */
         }
+    }
+    
+    func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat) -> (UnitPoint, UnitPoint)
+    {
+        
+        let nbHour = 2
+        let angle = (2 * Double.pi) / 24 * Double(nbHour)
+        let r = lenght / 2
+        let startCircle = UnitPoint(x: 0.5, y: (1 - (lenght / frame.height)) / 2)
+        let endCircle = UnitPoint(x: 0.5, y: 1 - ((1 - (lenght / frame.height)) / 2))
+        var startGradient = startCircle
+        var endGradient = endCircle
+        startGradient.x = startCircle.x + r*sin(angle)/frame.width
+        startGradient.y = startCircle.y + (r*(1-cos(angle)))/frame.height
+        endGradient.x =  startCircle.x + r*sin(angle+Double.pi)/frame.width
+        endGradient.y = startCircle.y + (r*(1-cos(angle+Double.pi)))/frame.height
+        print("startCircle: \(startCircle) endCircle: \(endCircle) startGradient: \(startGradient) endGradient: \(endGradient) angle: \(angle) angle sin: \(sin(angle)) angle cos: \(cos(angle))")
+        return (startGradient, endGradient)
     }
 }
 

@@ -19,7 +19,7 @@ struct BeatTimeView: View {
     var body: some View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
-            let displayLenght = min(frame.width, frame.height) - (lineWidth * 2)
+            let displayLenght = min(frame.width, frame.height) - lineWidth
             let (startGradient, endGradient) = gradientPosition(frame: frame, lenght: displayLenght)
             ZStack {
                 if (fullCircleBg) {
@@ -37,12 +37,14 @@ struct BeatTimeView: View {
                 /*Text("@" + beats)
                 .font(.largeTitle.bold())
                 .font(.system(size: fontSize, weight: .bold))*/
+                /*
                 Circle()
                     .scaleEffect(0.05, anchor: startGradient)
                     .foregroundColor(Color.blue)
                 Circle()
                     .scaleEffect(0.05, anchor: endGradient)
                     .foregroundColor(Color.red)
+                 */
             }.onReceive(timer) { _ in
                 beats = BeatTime().beats(centiBeats: centiBeats)
             }
@@ -56,8 +58,7 @@ struct BeatTimeView: View {
     
     func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat) -> (UnitPoint, UnitPoint)
     {
-        
-        let nbHour = 2
+        let nbHour = hoursOffsetWithGMT()
         let angle = (2 * Double.pi) / 24 * Double(nbHour)
         let r = lenght / 2
         let startCircle = UnitPoint(x: 0.5, y: (1 - (lenght / frame.height)) / 2)
@@ -68,8 +69,20 @@ struct BeatTimeView: View {
         startGradient.y = startCircle.y + (r*(1-cos(angle)))/frame.height
         endGradient.x =  startCircle.x + r*sin(angle+Double.pi)/frame.width
         endGradient.y = startCircle.y + (r*(1-cos(angle+Double.pi)))/frame.height
-        print("startCircle: \(startCircle) endCircle: \(endCircle) startGradient: \(startGradient) endGradient: \(endGradient) angle: \(angle) angle sin: \(sin(angle)) angle cos: \(cos(angle))")
+        //print("startCircle: \(startCircle) endCircle: \(endCircle) startGradient: \(startGradient) endGradient: \(endGradient) angle: \(angle) angle sin: \(sin(angle)) angle cos: \(cos(angle))")
         return (startGradient, endGradient)
+    }
+    
+    
+    func hoursOffsetWithGMT(date: Date = Date()) -> Int
+    {
+        //print(TimeZone.current.identifier)
+        //print(TimeZone.abbreviationDictionary)
+        //let seconds = TimeZone.init(identifier: "JST")!.secondsFromGMT(for: date)
+        let seconds = TimeZone.current.secondsFromGMT(for: date)
+        let hours = seconds / 3600
+        //print("seconds: \(seconds) hours: \(-hours)")
+        return(-hours)
     }
 }
 

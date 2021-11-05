@@ -33,19 +33,30 @@ struct BeatTimeView: View {
                     RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
                         .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                         .onAppear() {
-                            withAnimation(.default) {
+                            withAnimation(.default.speed(0.30)) {
                                 //print("animation on Appear")
                                 self.beats = BeatTime().beats()
                             }
                         }
+                    #if os(iOS)
                         .id(viewID)
                         .onTapGesture {
-                            withAnimation(.default) {
                                 //print("animation on Tap")
                                 self.beats = "0"
                                 viewID += 1
-                            }
                         }
+                    #elseif os(tvOS)
+                    #endif
+                    /*
+                        RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
+                            .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                            .onAppear() {
+                                withAnimation(.default) {
+                                    //print("animation on Appear")
+                                    self.beats = BeatTime().beats()
+                                }
+                            }
+                    #endif*/
                 }
                 TextFitView(text: "@" + beats, size: displayLenght)
                     .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])

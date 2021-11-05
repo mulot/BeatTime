@@ -101,7 +101,7 @@ struct BeatTime_Previews: PreviewProvider {
              //.frame(width: circleDiameter, height: circleDiameter, alignment: .center)
              .mask(BeatTimeView(beats: "642", lineWidth: 15))
              */
-            BeatTimeView(beats: "642", lineWidth: 15)
+            BeatTimeView(beats: "642", lineWidth: 25)
             //.background(Color.blue)
         }
         //}

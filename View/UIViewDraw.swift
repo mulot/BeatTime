@@ -17,7 +17,7 @@ extension View {
     }
 }
 
-struct RingProgressView: View {
+struct RingProgressView: Shape {
     
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 10
@@ -30,6 +30,19 @@ struct RingProgressView: View {
      var isShadow: Bool = false
      */
     
+    func path(in rect: CGRect) -> Path {
+            //let frame = geometry.frame(in: .local)
+            let arcLength: Double = ((arcFrag * 360)/1000 - 90)
+            let circleDiameter = min(rect.width, rect.height)
+            
+            var path = Path()
+            path.addArc(center: CGPoint(x: rect.width/2, y: rect.height/2), radius: (circleDiameter/2 - (lineWidth)), startAngle: Angle.degrees(270), endAngle: Angle.degrees(arcLength), clockwise: false)
+            //.animation(.easeInOut, value: arcLength)
+            //.stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
+        return path.strokedPath( StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
+    }
+    
+    /*
     var body: some View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
@@ -40,10 +53,12 @@ struct RingProgressView: View {
                 path.addArc(center: CGPoint(x: frame.width/2, y: frame.height/2), radius: (circleDiameter/2 - (lineWidth)), startAngle: Angle.degrees(270), endAngle: Angle.degrees(arcLength), clockwise: false)
             }
             .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
+            //.animation(.easeInOut, value: arcLength)
             //.stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
             
         }
     }
+    */
 }
 
 struct TextFitView: View {

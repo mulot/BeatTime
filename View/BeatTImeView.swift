@@ -15,13 +15,14 @@ struct BeatTimeView: View {
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
     var fullCircleBg: Bool = true
+    var followSun: Bool = true
     var bgCircleColor: Color = Color.circleLine
     
     var body: some View {
         GeometryReader { geometry in
             let frame = geometry.frame(in: .local)
             let displayLenght = min(frame.width, frame.height) - lineWidth
-            let (startGradient, endGradient) = gradientPosition(frame: frame, lenght: displayLenght)
+            let (startGradient, endGradient) = gradientPosition(frame: frame, lenght: displayLenght, followSun: followSun)
             ZStack {
                 if (fullCircleBg) {
                     RingProgressView(arcFrag: 999, lineWidth: lineWidth)
@@ -83,7 +84,7 @@ struct BeatTimeView: View {
         
     }
     
-    func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat) -> (UnitPoint, UnitPoint)
+    func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat, followSun: Bool = true) -> (UnitPoint, UnitPoint)
     {
         let nbHour = hoursOffsetWithGMT()
         let angle = (2 * Double.pi) / 24 * Double(nbHour)
@@ -92,12 +93,17 @@ struct BeatTimeView: View {
         let endCircle = UnitPoint(x: 0.5, y: 1 - ((1 - (lenght / frame.height)) / 2))
         var startGradient = startCircle
         var endGradient = endCircle
-        startGradient.x = startCircle.x + r*sin(angle)/frame.width
-        startGradient.y = startCircle.y + (r*(1-cos(angle)))/frame.height
-        endGradient.x =  startCircle.x + r*sin(angle+Double.pi)/frame.width
-        endGradient.y = startCircle.y + (r*(1-cos(angle+Double.pi)))/frame.height
-        //print("startCircle: \(startCircle) endCircle: \(endCircle) startGradient: \(startGradient) endGradient: \(endGradient) angle: \(angle) angle sin: \(sin(angle)) angle cos: \(cos(angle))")
-        return (startGradient, endGradient)
+        if (followSun) {
+            startGradient.x = startCircle.x + r*sin(angle)/frame.width
+            startGradient.y = startCircle.y + (r*(1-cos(angle)))/frame.height
+            endGradient.x =  startCircle.x + r*sin(angle+Double.pi)/frame.width
+            endGradient.y = startCircle.y + (r*(1-cos(angle+Double.pi)))/frame.height
+            //print("startCircle: \(startCircle) endCircle: \(endCircle) startGradient: \(startGradient) endGradient: \(endGradient) angle: \(angle) angle sin: \(sin(angle)) angle cos: \(cos(angle))")
+            return (startGradient, endGradient)
+        }
+        else {
+            return (startCircle, endCircle)
+        }
     }
     
     

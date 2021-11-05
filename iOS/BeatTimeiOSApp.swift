@@ -33,6 +33,7 @@ struct ContentView: View {
     @State var bgCircleColor = Color.circleLine
     @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
+    @SceneStorage("ContentView.isFollowSun") var isFollowSun = true
     
     var body: some View {
         VStack {
@@ -54,7 +55,7 @@ struct ContentView: View {
              .mask(BeatTimeView(lineWidth: 25))
              */
             ZStack {
-                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, bgCircleColor: bgCircleColor)
+                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, followSun: isFollowSun, bgCircleColor: bgCircleColor)
             }
             //.background(Color.blue)
             Button(action: { self.showConvert.toggle() }) {
@@ -66,7 +67,7 @@ struct ContentView: View {
             ConvertView(isPresented: $showConvert)
         }
         .sheet(isPresented: $showSettings) {
-            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, bgCircleColor: $bgCircleColor)
+            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
         }
         /*
         .onTapGesture(perform: {
@@ -195,6 +196,7 @@ struct SettingsView: View {
     @Binding var isPresented: Bool
     @Binding var isCentiBeats: Bool
     @Binding var isFullCircleBg: Bool
+    @Binding var isFollowSun: Bool
     @Binding var bgCircleColor: Color
     
     var body: some View {
@@ -204,6 +206,9 @@ struct SettingsView: View {
                 Section(header: Text("Display")) {
                     Toggle(isOn: $isCentiBeats) {
                         Text("Centibeats")
+                    }
+                    Toggle(isOn: $isFollowSun) {
+                        Text("Following the sun")
                     }
                     Toggle(isOn: $isFullCircleBg) {
                         Text("Back circle")

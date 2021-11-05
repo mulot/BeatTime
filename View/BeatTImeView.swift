@@ -10,6 +10,7 @@ import SwiftUI
 struct BeatTimeView: View {
     
     @State var beats: String = "0"
+    @State private var viewID = 0
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
@@ -33,7 +34,16 @@ struct BeatTimeView: View {
                         .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                         .onAppear() {
                             withAnimation(.default) {
+                                //print("animation on Appear")
                                 self.beats = BeatTime().beats()
+                            }
+                        }
+                        .id(viewID)
+                        .onTapGesture {
+                            withAnimation(.default) {
+                                //print("animation on Tap")
+                                self.beats = "0"
+                                viewID += 1
                             }
                         }
                 }
@@ -59,6 +69,7 @@ struct BeatTimeView: View {
             }
              */
         }
+        
     }
     
     func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat) -> (UnitPoint, UnitPoint)

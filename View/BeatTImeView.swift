@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BeatTimeView: View {
     
-    @State var beats: String = BeatTime().beats()
+    @State var beats: String = "0"
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
@@ -31,6 +31,11 @@ struct BeatTimeView: View {
                 if (Double(beats) != nil) {
                     RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
                         .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                        .onAppear() {
+                            withAnimation(.default) {
+                                self.beats = BeatTime().beats()
+                            }
+                        }
                 }
                 TextFitView(text: "@" + beats, size: displayLenght)
                     .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])

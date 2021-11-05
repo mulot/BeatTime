@@ -42,23 +42,10 @@ struct RingProgressView: Shape {
         return path.strokedPath( StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
     }
     
-    /*
-    var body: some View {
-        GeometryReader { geometry in
-            let frame = geometry.frame(in: .local)
-            let arcLength: Double = ((arcFrag * 360)/1000 - 90)
-            let circleDiameter = min(frame.width, frame.height)
-            
-            Path { path in
-                path.addArc(center: CGPoint(x: frame.width/2, y: frame.height/2), radius: (circleDiameter/2 - (lineWidth)), startAngle: Angle.degrees(270), endAngle: Angle.degrees(arcLength), clockwise: false)
-            }
-            .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
-            //.animation(.easeInOut, value: arcLength)
-            //.stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth, lineCap: CGLineCap.round))
-            
-        }
+    var animatableData: Double {
+        get { arcFrag }
+        set { arcFrag = newValue }
     }
-    */
 }
 
 struct TextFitView: View {
@@ -75,7 +62,8 @@ struct TextFitView: View {
 
 struct RingProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        RingProgressView(arcFrag: Double(BeatTime().beats())!)
+        RingProgressView(arcFrag: Double(BeatTime().beats())!, lineWidth: 25)
+            .foregroundColor(Color.orange)
         //.background(Color.blue)
     }
 }

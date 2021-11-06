@@ -17,12 +17,12 @@
 		<key>BeatTimeMenuBar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>9</integer>
 		</dict>
 		<key>BeatTimeTvOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>5</integer>
 		</dict>
 		<key>BeatTimeWatchOS WatchKit App (Complication).xcscheme_^#shared#^_</key>
 		<dict>
@@ -39,15 +39,20 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>BeatTimeWatchOS WatchKit Extension.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>BeatTimeWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>6</integer>
 		</dict>
 		<key>BeatTimeWidgetiOSExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>7</integer>
 		</dict>
 		<key>BeatTimeiOS.xcscheme_^#shared#^_</key>
 		<dict>
@@ -57,6 +62,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>94CBA0C3265308370032CA8B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>94DA1E842634757300F83E86</key>
 		<dict>
 			<key>primary</key>

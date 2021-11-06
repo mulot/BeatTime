@@ -158,7 +158,7 @@ struct ConvertView: View {
 struct ContentView: View {
     let fgColors: [Color] = [.orange, .gray, .red, .yellow, .green, .blue, .purple, .pink]
     @SceneStorage("ContentView.color") private var index:Double = 0.0
-    @State var beats: String = BeatTime().beats()
+    @State var beats: String = "0"
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -177,6 +177,12 @@ struct ContentView: View {
                     //.scaledToFit()
                     .frame(width: frame.width, height: frame.height, alignment: .center)
                     .scaleEffect(3.2, anchor: .center)
+                    .onAppear() {
+                        withAnimation(.default.speed(0.25)) {
+                            self.beats = BeatTime().beats()
+                            print("animation on Appear")
+                        }
+                    }
                 Text("@" + beats)
                     .font(.title.bold())
                     .foregroundColor(fgColors[Int(index.rounded())])

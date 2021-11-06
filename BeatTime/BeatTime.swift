@@ -45,7 +45,7 @@ class BeatTime: NSObject {
         
         if let beattime = Double(beats) {
             if (beattime >= 0 && beattime <= 1000) {
-                seconds = beattime / 1000 * 86400
+                seconds = beattime / 1000 * 86400 - BeatTime.UTCplus1Offset
                 return(Date(timeIntervalSinceReferenceDate: seconds))
             }
         }

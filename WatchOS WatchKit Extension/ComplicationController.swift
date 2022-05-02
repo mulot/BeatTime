@@ -41,6 +41,9 @@ extension ComplicationController {
     case .graphicRectangular:
         // Create a template from the graphic Rectangular family.
         return CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)))
+    case .graphicCorner:
+        // Create a template from the graphic Corner family.
+        return CLKComplicationTemplateGraphicCornerGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), outerTextProvider: beatProvider)
     default:
       return nil
     }
@@ -55,7 +58,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     
     func getComplicationDescriptors(handler: @escaping ([CLKComplicationDescriptor]) -> Void) {
         let descriptors = [
-            CLKComplicationDescriptor(identifier: "org.mulot.beattime.BeatTimeWatchOS", displayName: "Beats Time", supportedFamilies: [.circularSmall, .modularSmall, .modularLarge, .utilitarianSmall, .utilitarianSmallFlat, .graphicCircular, .graphicRectangular]),
+            CLKComplicationDescriptor(identifier: "org.mulot.beattime.BeatTimeWatchOS", displayName: "Beats Time", supportedFamilies: [.circularSmall, .modularSmall, .modularLarge, .utilitarianSmall, .utilitarianSmallFlat, .graphicCircular, .graphicRectangular, .graphicCorner]),
             // Multiple complication support can be added here with more descriptors
         ]
         

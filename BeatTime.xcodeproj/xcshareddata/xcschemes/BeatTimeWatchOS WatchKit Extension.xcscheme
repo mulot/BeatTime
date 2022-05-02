@@ -82,10 +82,8 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BeatTime">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "947C5638264814F0007E6B4A"
@@ -93,7 +91,7 @@
             BlueprintName = "BeatTimeWatchOS WatchKit Extension"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -101,10 +99,8 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <RemoteRunnable
-         runnableDebuggingMode = "2"
-         BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BeatTime">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "947C5638264814F0007E6B4A"
@@ -112,16 +108,7 @@
             BlueprintName = "BeatTimeWatchOS WatchKit Extension"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
-      </RemoteRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "947C5638264814F0007E6B4A"
-            BuildableName = "BeatTimeWatchOS WatchKit Extension.appex"
-            BlueprintName = "BeatTimeWatchOS WatchKit Extension"
-            ReferencedContainer = "container:BeatTime.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

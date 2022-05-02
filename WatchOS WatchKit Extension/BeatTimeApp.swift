@@ -91,7 +91,7 @@ struct ConvertView: View {
         VStack {
             HStack {
                 Picker(selection: $selection[0], label: Text(".beats")) {
-                    ForEach(0..<self.clock[0].1.count) { index in
+                    ForEach(0..<self.clock[0].1.count, id:\.self) { index in
                         Text(verbatim: "@" + self.clock[0].1[index])
                             .tag(self.clock[0].1[index])
                     }
@@ -100,13 +100,13 @@ struct ConvertView: View {
             }
             HStack {
                 Picker("Hours", selection: $selection[1]) {
-                    ForEach(0..<self.clock[1].1.count) { index in
+                    ForEach(0..<self.clock[1].1.count, id:\.self) { index in
                         Text(verbatim: self.clock[1].1[index])
                             .tag(self.clock[1].1[index])
                     }
                 }.font(.title.bold())
                 Picker("Minutes", selection: $selection[2]) {
-                    ForEach(0..<self.clock[2].1.count) { index in
+                    ForEach(0..<self.clock[2].1.count, id:\.self) { index in
                         Text(verbatim: self.clock[2].1[index])
                             .tag(self.clock[2].1[index])
                     }

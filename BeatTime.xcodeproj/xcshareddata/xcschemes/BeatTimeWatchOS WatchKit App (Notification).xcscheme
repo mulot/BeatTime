@@ -56,8 +56,10 @@
       allowLocationSimulation = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "WatchOS WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/BeatTime">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "947C562C264814E9007E6B4A"
@@ -65,7 +67,7 @@
             BlueprintName = "BeatTimeWatchOS WatchKit App"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,8 +77,10 @@
       debugDocumentVersioning = "YES"
       launchAutomaticallySubstyle = "8"
       notificationPayloadFile = "WatchOS WatchKit Extension/PushNotificationPayload.apns">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.Carousel"
+         RemotePath = "/BeatTime">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "947C562C264814E9007E6B4A"
@@ -84,7 +88,16 @@
             BlueprintName = "BeatTimeWatchOS WatchKit App"
             ReferencedContainer = "container:BeatTime.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "947C562C264814E9007E6B4A"
+            BuildableName = "BeatTimeWatchOS WatchKit App.app"
+            BlueprintName = "BeatTimeWatchOS WatchKit App"
+            ReferencedContainer = "container:BeatTime.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

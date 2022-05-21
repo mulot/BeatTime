@@ -46,9 +46,11 @@ extension ComplicationController {
         return CLKComplicationTemplateGraphicCornerGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), outerTextProvider: beatProvider)
     case .extraLarge:
         // Create a template from the extra large watch face.
+        beatProvider = CLKSimpleTextProvider(text: beatTime)
         return CLKComplicationTemplateExtraLargeRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
     case .graphicExtraLarge:
         // Create a template from the graphic extra large watch face.
+        beatProvider = CLKSimpleTextProvider(text: beatTime)
         return CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
     default:
       return nil

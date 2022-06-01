@@ -9,14 +9,14 @@ import ClockKit
 
 extension ComplicationController {
   func makeTemplate(for beatTime: String, complication: CLKComplication) -> CLKComplicationTemplate? {
-    var beatProvider = CLKSimpleTextProvider(
+    let beatProvider = CLKSimpleTextProvider(
         text: "@" + beatTime,
         shortText: beatTime)
     
     switch complication.family {
     case .circularSmall:
         // Create a template from the circular small family.
-        return CLKComplicationTemplateCircularSmallSimpleText(textProvider: beatProvider)
+        return CLKComplicationTemplateCircularSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
     case .modularSmall:
         // Create a template from the modular small family.
         return CLKComplicationTemplateModularSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
@@ -25,32 +25,30 @@ extension ComplicationController {
         let dateProvider = CLKSimpleTextProvider(
             text: "Local time " + DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short),
             shortText: DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
-        return CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, body2TextProvider: dateProvider)
+        return CLKComplicationTemplateModularLargeStandardBody(headerTextProvider: CLKSimpleTextProvider(text: ".Beats"), body1TextProvider: beatProvider, body2TextProvider: dateProvider)
     case .utilitarianSmall:
         // Create a template from the utilitarian small family.
-        beatProvider = CLKSimpleTextProvider(
-            text: "@" + beatTime,
-            shortText: "@")
         return CLKComplicationTemplateUtilitarianSmallRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
     case .utilitarianSmallFlat:
         // Create a template from the utilitarian small flat family.
         return CLKComplicationTemplateUtilitarianSmallFlat(textProvider: beatProvider)
     case .graphicCircular:
         // Create a template from the graphic Circular family.
+        //beatProvider = CLKSimpleTextProvider(text: beatTime)
       return CLKComplicationTemplateGraphicCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
     case .graphicRectangular:
         // Create a template from the graphic Rectangular family.
-        return CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: "@Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)))
+        return CLKComplicationTemplateGraphicRectangularTextGauge(headerTextProvider: CLKSimpleTextProvider(text: ".Beats"), body1TextProvider: beatProvider, gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)))
     case .graphicCorner:
         // Create a template from the graphic Corner family.
         return CLKComplicationTemplateGraphicCornerGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), outerTextProvider: beatProvider)
     case .extraLarge:
         // Create a template from the extra large watch face.
-        beatProvider = CLKSimpleTextProvider(text: beatTime)
+        //beatProvider = CLKSimpleTextProvider(text: beatTime)
         return CLKComplicationTemplateExtraLargeRingText(textProvider: beatProvider, fillFraction: (Float(beatTime)!/1000), ringStyle: CLKComplicationRingStyle.closed)
     case .graphicExtraLarge:
         // Create a template from the graphic extra large watch face.
-        beatProvider = CLKSimpleTextProvider(text: beatTime)
+        //beatProvider = CLKSimpleTextProvider(text: beatTime)
         return CLKComplicationTemplateGraphicExtraLargeCircularClosedGaugeText(gaugeProvider: CLKSimpleGaugeProvider(style: CLKGaugeProviderStyle.fill, gaugeColor: gaugeColor, fillFraction: (Float(beatTime)!/1000)), centerTextProvider: beatProvider)
     default:
       return nil

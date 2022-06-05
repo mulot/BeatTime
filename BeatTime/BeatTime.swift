@@ -53,7 +53,7 @@ class BeatTime: NSObject {
                 dateComponents.month = calendar.component(.month, from: date)
                 dateComponents.day = calendar.component(.day, from: date)
                 dateComponents.timeZone = TimeZone(abbreviation: "CET")
-                dateComponents.hour = 0
+                dateComponents.hour = 1 // UTC+1 Offset
                 dateComponents.minute = 0
                 /*
                 if (TimeZone.autoupdatingCurrent.isDaylightSavingTime()) {
@@ -62,9 +62,11 @@ class BeatTime: NSObject {
                 else {
                     print("Daylight Off")
                 }
-                 */
+                */
+
                 if let someDateTime = calendar.date(from: dateComponents) {
-                    let secondsSinceRefDate = someDateTime.timeIntervalSinceReferenceDate + BeatTime.UTCplus1Offset + seconds
+                    //let secondsSinceRefDate = someDateTime.timeIntervalSinceReferenceDate + BeatTime.UTCplus1Offset + seconds
+                    let secondsSinceRefDate = someDateTime.timeIntervalSinceReferenceDate + seconds
                     /*
                     print("Start Date: \(someDateTime)")
                     print("Date converted: \(Date(timeIntervalSinceReferenceDate: secondsSinceRefDate))")

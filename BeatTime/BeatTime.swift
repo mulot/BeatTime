@@ -45,8 +45,38 @@ class BeatTime: NSObject {
         
         if let beattime = Double(beats) {
             if (beattime >= 0 && beattime <= 1000) {
-                seconds = beattime / 1000 * 86400 - BeatTime.UTCplus1Offset
-                return(Date(timeIntervalSinceReferenceDate: seconds))
+                seconds = beattime / 1000 * 86400
+                let date = Date()
+                let calendar = Calendar.current
+                var dateComponents = DateComponents()
+                dateComponents.year = calendar.component(.year, from: date)
+                dateComponents.month = calendar.component(.month, from: date)
+                dateComponents.day = calendar.component(.day, from: date)
+                dateComponents.timeZone = TimeZone(abbreviation: "CET")
+                dateComponents.hour = 1 // UTC+1 Offset
+                dateComponents.minute = 0
+                /*
+                if (TimeZone.autoupdatingCurrent.isDaylightSavingTime()) {
+                    print("Daylight On")
+                }
+                else {
+                    print("Daylight Off")
+                }
+                */
+
+                if let someDateTime = calendar.date(from: dateComponents) {
+                    //let secondsSinceRefDate = someDateTime.timeIntervalSinceReferenceDate + BeatTime.UTCplus1Offset + seconds
+                    let secondsSinceRefDate = someDateTime.timeIntervalSinceReferenceDate + seconds
+                    /*
+                    print("Start Date: \(someDateTime)")
+                    print("Date converted: \(Date(timeIntervalSinceReferenceDate: secondsSinceRefDate))")
+                    print("Date ref: ", Date(timeIntervalSinceReferenceDate: Date.timeIntervalSinceReferenceDate))
+                    print("beats converted seconds: \(seconds) hours: \(Int(seconds/3600)) minutes: \(Int(seconds)%3600/60)")
+                    print("seconds since Ref UTC Date: \(Date.timeIntervalSinceReferenceDate)")
+                    print("converted seconds since Ref UTC Date: \(secondsSinceRefDate)\n")
+                     */
+                    return(Date(timeIntervalSinceReferenceDate: secondsSinceRefDate))
+                }
             }
         }
         return(Date())

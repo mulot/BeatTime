@@ -15,7 +15,7 @@ import ClockKit
 import os
 
 // The app's extension delegate.
-class ExtensionDelegate: NSObject, WKExtensionDelegate {
+class ExtensionDelegate: NSObject, WKApplicationDelegate {
     
     let logger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.ExtensionDelegate",
                         category: "Extension Delegate")
@@ -25,7 +25,7 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     // Called when a background task occurs.
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
         logger.debug("Handling a background task...")
-        logger.debug("App State: \(WKExtension.shared().applicationState.rawValue)")
+        logger.debug("App State: \(WKApplication.shared().applicationState.rawValue)")
         for task in backgroundTasks {
             logger.debug("Task: \(task)")
             switch task {
@@ -67,7 +67,7 @@ func scheduleBAR(first: Bool) {
     let now = Date()
     let scheduledDate = now.addingTimeInterval(first ? 60 : 60*60)
     let info:NSDictionary = ["submissionDate":now]
-    let wkExt = WKExtension.shared()
+    let wkExt = WKApplication.shared()
     wkExt.scheduleBackgroundRefresh(withPreferredDate: scheduledDate, userInfo: info) { (error: Error?) in
         if (error != nil) {
             scheduleLogger.debug("background refresh could not be scheduled \(error.debugDescription)")

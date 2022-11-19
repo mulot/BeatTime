@@ -10,7 +10,7 @@ import os
 
 @main
 struct BeatTimeApp: App {
-    @WKExtensionDelegateAdaptor private var appDelegate: ExtensionDelegate
+    @WKApplicationDelegateAdaptor private var appDelegate: ExtensionDelegate
     @Environment(\.scenePhase) private var scenePhase
     
     let logger = Logger(subsystem: "org.mulot.beattime.BeatTimeWatchOS.watchkitapp.watchkitextension.App", category: "App View")

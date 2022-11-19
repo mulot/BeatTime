@@ -17,11 +17,10 @@
 		94416FB0265FE43C00A23369 /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		94416FB1265FE44700A23369 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94416FB226659EBD00A23369 /* BeatTimeWatchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		94447B05264AAD7500A062CF /* BeatTimeWatchOS WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		945F06B826543E1700391A7D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		945F06B926543E1700391A7D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
 		945F06BE26543E1D00391A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945F06BD26543E1D00391A7D /* Assets.xcassets */; };
-		945F06C226543E1D00391A7D /* BeatTimeWidgetiOSExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		945F06C226543E1D00391A7D /* BeatTimeWidgetiOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		945F06C726543EAA00391A7D /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		945F06C826543EBB00391A7D /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		945F06C926543EDE00391A7D /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
@@ -30,11 +29,10 @@
 		9476F3282639D65A006FBF66 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		9476F32A2639D65A006FBF66 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
 		9476F32F2639D662006FBF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9476F32E2639D662006FBF66 /* Assets.xcassets */; };
-		9476F3342639D662006FBF66 /* BeatTimeWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 9476F3252639D65A006FBF66 /* BeatTimeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		9476F3342639D662006FBF66 /* BeatTimeWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9476F3252639D65A006FBF66 /* BeatTimeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9476F33B2639DF0C006FBF66 /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		9476F33D2639ED7C006FBF66 /* CocoaDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F33C2639ED7C006FBF66 /* CocoaDraw.swift */; };
 		947C562E264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		947C5633264814F0007E6B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 947C5632264814F0007E6B4A /* Assets.xcassets */; };
 		947C563F264814F1007E6B4A /* BeatTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C563E264814F1007E6B4A /* BeatTimeApp.swift */; };
 		947C5643264814F1007E6B4A /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5642264814F1007E6B4A /* NotificationController.swift */; };
 		947C5645264814F1007E6B4A /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5644264814F1007E6B4A /* NotificationView.swift */; };
@@ -79,13 +77,6 @@
 			remoteGlobalIDString = 947C562C264814E9007E6B4A;
 			remoteInfo = "BeatTimeWatchOS WatchKit App";
 		};
-		94447B06264AAD7500A062CF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 947C5638264814F0007E6B4A;
-			remoteInfo = "BeatClockWatchOS WatchKit Extension";
-		};
 		945F06C026543E1D00391A7D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 94DA1E7D2634757300F83E86 /* Project object */;
@@ -121,26 +112,15 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94447B08264AAD7500A062CF /* Embed App Extensions */ = {
+		945F06C326543E1D00391A7D /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				94447B05264AAD7500A062CF /* BeatTimeWatchOS WatchKit Extension.appex in Embed App Extensions */,
+				945F06C226543E1D00391A7D /* BeatTimeWidgetiOSExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		945F06C326543E1D00391A7D /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				945F06C226543E1D00391A7D /* BeatTimeWidgetiOSExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		947C5656264814F2007E6B4A /* Embed Watch Content */ = {
@@ -154,15 +134,15 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94DA1EB326347EBC00F83E86 /* Embed App Extensions */ = {
+		94DA1EB326347EBC00F83E86 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				9476F3342639D662006FBF66 /* BeatTimeWidgetExtension.appex in Embed App Extensions */,
+				9476F3342639D662006FBF66 /* BeatTimeWidgetExtension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -191,7 +171,6 @@
 		947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BeatTimeWatchOS WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		947C5632264814F0007E6B4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		947C5634264814F0007E6B4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BeatTimeWatchOS WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		947C563E264814F1007E6B4A /* BeatTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTimeApp.swift; sourceTree = "<group>"; };
 		947C5642264814F1007E6B4A /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		947C5644264814F1007E6B4A /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
@@ -446,7 +425,6 @@
 				94BEB1BA2646D9C500A5D811 /* BeatTimeiOS.app */,
 				947C562A264814E9007E6B4A /* BeatTime.app */,
 				947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */,
-				947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */,
 				94CBA0C4265308370032CA8B /* BeatTimeTvOS.app */,
 				945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */,
 				94416F9E265F967300A23369 /* BeatTimeMenuBar.app */,
@@ -543,34 +521,17 @@
 			buildConfigurationList = 947C5653264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatTimeWatchOS WatchKit App" */;
 			buildPhases = (
 				947C562B264814E9007E6B4A /* Resources */,
-				94447B08264AAD7500A062CF /* Embed App Extensions */,
+				947C5635264814F0007E6B4A /* Sources */,
+				947C5636264814F0007E6B4A /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				94447B07264AAD7500A062CF /* PBXTargetDependency */,
 			);
 			name = "BeatTimeWatchOS WatchKit App";
 			productName = "BeatClockWatchOS WatchKit App";
 			productReference = 947C562D264814E9007E6B4A /* BeatTimeWatchOS WatchKit App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		947C5638264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 947C564F264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatTimeWatchOS WatchKit Extension" */;
-			buildPhases = (
-				947C5635264814F0007E6B4A /* Sources */,
-				947C5636264814F0007E6B4A /* Frameworks */,
-				947C5637264814F0007E6B4A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BeatTimeWatchOS WatchKit Extension";
-			productName = "BeatClockWatchOS WatchKit Extension";
-			productReference = 947C5639264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
+			productType = "com.apple.product-type.application";
 		};
 		94BEB1B92646D9C500A5D811 /* BeatTimeiOS */ = {
 			isa = PBXNativeTarget;
@@ -579,7 +540,7 @@
 				94BEB1B62646D9C500A5D811 /* Sources */,
 				94BEB1B72646D9C500A5D811 /* Frameworks */,
 				94BEB1B82646D9C500A5D811 /* Resources */,
-				945F06C326543E1D00391A7D /* Embed App Extensions */,
+				945F06C326543E1D00391A7D /* Embed Foundation Extensions */,
 				94416FB526659EBD00A23369 /* Embed Watch Content */,
 			);
 			buildRules = (
@@ -617,7 +578,7 @@
 				94DA1E812634757300F83E86 /* Sources */,
 				94DA1E822634757300F83E86 /* Frameworks */,
 				94DA1E832634757300F83E86 /* Resources */,
-				94DA1EB326347EBC00F83E86 /* Embed App Extensions */,
+				94DA1EB326347EBC00F83E86 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -636,7 +597,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1410;
 				TargetAttributes = {
 					94416F9D265F967300A23369 = {
 						CreatedOnToolsVersion = 12.5;
@@ -651,9 +612,6 @@
 						CreatedOnToolsVersion = 12.5;
 					};
 					947C562C264814E9007E6B4A = {
-						CreatedOnToolsVersion = 12.5;
-					};
-					947C5638264814F0007E6B4A = {
 						CreatedOnToolsVersion = 12.5;
 					};
 					94BEB1B92646D9C500A5D811 = {
@@ -685,7 +643,6 @@
 				94BEB1B92646D9C500A5D811 /* BeatTimeiOS */,
 				947C5629264814E9007E6B4A /* BeatTimeWatchOS */,
 				947C562C264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */,
-				947C5638264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */,
 				94CBA0C3265308370032CA8B /* BeatTimeTvOS */,
 				945F06B626543E1700391A7D /* BeatTimeWidgetiOSExtension */,
 				94416F9D265F967300A23369 /* BeatTimeMenuBar */,
@@ -727,14 +684,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		947C562B264814E9007E6B4A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				947C5633264814F0007E6B4A /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		947C5637264814F0007E6B4A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -870,11 +819,6 @@
 			target = 947C562C264814E9007E6B4A /* BeatTimeWatchOS WatchKit App */;
 			targetProxy = 94416FB326659EBD00A23369 /* PBXContainerItemProxy */;
 		};
-		94447B07264AAD7500A062CF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 947C5638264814F0007E6B4A /* BeatTimeWatchOS WatchKit Extension */;
-			targetProxy = 94447B06264AAD7500A062CF /* PBXContainerItemProxy */;
-		};
 		945F06C126543E1D00391A7D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 945F06B626543E1700391A7D /* BeatTimeWidgetiOSExtension */;
@@ -914,6 +858,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -941,6 +886,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"BeatTimeMenuBar/Preview Content\"";
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1018,6 +964,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Widget/Info.plist";
@@ -1044,6 +991,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Widget/Info.plist";
@@ -1061,69 +1009,20 @@
 			};
 			name = Release;
 		};
-		947C5650264814F2007E6B4A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchOS WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = VNLK894MAE;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.mulot.beattime.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.4;
-			};
-			name = Debug;
-		};
-		947C5651264814F2007E6B4A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
-				DEVELOPMENT_ASSET_PATHS = "\"WatchOS WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = VNLK894MAE;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = org.mulot.beattime.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.4;
-			};
-			name = Release;
-		};
 		947C5654264814F2007E6B4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = VNLK894MAE;
-				IBSC_MODULE = BeatTimeWatchOS_WatchKit_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mulot.beattime.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1139,12 +1038,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = VNLK894MAE;
-				IBSC_MODULE = BeatTimeWatchOS_WatchKit_Extension;
 				INFOPLIST_FILE = "$(SRCROOT)/WatchOS WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = org.mulot.beattime.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1324,6 +1227,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1386,6 +1290,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1418,6 +1323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MacOS/Info.plist";
@@ -1444,6 +1350,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 5;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = VNLK894MAE;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/MacOS/Info.plist";
@@ -1485,15 +1392,6 @@
 			buildConfigurations = (
 				9476F3362639D662006FBF66 /* Debug */,
 				9476F3372639D662006FBF66 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		947C564F264814F2007E6B4A /* Build configuration list for PBXNativeTarget "BeatTimeWatchOS WatchKit Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				947C5650264814F2007E6B4A /* Debug */,
-				947C5651264814F2007E6B4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

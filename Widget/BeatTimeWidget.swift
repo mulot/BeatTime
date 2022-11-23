@@ -56,6 +56,7 @@ struct BeatEntry: TimelineEntry {
 
 struct BeatTimeWidgetEntryView : View {
     var entry: BeatTimeProvider.Entry
+    var accentColor: Color = .orange
     
     @Environment(\.widgetFamily) var family
     //@Environment(\.widgetRenderingMode) var widgetRenderingMode
@@ -102,15 +103,18 @@ struct BeatTimeWidgetEntryView : View {
                 ZStack {
                     ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
                         .progressViewStyle(.circular)
+                        .tint(accentColor)
                 }
             case .accessoryInline:
                 ZStack {
                     Text("@\(entry.beat) .beats")
+                        .tint(accentColor)
                 }
             case .accessoryRectangular:
                 ZStack {
                     ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats") }
                         .progressViewStyle(.linear)
+                        .tint(accentColor)
                 }
             default:
                 ZStack {
@@ -134,6 +138,8 @@ struct BeatTimeWidget: Widget {
     private let supportedFamilies:[WidgetFamily] = {
         #if os(macOS)
             return [.systemSmall]
+        #elseif os(watchOS)
+            return [.accessoryCircular, .accessoryInline, .accessoryRectangular]
         #else
             if #available(iOSApplicationExtension 16.0, *) {
                 return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
@@ -179,7 +185,11 @@ struct BeatTimeWidgetDeprecated: Widget {
         }
         .configurationDisplayName("BeatTime")
         .description("Swatch Internet Time aka .beat time")
+        #if os(watchOS)
+        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
+        #else
         .supportedFamilies([.systemSmall])
+        #endif
     }
 }
 
@@ -189,6 +199,10 @@ struct BeatTimeWidget_Previews: PreviewProvider {
         #if os(macOS)
         BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
+        #elseif os(watchOS)
+        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+        //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         #else
         if #available(iOSApplicationExtension 16.0, *) {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))

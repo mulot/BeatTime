@@ -132,12 +132,16 @@ struct BeatTimeWidget: Widget {
         let kind: String = "BeatTimeWidget"
         
     private let supportedFamilies:[WidgetFamily] = {
-        if #available(iOSApplicationExtension 16.0, *) {
-            return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
-        }
-        else {
-           return [.systemSmall]
-        }
+        #if os(macOS)
+            return [.systemSmall]
+        #else
+            if #available(iOSApplicationExtension 16.0, *) {
+                return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
+            }
+            else {
+                return [.systemSmall]
+            }
+        #endif
     }()
     
     var body: some WidgetConfiguration {
@@ -182,15 +186,20 @@ struct BeatTimeWidgetDeprecated: Widget {
 
 struct BeatTimeWidget_Previews: PreviewProvider {
     static var previews: some View {
+        #if os(macOS)
+        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        #else
         if #available(iOSApplicationExtension 16.0, *) {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-                //.previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         } else {
             // Fallback on earlier versions
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
         }
+        #endif
     }
 }
 

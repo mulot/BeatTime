@@ -62,70 +62,96 @@ struct BeatTimeWidgetEntryView : View {
     //@Environment(\.widgetRenderingMode) var widgetRenderingMode
     
     var body: some View {
-            switch family {
-            case .systemSmall:
+        switch family {
+        case .systemSmall:
+            ZStack {
+                RingProgressView(arcFrag: 999, lineWidth: 10)
+                    .foregroundColor(.circleLine)
+                RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
+                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                Text("@" + entry.beat)
+                    .font(.title.bold())
+            }
+        case .systemMedium:
+            ZStack {
+                RingProgressView(arcFrag: 999, lineWidth: 10)
+                    .foregroundColor(.circleLine)
+                RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
+                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                Text("@" + entry.beat)
+                    .font(.title.bold())
+            }
+        case .systemLarge:
+            ZStack {
+                RingProgressView(arcFrag: 999, lineWidth: 20)
+                    .foregroundColor(.circleLine)
+                RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 20)
+                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                Text("@" + entry.beat)
+                    .font(.title.bold())
+            }
+        case .systemExtraLarge:
+            ZStack {
+                RingProgressView(arcFrag: 999, lineWidth: 25)
+                    .foregroundColor(.circleLine)
+                RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 25)
+                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                Text("@" + entry.beat)
+                    .font(.title.bold())
+            }
+#if os(watchOS) || os(iOS)
+        case .accessoryCircular:
+            if #available(iOSApplicationExtension 16.0, *) {
                 ZStack {
-                    RingProgressView(arcFrag: 999, lineWidth: 10)
-                        .foregroundColor(.circleLine)
-                    RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
-                    Text("@" + entry.beat)
-                        .font(.title.bold())
-                }
-            case .systemMedium:
-                ZStack {
-                    RingProgressView(arcFrag: 999, lineWidth: 10)
-                        .foregroundColor(.circleLine)
-                    RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
-                    Text("@" + entry.beat)
-                        .font(.title.bold())
-                }
-            case .systemLarge:
-                ZStack {
-                    RingProgressView(arcFrag: 999, lineWidth: 20)
-                        .foregroundColor(.circleLine)
-                    RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 20)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
-                    Text("@" + entry.beat)
-                        .font(.title.bold())
-                }
-            case .systemExtraLarge:
-                ZStack {
-                    RingProgressView(arcFrag: 999, lineWidth: 25)
-                        .foregroundColor(.circleLine)
-                    RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 25)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
-                    Text("@" + entry.beat)
-                        .font(.title.bold())
-                }
-            case .accessoryCircular:
-                ZStack {
-                    ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
-                        .progressViewStyle(.circular)
+                    //ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
+                    //.progressViewStyle(.circular)
+                    Gauge(value: Float(entry.beat)!/1000) { Text("@") }
+                        .gaugeStyle(.accessoryCircular)
                         .tint(accentColor)
+                    Text(entry.beat)
                 }
-            case .accessoryInline:
+            }
+        case .accessoryInline:
+            if #available(iOSApplicationExtension 16.0, *) {
                 ZStack {
                     Text("@\(entry.beat) .beats")
                         .tint(accentColor)
                 }
-            case .accessoryRectangular:
+            }
+        case .accessoryRectangular:
+            if #available(iOSApplicationExtension 16.0, *) {
                 ZStack {
                     ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats") }
                         .progressViewStyle(.linear)
+                    
                         .tint(accentColor)
                 }
-            default:
-                ZStack {
-                    RingProgressView(arcFrag: 999, lineWidth: 10)
-                        .foregroundColor(.circleLine)
-                    RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
-                    Text("@" + entry.beat)
-                        .font(.title.bold())
-                }
             }
+#endif
+#if os(watchOS)
+        case .accessoryCorner:
+            //Gauge(value: Float(entry.beat)!/1000) { Text(entry.beat) }
+            //ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
+            //.progressViewStyle(.automatic)
+            //Image(systemName: "at.circle")
+            Text(entry.beat)
+                .foregroundColor(accentColor)
+                .font(.title.bold())
+                .widgetLabel {
+                    ProgressView(value: Double(entry.beat)!/1000)
+                        .tint(accentColor)
+                }
+#endif
+        default:
+            ZStack {
+                RingProgressView(arcFrag: 999, lineWidth: 10)
+                    .foregroundColor(.circleLine)
+                RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
+                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                Text("@" + entry.beat)
+                    .font(.title.bold())
+            }
+        }
     }
 }
 
@@ -133,43 +159,24 @@ struct BeatTimeWidgetEntryView : View {
 
 @main
 struct BeatTimeWidget: Widget {
-        let kind: String = "BeatTimeWidget"
-        
-    private let supportedFamilies:[WidgetFamily] = {
-        #if os(macOS)
-            return [.systemSmall]
-        #elseif os(watchOS)
-            return [.accessoryCircular, .accessoryInline, .accessoryRectangular]
-        #else
-            if #available(iOSApplicationExtension 16.0, *) {
-                return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
-            }
-            else {
-                return [.systemSmall]
-            }
-        #endif
-    }()
-    
-    var body: some WidgetConfiguration {
-            //if #available(iOSApplicationExtension 16.0, *) {
-            StaticConfiguration(
-                kind: "org.mulot.beattime.BeatTimeWidget",
-                provider: BeatTimeProvider()
-            ) { entry in
-                BeatTimeWidgetEntryView(entry: entry)
-                //.frame(maxWidth: .infinity, maxHeight: .infinity)
-                //.background(Color("WidgetBackground"))
-                //.background(Color.black)
-                //.foregroundColor(.gray)
-            }
-            .configurationDisplayName("BeatTime")
-            .description("Swatch Internet Time aka .beat time")
-            .supportedFamilies(supportedFamilies)
-        }
-}
-
-struct BeatTimeWidgetDeprecated: Widget {
     let kind: String = "BeatTimeWidget"
+    
+    private let supportedFamilies:[WidgetFamily] = {
+#if os(macOS)
+        return [.systemSmall]
+#elseif os(watchOS)
+        return [.accessoryCircular, .accessoryInline, .accessoryRectangular, .accessoryCorner]
+#elseif os(iOS)
+        if #available(iOSApplicationExtension 16.0, *) {
+            return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
+        }
+        else {
+            return [.systemSmall]
+        }
+#else
+        return [.systemSmall]
+#endif
+    }()
     
     var body: some WidgetConfiguration {
         //if #available(iOSApplicationExtension 16.0, *) {
@@ -185,36 +192,52 @@ struct BeatTimeWidgetDeprecated: Widget {
         }
         .configurationDisplayName("BeatTime")
         .description("Swatch Internet Time aka .beat time")
-        #if os(watchOS)
-        .supportedFamilies([.accessoryCircular, .accessoryInline, .accessoryRectangular])
-        #else
-        .supportedFamilies([.systemSmall])
-        #endif
+        .supportedFamilies(supportedFamilies)
     }
 }
 
 
+#if os(macOS)
 struct BeatTimeWidget_Previews: PreviewProvider {
     static var previews: some View {
-        #if os(macOS)
         BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
-        #elseif os(watchOS)
-        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-        //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-        #else
+    }
+}
+#endif
+
+
+#if os(iOS)
+struct BeatTimeWidget_Previews: PreviewProvider {
+    static var previews: some View {
         if #available(iOSApplicationExtension 16.0, *) {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-                //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
         } else {
             // Fallback on earlier versions
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
                 .previewContext(WidgetPreviewContext(family: .systemSmall))
         }
-        #endif
+    }
+}
+#endif
+
+
+#if os(watchOS)
+struct BeatTimeWidget_Previews: PreviewProvider {
+    static var previews: some View {
+        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+        //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
     }
 }
 
+struct BeatTimeWidget_Previews2: PreviewProvider {
+    static var previews: some View {
+        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+    }
+}
+#endif
 

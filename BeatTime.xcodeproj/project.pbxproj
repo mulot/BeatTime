@@ -16,6 +16,7 @@
 		94196343292ED92C009BC68A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		94196344292ED931009BC68A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94196345292ED936009BC68A /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
+		94196346292F61DA009BC68A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5646264814F1007E6B4A /* ComplicationController.swift */; };
 		94416F99265F896600A23369 /* alarm clock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94416F98265F896600A23369 /* alarm clock.ttf */; };
 		94416FA1265F967300A23369 /* BeatTimeMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA0265F967300A23369 /* BeatTimeMenuBarApp.swift */; };
 		94416FA3265F967300A23369 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA2265F967300A23369 /* ContentView.swift */; };
@@ -859,6 +860,7 @@
 			files = (
 				947C5643264814F1007E6B4A /* NotificationController.swift in Sources */,
 				947C566226481A68007E6B4A /* Colors.swift in Sources */,
+				94196346292F61DA009BC68A /* ComplicationController.swift in Sources */,
 				94A89355264D863700C86B3E /* ExtensionDelegate.swift in Sources */,
 				947C566326481B22007E6B4A /* BeatTImeView.swift in Sources */,
 				947C5660264819F8007E6B4A /* BeatTime.swift in Sources */,

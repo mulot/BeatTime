@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		94140612293029AE00962293 /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		94196332292ED5FE009BC68A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3272639D65A006FBF66 /* WidgetKit.framework */; };
 		94196333292ED5FE009BC68A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
 		94196338292ED5FF009BC68A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94196337292ED5FF009BC68A /* Assets.xcassets */; };
 		9419633C292ED5FF009BC68A /* BeatTimeWidgetWatchOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 94196331292ED5FE009BC68A /* BeatTimeWidgetWatchOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		94196341292ED76D009BC68A /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		94196342292ED902009BC68A /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		94196343292ED92C009BC68A /* UIViewDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1CB2646DBEB00A5D811 /* UIViewDraw.swift */; };
 		94196344292ED931009BC68A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
@@ -812,7 +812,7 @@
 				94196343292ED92C009BC68A /* UIViewDraw.swift in Sources */,
 				94196344292ED931009BC68A /* Colors.swift in Sources */,
 				94196342292ED902009BC68A /* BeatTime.swift in Sources */,
-				94196341292ED76D009BC68A /* BeatTimeWidget.swift in Sources */,
+				94140612293029AE00962293 /* BeatTimeWidget.swift in Sources */,
 				94196345292ED936009BC68A /* BeatTImeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

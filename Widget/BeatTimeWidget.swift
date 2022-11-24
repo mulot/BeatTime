@@ -8,6 +8,17 @@
 import WidgetKit
 import SwiftUI
 
+func hoursOffsetWithGMT(date: Date = Date()) -> Int
+{
+    //print(TimeZone.current.identifier)
+    //print(TimeZone.abbreviationDictionary)
+    //let seconds = TimeZone.init(identifier: "JST")!.secondsFromGMT(for: date)
+    let seconds = TimeZone.current.secondsFromGMT(for: date)
+    let hours = seconds / 3600
+    //print("seconds: \(seconds) hours: \(-hours)")
+    return(-hours)
+}
+
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
         BeatEntry(date: Date(), beat: BeatTime().beats())
@@ -102,12 +113,22 @@ struct BeatTimeWidgetEntryView : View {
 #if os(watchOS) || os(iOS)
         case .accessoryCircular:
             if #available(iOSApplicationExtension 16.0, *) {
+                let nbHour = hoursOffsetWithGMT()
+                //let nbHour = -4
+                let angle = (2 * Double.pi) / 24 * Double(nbHour)
+                let startCircle = UnitPoint(x: 0.5, y: 1)
+                //let endCircle = UnitPoint(x: 0.5, y: 1)
+                //let startGradient = startCircle
+                //let endGradient = endCircle
+                let startGradient = UnitPoint(x: startCircle.x + 0.5*sin(angle), y: startCircle.y - 0.5*(1-cos(angle)))
+                let endGradient =  UnitPoint(x: startCircle.x + 0.5*sin(angle+Double.pi), y: startCircle.y - 0.5*(1-cos(angle+Double.pi)))
                 ZStack {
                     //ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
                     //.progressViewStyle(.circular)
                     Gauge(value: Float(entry.beat)!/1000) { Text("@") }
                         .gaugeStyle(.accessoryCircular)
-                        .tint(accentColor)
+                        //.tint(accentColor)
+                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                     Text(entry.beat)
                 }
             }
@@ -120,11 +141,17 @@ struct BeatTimeWidgetEntryView : View {
             }
         case .accessoryRectangular:
             if #available(iOSApplicationExtension 16.0, *) {
+                let nbHour = hoursOffsetWithGMT()
+                //let nbHour = 12
+                let startCircle = UnitPoint(x: 1, y: 0.5)
+                let endCircle = UnitPoint(x: 0, y: 0.5)
+                let startGradient = nbHour < 12 ? startCircle : endCircle
+                let endGradient = nbHour < 12 ? endCircle : startCircle
                 ZStack {
                     ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats") }
                         .progressViewStyle(.linear)
-                    
-                        .tint(accentColor)
+                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                        //.tint(accentColor)
                 }
             }
 #endif
@@ -214,6 +241,7 @@ struct BeatTimeWidget_Previews: PreviewProvider {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
             //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                //.previewDevice(PreviewDevice(rawValue: "iPhone 12"))
         } else {
             // Fallback on earlier versions
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))

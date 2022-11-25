@@ -132,11 +132,12 @@ struct BeatTimeWidgetEntryView : View {
             if #available(iOSApplicationExtension 16.0, *) {
                 let nbHour = BeatTime.hoursOffsetWithGMT()
                 //let nbHour = -4
+                let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
                 let index = ((abs(nbHour)/2%6)+5)%6
                 let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
                 let gradients:[Color] = [colors[(index)%colors.count], colors[(index+1)%colors.count], colors[(index+2)%colors.count], colors[(index+3)%colors.count], colors[(index+4)%colors.count], colors[(index+5)%colors.count]]
                 ZStack {
-                    ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT \(nbHour)") }
+                    ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT\(gmt)") }
                         .progressViewStyle(.linear)
                         .gradientLinear(colors: gradients, startPoint: .leading, endPoint: .trailing)
                         //.gradientRadius(colors: gradients, center: centerPoint, startRadius: 10, endRadius: 90)

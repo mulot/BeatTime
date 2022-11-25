@@ -8,17 +8,6 @@
 import WidgetKit
 import SwiftUI
 
-func hoursOffsetWithGMT(date: Date = Date()) -> Int
-{
-    //print(TimeZone.current.identifier)
-    //print(TimeZone.abbreviationDictionary)
-    //let seconds = TimeZone.init(identifier: "JST")!.secondsFromGMT(for: date)
-    let seconds = TimeZone.current.secondsFromGMT(for: date)
-    let hours = seconds / 3600
-    //print("seconds: \(seconds) hours: \(-hours)")
-    return(-hours)
-}
-
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
         BeatEntry(date: Date(), beat: BeatTime().beats())
@@ -79,7 +68,7 @@ struct BeatTimeWidgetEntryView : View {
                 RingProgressView(arcFrag: 999, lineWidth: 10)
                     .foregroundColor(.circleLine)
                 RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 Text("@" + entry.beat)
                     .font(.title.bold())
             }
@@ -88,7 +77,7 @@ struct BeatTimeWidgetEntryView : View {
                 RingProgressView(arcFrag: 999, lineWidth: 10)
                     .foregroundColor(.circleLine)
                 RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 Text("@" + entry.beat)
                     .font(.title.bold())
             }
@@ -97,7 +86,7 @@ struct BeatTimeWidgetEntryView : View {
                 RingProgressView(arcFrag: 999, lineWidth: 20)
                     .foregroundColor(.circleLine)
                 RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 20)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 Text("@" + entry.beat)
                     .font(.title.bold())
             }
@@ -106,15 +95,15 @@ struct BeatTimeWidgetEntryView : View {
                 RingProgressView(arcFrag: 999, lineWidth: 25)
                     .foregroundColor(.circleLine)
                 RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 25)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 Text("@" + entry.beat)
                     .font(.title.bold())
             }
 #if os(watchOS) || os(iOS)
         case .accessoryCircular:
             if #available(iOSApplicationExtension 16.0, *) {
-                let nbHour = hoursOffsetWithGMT()
-                //let nbHour = -4
+                let nbHour = BeatTime.hoursOffsetWithGMT()
+                //let nbHour = 4
                 let angle = (2 * Double.pi) / 24 * Double(nbHour)
                 let startCircle = UnitPoint(x: 0.5, y: 1)
                 //let endCircle = UnitPoint(x: 0.5, y: 1)
@@ -128,7 +117,7 @@ struct BeatTimeWidgetEntryView : View {
                     Gauge(value: Float(entry.beat)!/1000) { Text("@") }
                         .gaugeStyle(.accessoryCircular)
                         //.tint(accentColor)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                        .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                     Text(entry.beat)
                 }
             }
@@ -141,16 +130,16 @@ struct BeatTimeWidgetEntryView : View {
             }
         case .accessoryRectangular:
             if #available(iOSApplicationExtension 16.0, *) {
-                let nbHour = hoursOffsetWithGMT()
-                //let nbHour = 12
-                let startCircle = UnitPoint(x: 1, y: 0.5)
-                let endCircle = UnitPoint(x: 0, y: 0.5)
-                let startGradient = nbHour < 12 ? startCircle : endCircle
-                let endGradient = nbHour < 12 ? endCircle : startCircle
+                let nbHour = BeatTime.hoursOffsetWithGMT()
+                //let nbHour = -4
+                let index = ((abs(nbHour)/2%6)+5)%6
+                let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
+                let gradients:[Color] = [colors[(index)%colors.count], colors[(index+1)%colors.count], colors[(index+2)%colors.count], colors[(index+3)%colors.count], colors[(index+4)%colors.count], colors[(index+5)%colors.count]]
                 ZStack {
-                    ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats") }
+                    ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT \(nbHour)") }
                         .progressViewStyle(.linear)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                        .gradientLinear(colors: gradients, startPoint: .leading, endPoint: .trailing)
+                        //.gradientRadius(colors: gradients, center: centerPoint, startRadius: 10, endRadius: 90)
                         //.tint(accentColor)
                 }
             }
@@ -174,7 +163,7 @@ struct BeatTimeWidgetEntryView : View {
                 RingProgressView(arcFrag: 999, lineWidth: 10)
                     .foregroundColor(.circleLine)
                 RingProgressView(arcFrag: Double(entry.beat)!, lineWidth: 10)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 Text("@" + entry.beat)
                     .font(.title.bold())
             }

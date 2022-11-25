@@ -78,4 +78,15 @@ class BeatTime: NSObject {
         }
         return(Date())
     }
+    
+    static func hoursOffsetWithGMT(date: Date = Date()) -> Int
+    {
+        //print(TimeZone.current.identifier)
+        //print(TimeZone.abbreviationDictionary)
+        //let seconds = TimeZone.init(identifier: "JST")!.secondsFromGMT(for: date)
+        let seconds = TimeZone.current.secondsFromGMT(for: date)
+        let hours = seconds / 3600
+        //print("seconds: \(seconds) hours: \(hours)")
+        return(hours)
+    }
 }

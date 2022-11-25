@@ -32,7 +32,7 @@ struct BeatTimeView: View {
                 }
                 if (Double(beats) != nil) {
                     RingProgressView(arcFrag: Double(beats)!, lineWidth: lineWidth)
-                        .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
+                        .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
                         .onAppear() {
                             withAnimation(.default.speed(0.30)) {
                                 //print("animation on Appear")
@@ -60,7 +60,7 @@ struct BeatTimeView: View {
                     #endif*/
                 }
                 TextFitView(text: "@" + beats, size: displayLenght)
-                    .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                    .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 /*Text("@" + beats)
                 .font(.largeTitle.bold())
                 .font(.system(size: fontSize, weight: .bold))*/
@@ -86,7 +86,7 @@ struct BeatTimeView: View {
     
     func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat, followSun: Bool = true) -> (UnitPoint, UnitPoint)
     {
-        let nbHour = hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithGMT()
         let angle = (2 * Double.pi) / 24 * Double(nbHour)
         let r = lenght / 2
         let startCircle = UnitPoint(x: 0.5, y: (1 - (lenght / frame.height)) / 2)
@@ -104,18 +104,6 @@ struct BeatTimeView: View {
         else {
             return (startCircle, endCircle)
         }
-    }
-    
-    
-    func hoursOffsetWithGMT(date: Date = Date()) -> Int
-    {
-        //print(TimeZone.current.identifier)
-        //print(TimeZone.abbreviationDictionary)
-        //let seconds = TimeZone.init(identifier: "JST")!.secondsFromGMT(for: date)
-        let seconds = TimeZone.current.secondsFromGMT(for: date)
-        let hours = seconds / 3600
-        //print("seconds: \(seconds) hours: \(-hours)")
-        return(-hours)
     }
 }
 

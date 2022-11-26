@@ -16,7 +16,8 @@
 		94196344292ED931009BC68A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
 		94196345292ED936009BC68A /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		94196346292F61DA009BC68A /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947C5646264814F1007E6B4A /* ComplicationController.swift */; };
-		942690F929318DF30095E1A3 /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
+		942690FA29326EEF0095E1A3 /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
+		942690FB29326F480095E1A3 /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		94416F99265F896600A23369 /* alarm clock.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94416F98265F896600A23369 /* alarm clock.ttf */; };
 		94416FA1265F967300A23369 /* BeatTimeMenuBarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA0265F967300A23369 /* BeatTimeMenuBarApp.swift */; };
 		94416FA3265F967300A23369 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94416FA2265F967300A23369 /* ContentView.swift */; };
@@ -31,7 +32,6 @@
 		945F06B926543E1700391A7D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9476F3292639D65A006FBF66 /* SwiftUI.framework */; };
 		945F06BE26543E1D00391A7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 945F06BD26543E1D00391A7D /* Assets.xcassets */; };
 		945F06C226543E1D00391A7D /* BeatTimeWidgetiOSExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 945F06B726543E1700391A7D /* BeatTimeWidgetiOSExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		945F06C726543EAA00391A7D /* BeatTimeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9476F32C2639D65B006FBF66 /* BeatTimeWidget.swift */; };
 		945F06C826543EBB00391A7D /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
 		945F06C926543EDE00391A7D /* BeatTImeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB1BE2646D9C500A5D811 /* BeatTImeView.swift */; };
 		945F06CA26543EE200391A7D /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94BEB20E2646E92E00A5D811 /* Colors.swift */; };
@@ -812,7 +812,7 @@
 				94196343292ED92C009BC68A /* UIViewDraw.swift in Sources */,
 				94196344292ED931009BC68A /* Colors.swift in Sources */,
 				94196342292ED902009BC68A /* BeatTime.swift in Sources */,
-				942690F929318DF30095E1A3 /* BeatTimeWidget.swift in Sources */,
+				942690FB29326F480095E1A3 /* BeatTimeWidget.swift in Sources */,
 				94196345292ED936009BC68A /* BeatTImeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,7 +837,7 @@
 				945F06C926543EDE00391A7D /* BeatTImeView.swift in Sources */,
 				945F06CA26543EE200391A7D /* Colors.swift in Sources */,
 				945F06C826543EBB00391A7D /* BeatTime.swift in Sources */,
-				945F06C726543EAA00391A7D /* BeatTimeWidget.swift in Sources */,
+				942690FA29326EEF0095E1A3 /* BeatTimeWidget.swift in Sources */,
 				945F06CB26543EE500391A7D /* UIViewDraw.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

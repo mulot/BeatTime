@@ -8,6 +8,7 @@
 import WidgetKit
 import SwiftUI
 
+
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
         BeatEntry(date: Date(), beat: BeatTime().beats())
@@ -54,6 +55,7 @@ struct BeatEntry: TimelineEntry {
     let beat: String
 }
 
+
 #if os(watchOS) || os(iOS)
 @available(iOSApplicationExtension 16.0, *)
 struct InlineWidget : View {
@@ -85,6 +87,7 @@ struct RingProgressWidgetSystem : View {
         }
     }
 }
+
 
 #if os(watchOS) || os(iOS)
 @available(iOSApplicationExtension 16.0, *)
@@ -135,6 +138,7 @@ struct GaugeWidget : View {
 }
 #endif
 
+
 #if os(watchOS) || os(iOS)
 @available(iOSApplicationExtension 16.0, *)
 struct RectangularsWidget : View {
@@ -179,6 +183,7 @@ struct RectangularsWidget : View {
 }
 #endif
 
+
 #if os(watchOS)
 @available(iOSApplicationExtension 16.0, *)
 struct CornerWidget : View {
@@ -200,6 +205,7 @@ struct CornerWidget : View {
     }
 }
 #endif
+
 
 struct BeatTimeWidgetEntryView : View {
     var entry: BeatTimeProvider.Entry
@@ -275,10 +281,21 @@ struct BeatTimeWidget_Previews: PreviewProvider {
 struct BeatTimeWidget_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOSApplicationExtension 16.0, *) {
-            BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-            //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-            //.previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            Group {
+                BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                    .previewContext(WidgetPreviewContext(family: .systemSmall))
+                    .previewDisplayName("systemSmall")
+                BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                    .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                    .previewDisplayName("Circular")
+                BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                    .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+                    .previewDisplayName("Rect")
+                BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                    .previewContext(WidgetPreviewContext(family: .accessoryInline))
+                    .previewDisplayName("Inline")
+                //.previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            }
         } else {
             // Fallback on earlier versions
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
@@ -295,13 +312,17 @@ struct BeatTimeWidget_Previews: PreviewProvider {
         Group {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
             //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-                .   previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                .previewContext(WidgetPreviewContext(family: .accessoryCircular))
+                .previewDisplayName("Circular")
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
                 .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+                .previewDisplayName("Rect")
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
                 .previewContext(WidgetPreviewContext(family: .accessoryInline))
+                .previewDisplayName("Inline")
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
                 .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+                .previewDisplayName("Corner")
         }
     }
 }

@@ -79,6 +79,9 @@ class BeatTime: NSObject {
         return(Date())
     }
     
+    /// Return the difference between LocalTimeZone and GMT
+    /// - Parameter date: local date
+    /// - Returns: Difference in hours (negative or positive)
     static func hoursOffsetWithGMT(date: Date = Date()) -> Int
     {
         //print(TimeZone.current.identifier)

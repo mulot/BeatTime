@@ -174,18 +174,20 @@ struct ContentView: View {
                  */
                 ProgressView(value: Double(beats)!/1000)
                     .progressViewStyle(CircularProgressViewStyle(tint: fgColors[Int(index.rounded())]))
-                    //.scaledToFit()
+                //.gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
+                //.scaledToFit()
                     .frame(width: frame.width, height: frame.height, alignment: .center)
                     .scaleEffect(3.2, anchor: .center)
                     .onAppear() {
                         withAnimation(.default.speed(0.25)) {
                             self.beats = BeatTime().beats()
-                            print("animation on Appear")
+                            //print("animation on Appear")
                         }
                     }
                 Text("@" + beats)
                     .font(.title.bold())
                     .foregroundColor(fgColors[Int(index.rounded())])
+                //.gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 //Text("Index : \(index)")
             }
             .focusable()

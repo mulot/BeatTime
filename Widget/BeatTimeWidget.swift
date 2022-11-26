@@ -55,16 +55,15 @@ struct BeatEntry: TimelineEntry {
 }
 
 #if os(watchOS) || os(iOS)
+@available(iOSApplicationExtension 16.0, *)
 struct InlineWidget : View {
     var entry: BeatTimeProvider.Entry
     var accentColor: Color = .orange
     
     var body: some View {
-        if #available(iOSApplicationExtension 16.0, *) {
-            ZStack {
-                Text("@\(entry.beat) .beats")
-                    .tint(accentColor)
-            }
+        ZStack {
+            Text("@\(entry.beat) .beats")
+                .tint(accentColor)
         }
     }
 }
@@ -88,24 +87,28 @@ struct RingProgressWidgetSystem : View {
 }
 
 #if os(watchOS) || os(iOS)
+@available(iOSApplicationExtension 16.0, *)
 struct GaugeWidget : View {
     var entry: BeatTimeProvider.Entry
     var accentColor: Color = .orange
     
+    @Environment(\.widgetRenderingMode) var renderingMode
+    
     var body: some View {
-        if #available(iOSApplicationExtension 16.0, *) {
-            let nbHour = BeatTime.hoursOffsetWithGMT()
-            //let nbHour = 4
-            let angle = (2 * Double.pi) / 24 * Double(nbHour)
-            let startCircle = UnitPoint(x: 0.5, y: 1)
-            //let endCircle = UnitPoint(x: 0.5, y: 1)
-            //let startGradient = startCircle
-            //let endGradient = endCircle
+        let nbHour = BeatTime.hoursOffsetWithGMT()
+        //let nbHour = 4
+        let angle = (2 * Double.pi) / 24 * Double(nbHour)
+        let startCircle = UnitPoint(x: 0.5, y: 1)
+        //let endCircle = UnitPoint(x: 0.5, y: 1)
+        //let startGradient = startCircle
+        //let endGradient = endCircle
 #if os(watchOS)
-            let startGradient = UnitPoint(x: startCircle.x + 0.5*sin(angle), y: startCircle.y - 0.5*(1-cos(angle)))
-            let endGradient =  UnitPoint(x: startCircle.x + 0.5*sin(angle+Double.pi), y: startCircle.y - 0.5*(1-cos(angle+Double.pi)))
+        let startGradient = UnitPoint(x: startCircle.x + 0.5*sin(angle), y: startCircle.y - 0.5*(1-cos(angle)))
+        let endGradient =  UnitPoint(x: startCircle.x + 0.5*sin(angle+Double.pi), y: startCircle.y - 0.5*(1-cos(angle+Double.pi)))
 #endif
-            ZStack {
+        ZStack {
+            switch renderingMode {
+            case .fullColor:
                 //ProgressView(value: Double(entry.beat)!/1000) { Text(entry.beat) }
                 //.progressViewStyle(.circular)
                 Gauge(value: Float(entry.beat)!/1000) { Text("@") }
@@ -114,47 +117,70 @@ struct GaugeWidget : View {
 #if os(watchOS)
                     .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: startGradient, endPoint: endGradient)
 #endif
-#if os(iOS)
+            case .accented:
+                Gauge(value: Float(entry.beat)!/1000) { Text("@") }
+                    .gaugeStyle(.accessoryCircular)
                     .tint(accentColor)
-#endif
-                Text(entry.beat)
+            case .vibrant :
+                Gauge(value: Float(entry.beat)!/1000) { Text("@") }
+                    .gaugeStyle(.accessoryCircular)
+            default:
+                Gauge(value: Float(entry.beat)!/1000) { Text("@") }
+                    .gaugeStyle(.accessoryCircular)
+                    .tint(accentColor)
             }
+            Text(entry.beat)
         }
     }
 }
 #endif
 
+#if os(watchOS) || os(iOS)
+@available(iOSApplicationExtension 16.0, *)
 struct RectangularsWidget : View {
     var entry: BeatTimeProvider.Entry
     var accentColor: Color = .orange
     
+    @Environment(\.widgetRenderingMode) var renderingMode
+    
     var body: some View {
-        if #available(iOSApplicationExtension 16.0, *) {
-            let nbHour = BeatTime.hoursOffsetWithGMT()
-            //let nbHour = -4
-            let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
-            let index = ((abs(nbHour)/2%6)+5)%6
-            let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
+        let nbHour = BeatTime.hoursOffsetWithGMT()
+        //let nbHour = -4
+        let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
+        let index = ((abs(nbHour)/2%6)+5)%6
+        let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
 #if os(watchOS)
-            let gradients:[Color] = [colors[(index)%colors.count], colors[(index+1)%colors.count], colors[(index+2)%colors.count], colors[(index+3)%colors.count], colors[(index+4)%colors.count], colors[(index+5)%colors.count]]
+        let gradients:[Color] = [colors[(index)%colors.count], colors[(index+1)%colors.count], colors[(index+2)%colors.count], colors[(index+3)%colors.count], colors[(index+4)%colors.count], colors[(index+5)%colors.count]]
 #endif
-            ZStack {
+        ZStack {
+            switch renderingMode {
+            case .fullColor:
                 ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT\(gmt)") }
                     .progressViewStyle(.linear)
 #if os(watchOS)
                     .gradientLinear(colors: gradients, startPoint: .leading, endPoint: .trailing)
 #endif
-#if os(iOS)
-                    .tint(accentColor)
-#endif
                 //.gradientRadius(colors: gradients, center: centerPoint, startRadius: 10, endRadius: 90)
                 //.tint(accentColor)
+            case .accented:
+                ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT\(gmt)") }
+                    .progressViewStyle(.linear)
+                    .tint(accentColor)
+            case .vibrant:
+                ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT\(gmt)") }
+                    .progressViewStyle(.linear)
+            default:
+                ProgressView(value: Double(entry.beat)!/1000) { Text("@\(entry.beat) .beats GMT\(gmt)") }
+                    .progressViewStyle(.linear)
+                    .tint(accentColor)
             }
         }
     }
 }
+#endif
 
 #if os(watchOS)
+@available(iOSApplicationExtension 16.0, *)
 struct CornerWidget : View {
     var entry: BeatTimeProvider.Entry
     var accentColor: Color = .orange
@@ -188,12 +214,12 @@ struct BeatTimeWidgetEntryView : View {
         case .systemLarge: RingProgressWidgetSystem(entry: entry, lineWidth: 20)
         case .systemExtraLarge: RingProgressWidgetSystem(entry: entry, lineWidth: 25)
 #if os(watchOS) || os(iOS)
-        case .accessoryCircular: GaugeWidget(entry: entry)
-        case .accessoryInline: InlineWidget(entry: entry)
-        case .accessoryRectangular: RectangularsWidget(entry: entry)
+        case .accessoryCircular: if #available(iOSApplicationExtension 16.0, *) { GaugeWidget(entry: entry) }
+        case .accessoryInline: if #available(iOSApplicationExtension 16.0, *) { InlineWidget(entry: entry) }
+        case .accessoryRectangular: if #available(iOSApplicationExtension 16.0, *) { RectangularsWidget(entry: entry)}
 #endif
 #if os(watchOS)
-        case .accessoryCorner: CornerWidget(entry: entry)
+        case .accessoryCorner: if #available(iOSApplicationExtension 16.0, *) { CornerWidget(entry: entry) }
 #endif
         default: RingProgressWidgetSystem(entry: entry)
         }
@@ -252,7 +278,7 @@ struct BeatTimeWidget_Previews: PreviewProvider {
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
             //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
                 .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-                //.previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            //.previewDevice(PreviewDevice(rawValue: "iPhone 12"))
         } else {
             // Fallback on earlier versions
             BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
@@ -266,16 +292,17 @@ struct BeatTimeWidget_Previews: PreviewProvider {
 #if os(watchOS)
 struct BeatTimeWidget_Previews: PreviewProvider {
     static var previews: some View {
-        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-        //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
-            .previewContext(WidgetPreviewContext(family: .accessoryCircular))
-    }
-}
-
-struct BeatTimeWidget_Previews2: PreviewProvider {
-    static var previews: some View {
-        BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
-            .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+        Group {
+            BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+            //.previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+                .   previewContext(WidgetPreviewContext(family: .accessoryCircular))
+            BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                .previewContext(WidgetPreviewContext(family: .accessoryRectangular))
+            BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                .previewContext(WidgetPreviewContext(family: .accessoryInline))
+            BeatTimeWidgetEntryView(entry: BeatEntry(date: Date(), beat: "849"))
+                .previewContext(WidgetPreviewContext(family: .accessoryCorner))
+        }
     }
 }
 #endif

@@ -33,8 +33,15 @@ struct ContentView: View {
                 .font(.title.bold())
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 */
-            BeatTimeView(lineWidth: 40)
-
+            if #available(tvOS 16.0, *) {
+                BeatTimeView(lineWidth: 40)
+                    .onTapGesture {
+                        print("Tap")
+                    }
+            }
+            else {
+                BeatTimeView(lineWidth: 40)
+            }
         }
     }
 }

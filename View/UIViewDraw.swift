@@ -9,11 +9,16 @@
 import SwiftUI
 
 extension View {
-    public func gradientForeground(colors: [Color], startPoint: UnitPoint = .top, endPoint: UnitPoint = .bottom) -> some View {
-        self.overlay(LinearGradient(gradient: .init(colors: colors),
-                                    startPoint: startPoint,
-                                    endPoint: endPoint))
+    public func gradientLinear(colors: [Color], startPoint: UnitPoint = .top, endPoint: UnitPoint = .bottom) -> some View {
+            self.overlay(LinearGradient(gradient: .init(colors: colors),
+                                        startPoint: startPoint,
+                                        endPoint: endPoint))
             .mask(self)
+    }
+    public func gradientRadius(colors: [Color], center: UnitPoint = .center, startRadius: CGFloat = 0, endRadius: CGFloat = 1) -> some View {
+        self.overlay(RadialGradient(gradient: .init(colors: colors),
+                                    center: center, startRadius: startRadius, endRadius: endRadius))
+        .mask(self)
     }
 }
 

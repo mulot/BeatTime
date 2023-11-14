@@ -19,6 +19,11 @@ struct BeatTimeTvOSApp: App {
 
 struct ContentView: View {
     
+    var tap: some Gesture {
+            TapGesture(count: 1)
+                .onEnded { print("Tap")}
+        }
+    
     var body: some View {
         ZStack {
             /*
@@ -35,9 +40,7 @@ struct ContentView: View {
                 */
             if #available(tvOS 16.0, *) {
                 BeatTimeView(lineWidth: 40)
-                    .onTapGesture {
-                        print("Tap")
-                    }
+                    .gesture(tap)
             }
             else {
                 BeatTimeView(lineWidth: 40)

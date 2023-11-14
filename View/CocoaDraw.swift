@@ -44,7 +44,6 @@ class TextGradient: NSView {
 }
     
 class RingProgressView: NSView {
-    
     var arcFrag: Double = 0
     var lineWidth: CGFloat = 15
     var lineColor: CGColor = NSColor.blue.cgColor
@@ -61,7 +60,9 @@ class RingProgressView: NSView {
         let context = NSGraphicsContext.current!.cgContext
         let arcLength: CGFloat = CGFloat((2 * Double.pi) - (2 * Double.pi * arcFrag)/1000 + (Double.pi/2))
         let shadowOffset = 2
-        
+        let circleDiameter = min(dirtyRect.height, dirtyRect.width)
+        print("Rect Height: \(dirtyRect.height) width: \(dirtyRect.width) diameter: \(circleDiameter)")
+    
         context.saveGState()
         context.setLineWidth(lineWidth)
         context.setLineCap(CGLineCap.round)
@@ -70,7 +71,7 @@ class RingProgressView: NSView {
         }
         context.beginPath()
         if (arcFrag != 1000) {
-            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - lineWidth), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (circleDiameter/2 - lineWidth), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
             context.replacePathWithStrokedPath()
             context.clip()
             let colorSpace = CGColorSpaceCreateDeviceRGB()
@@ -87,8 +88,8 @@ class RingProgressView: NSView {
             //guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 2) else { return }
             //guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 3) else { return }
             guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 4) else { return }
-            let startPoint = CGPoint(x: self.bounds.width, y: self.bounds.height)
-            let endPoint = CGPoint(x: self.bounds.width, y: 0)
+            let startPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)+circleDiameter/2)
+            let endPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)-circleDiameter/2)
             /*
             let startPoint = CGPoint(x: 0, y: self.bounds.height)
             let endPoint = CGPoint(x: self.bounds.width,y: self.bounds.height)
@@ -96,7 +97,7 @@ class RingProgressView: NSView {
             context.drawLinearGradient(gradient, start: startPoint, end: endPoint, options: CGGradientDrawingOptions(rawValue: UInt32(0)))
         }
         else {
-            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (dirtyRect.width/2 - lineWidth), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
+            context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (circleDiameter/2 - lineWidth), startAngle: CGFloat(0), endAngle: CGFloat(Double.pi*2), clockwise: true)
             context.setStrokeColor(lineColor)
             context.strokePath()
         }

@@ -41,8 +41,10 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     private func drawTimeCircle()
     {
         let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
+        print("Win Height: \(window.frame.height) Win Width: \(window.frame.width) Layout Height: \(window.contentLayoutRect.height) Layout Width: \(window.contentLayoutRect.width) min Layout: \(min(window.contentLayoutRect.height, window.contentLayoutRect.width)) Diameter: \(circleDiameter)")
         //Draw circle layout
-        let circle = RingProgressView(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        let circle = RingProgressView()
+
         circle.arcFrag = 1000
         circle.lineColor = NSColor.gray.cgColor
         circle.isShadow = true
@@ -54,9 +56,10 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         else {
             circleView = circle
             view.addSubview(circleView)
+            print("View height: \(view.frame.height)")
         }
         //Draw beat time circle
-        let circleBeat = RingProgressView(frame: NSRect(x: window.contentLayoutRect.width/2 - (circleDiameter/2), y: window.contentLayoutRect.height/2 - (circleDiameter/2), width: circleDiameter, height: circleDiameter))
+        let circleBeat = RingProgressView()
         if (beat != nil) {
             circleBeat.arcFrag = Double(beat.beats()) ?? 0
             circleBeat.lineWidth = lineWidth

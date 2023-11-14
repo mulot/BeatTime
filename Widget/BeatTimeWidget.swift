@@ -85,6 +85,9 @@ struct RingProgressWidgetSystem : View {
             Text("@" + entry.beat)
                 .font(.title.bold())
         }
+        .containerBackground(for: .widget) {
+            Color.white
+        }
     }
 }
 

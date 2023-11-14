@@ -61,7 +61,7 @@ class RingProgressView: NSView {
         let arcLength: CGFloat = CGFloat((2 * Double.pi) - (2 * Double.pi * arcFrag)/1000 + (Double.pi/2))
         let shadowOffset = 2
         let circleDiameter = min(dirtyRect.height, dirtyRect.width)
-        print("Rect Height: \(dirtyRect.height) width: \(dirtyRect.width) diameter: \(circleDiameter)")
+        //print("Rect Height: \(dirtyRect.height) width: \(dirtyRect.width) diameter: \(circleDiameter)")
     
         context.saveGState()
         context.setLineWidth(lineWidth)

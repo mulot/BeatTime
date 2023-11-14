@@ -40,8 +40,8 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     private func drawTimeCircle()
     {
-        let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
-        print("Win Height: \(window.frame.height) Win Width: \(window.frame.width) Layout Height: \(window.contentLayoutRect.height) Layout Width: \(window.contentLayoutRect.width) min Layout: \(min(window.contentLayoutRect.height, window.contentLayoutRect.width)) Diameter: \(circleDiameter)")
+        //let circleDiameter = min(window.contentLayoutRect.height, window.contentLayoutRect.width) - 50
+        //print("Win Height: \(window.frame.height) Win Width: \(window.frame.width) Layout Height: \(window.contentLayoutRect.height) Layout Width: \(window.contentLayoutRect.width) min Layout: \(min(window.contentLayoutRect.height, window.contentLayoutRect.width)) Diameter: \(circleDiameter)")
         //Draw circle layout
         let circle = RingProgressView()
 
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         else {
             circleView = circle
             view.addSubview(circleView)
-            print("View height: \(view.frame.height)")
+            //print("View height: \(view.frame.height)")
         }
         //Draw beat time circle
         let circleBeat = RingProgressView()

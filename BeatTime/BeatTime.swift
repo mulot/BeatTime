@@ -92,4 +92,12 @@ class BeatTime: NSObject {
         //print("seconds: \(seconds) hours: \(hours)")
         return(hours)
     }
+    
+    /// Return the difference between LocalTimeZone and BMT (Biel Mean Time / CET / GMT+1)
+    /// - Parameter date: local date
+    /// - Returns: Difference in hours (negative or positive)
+    static func hoursOffsetWithBMT(date: Date = Date()) -> Int
+    {
+        return(hoursOffsetWithGMT(date: date) - 1)
+    }
 }

@@ -86,7 +86,7 @@ struct BeatTimeView: View {
     
     func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat, followSun: Bool = true) -> (UnitPoint, UnitPoint)
     {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithBMT()
         let angle = -(2 * Double.pi) / 24 * Double(nbHour)
         let r = lenght / 2
         let startCircle = UnitPoint(x: 0.5, y: (1 - (lenght / frame.height)) / 2)

@@ -86,7 +86,7 @@ struct RingProgressWidgetSystem : View {
                 .font(.title.bold())
         }
         .containerBackground(for: .widget) {
-            Color.white
+            
         }
     }
 }
@@ -101,7 +101,7 @@ struct GaugeWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithBMT()
         //let nbHour = 4
         let angle = (2 * Double.pi) / 24 * Double(nbHour)
         let startCircle = UnitPoint(x: 0.5, y: 1)
@@ -151,9 +151,10 @@ struct RectangularsWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
+        var nbHour = BeatTime.hoursOffsetWithGMT()
         //let nbHour = -4
         let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
+        nbHour = BeatTime.hoursOffsetWitBMT()
         let index = ((abs(nbHour)/2%6)+5)%6
         let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
 #if os(watchOS)

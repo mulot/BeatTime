@@ -54,6 +54,7 @@ class RingProgressView: NSView {
     //var endColor = NSColor(red: 247/255, green: 186/255, blue: 0, alpha: 1)
     var endColor = NSColor.yellow
     var isShadow: Bool = false
+    var isFollowSun: Bool = false
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -71,6 +72,10 @@ class RingProgressView: NSView {
         }
         context.beginPath()
         if (arcFrag != 1000) {
+            let nbHour = BeatTime.hoursOffsetWithBMT()
+            //let nbHour = 2
+            print("BMP Offset: \(nbHour) hours")
+            let angle = (2 * Double.pi) / 24 * Double(nbHour)
             context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (circleDiameter/2 - lineWidth), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)
             context.replacePathWithStrokedPath()
             context.clip()
@@ -88,8 +93,15 @@ class RingProgressView: NSView {
             //guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 2) else { return }
             //guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 3) else { return }
             guard let gradient  = CGGradient(colorSpace: colorSpace, colorComponents: colorComponents, locations: locations, count: 4) else { return }
-            let startPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)+circleDiameter/2)
-            let endPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)-circleDiameter/2)
+            let startCircle = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)+circleDiameter/2)
+            var startPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)+circleDiameter/2)
+            var endPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)-circleDiameter/2)
+            if (isFollowSun) {
+                startPoint = CGPoint(x: startCircle.x - (circleDiameter/2)*sin(angle), y: startCircle.y - ((circleDiameter/2)*(1-cos(angle))))
+                endPoint =  CGPoint(x: startCircle.x - (circleDiameter/2)*sin(angle+Double.pi), y: startCircle.y - ((circleDiameter/2)*(1-cos(angle+Double.pi))))
+            }
+            //let startPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)+circleDiameter/2)
+            //let endPoint = CGPoint(x: dirtyRect.width/2, y: (dirtyRect.height/2)-circleDiameter/2)
             /*
             let startPoint = CGPoint(x: 0, y: self.bounds.height)
             let endPoint = CGPoint(x: self.bounds.width,y: self.bounds.height)

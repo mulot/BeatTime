@@ -8,6 +8,34 @@
 import WidgetKit
 import SwiftUI
 
+extension View {
+    func widgetBackground(_ backgroundView: some View) -> some View {
+#if os(macOS)
+        return containerBackground(for: .widget) {
+            backgroundView
+        }
+#endif
+#if os(iOS)
+        if #available(iOSApplicationExtension 17.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
+#endif
+#if os(watchOS)
+        if #available(watchOSApplicationExtension 10.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
+#endif
+    }
+}
+
 
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
@@ -25,9 +53,9 @@ struct BeatTimeProvider: TimelineProvider {
         var entry: BeatEntry
         //var dialColor = Color.white
         
-        // Generate a timeline consisting of five entries a minute apart, starting from the current date.
+        // Generate a timeline consisting of fitteen entries a minute apart, starting from the current date.
         let currentDate = Date()
-        for Offset in 0 ..< 5 {
+        for Offset in 0 ..< 15 {
             entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: currentDate)!
             let beat = BeatTime().beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")
@@ -85,9 +113,9 @@ struct RingProgressWidgetSystem : View {
             Text("@" + entry.beat)
                 .font(.title.bold())
         }
-        .containerBackground(for: .widget) {
-            
-        }
+#if os(macOS) || os(iOS) || os(watchOS)
+        .widgetBackground(Color.white)
+#endif
     }
 }
 
@@ -137,6 +165,9 @@ struct GaugeWidget : View {
             }
             Text(entry.beat)
         }
+#if os(iOS) || os(watchOS)
+        .widgetBackground(Color.white)
+#endif
     }
 }
 #endif
@@ -151,10 +182,9 @@ struct RectangularsWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        var nbHour = BeatTime.hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithBMT()
         //let nbHour = -4
         let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
-        nbHour = BeatTime.hoursOffsetWitBMT()
         let index = ((abs(nbHour)/2%6)+5)%6
         let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
 #if os(watchOS)
@@ -183,6 +213,9 @@ struct RectangularsWidget : View {
                     .tint(accentColor)
             }
         }
+#if os(iOS) || os(watchOS)
+        .widgetBackground(Color.white)
+#endif
     }
 }
 #endif
@@ -267,6 +300,7 @@ struct BeatTimeWidget: Widget {
         .configurationDisplayName("BeatTime")
         .description("Swatch Internet Time aka .beat time")
         .supportedFamilies(supportedFamilies)
+        //.contentMarginsDisabled()
     }
 }
 

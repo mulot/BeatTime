@@ -55,8 +55,8 @@ struct BeatTimeProvider: TimelineProvider {
         
         // Generate a timeline consisting of fitteen entries a minute apart, starting from the current date.
         let currentDate = Date()
-        for Offset in 0 ..< 15 {
-            entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: currentDate)!
+        for Offset in 1 ..< 31 {
+            entryDate = Calendar.current.date(byAdding: .second, value: Offset*30, to: currentDate)!
             let beat = BeatTime().beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")
             /*
@@ -114,7 +114,7 @@ struct RingProgressWidgetSystem : View {
                 .font(.title.bold())
         }
 #if os(macOS) || os(iOS) || os(watchOS)
-        .widgetBackground(Color.white)
+        .widgetBackground(Color("WidgetBackground"))
 #endif
     }
 }
@@ -182,9 +182,10 @@ struct RectangularsWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
+        let nbHourGMT = BeatTime.hoursOffsetWithGMT()
         let nbHour = BeatTime.hoursOffsetWithBMT()
         //let nbHour = -4
-        let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
+        let gmt:String = nbHourGMT > 0 ? "+\(nbHourGMT)" : "\(nbHourGMT)"
         let index = ((abs(nbHour)/2%6)+5)%6
         let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
 #if os(watchOS)

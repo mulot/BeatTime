@@ -30,6 +30,7 @@ struct BeatTimeiOSApp: App {
 struct ContentView: View {
     @State var showConvert = false
     @State var showSettings = false
+    @State var showAlarm = false
     @State var bgCircleColor = Color.circleLine
     @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
@@ -58,13 +59,27 @@ struct ContentView: View {
                 BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, followSun: isFollowSun, bgCircleColor: bgCircleColor)
             }
             //.background(Color.blue)
-            Button(action: { self.showConvert.toggle() }) {
-                Text("Convert")
-                    .font(.title)
+            HStack {
+                Spacer()
+                Button(action: { self.showConvert.toggle() }) {
+                    //Text("Convert")
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: { self.showAlarm.toggle() }) {
+                    //Text("Alarm")
+                    Image(systemName: "alarm")
+                        .font(.title)
+                }
+                Spacer()
             }
         }
         .sheet(isPresented: $showConvert) {
             ConvertView(isPresented: $showConvert)
+        }
+        .sheet(isPresented: $showAlarm) {
+            AlarmView(isPresented: $showAlarm)
         }
         .sheet(isPresented: $showSettings) {
             SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
@@ -124,6 +139,36 @@ struct ConvertView: View {
     }
 }
 
+struct AlarmView: View {
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { isPresented.toggle() }) {
+                    Image(systemName: "xmark.circle.fill")
+                    //.font(.title)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
+            HStack{
+                Text("Alarm")
+                    .font(.largeTitle.bold())
+                Spacer()
+            }
+            .padding(.leading)
+            VStack {
+                Spacer()
+                AlarmSetView()
+            }
+        }
+    }
+}
+
 struct ConvertBeatView: View {
     @State private var beats: String = BeatTime().beats()
     
@@ -172,6 +217,34 @@ struct ConverTimeView: View {
         VStack (alignment: .leading) {
             HStack{
                 Text("24-hour time to Beat time")
+                    .font(.subheadline)
+                Spacer()
+            }.padding(.leading)
+            List {
+                HStack {
+                    //Text("Local Time:")
+                    DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
+                    //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+                    Spacer()
+                }//.padding(.leading)
+                HStack {
+                    Text("@" + BeatTime().beats(date: date))
+                    Text(".beats")
+                    
+                }//.padding(.leading)
+            }
+        }
+    }
+}
+
+struct AlarmSetView: View {
+    @State private var date = Date()
+    
+    var body: some View {
+        
+        VStack (alignment: .leading) {
+            HStack{
+                Text("Set an alarm")
                     .font(.subheadline)
                 Spacer()
             }.padding(.leading)
@@ -263,9 +336,22 @@ struct ContentView_Previews: PreviewProvider {
                 BeatTimeView(lineWidth: 25)
                 //Text("Centi")
             }
-            Button(action: {  }) {
-                Text("Convert")
-                    .font(.title)
+            HStack {
+                Spacer()
+                Button(action: {  }) {
+                    //Text("Convert")
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: {  }) {
+                    //Text("Convert")
+                    //Image(systemName: "arrow.up.left.arrow.down.right.circle")
+                      ///  .font(.title)
+                    Image(systemName: "alarm")
+                        .font(.title)
+                }
+                Spacer()
             }
         }
     }

@@ -76,6 +76,7 @@
 		94DA1E8B2634757700F83E86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8A2634757700F83E86 /* Assets.xcassets */; };
 		94DA1E8E2634757700F83E86 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94DA1E8C2634757700F83E86 /* MainMenu.xib */; };
 		94DA1E9A2634771E00F83E86 /* BeatTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DA1E992634771E00F83E86 /* BeatTime.swift */; };
+		94F62D882B717A0300C4C2C4 /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F62D872B717A0200C4C2C4 /* LocalNotificationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -231,6 +232,7 @@
 		94DA1E8F2634757700F83E86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94DA1E902634757700F83E86 /* BeatTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeatTime.entitlements; sourceTree = "<group>"; };
 		94DA1E992634771E00F83E86 /* BeatTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatTime.swift; sourceTree = "<group>"; };
+		94F62D872B717A0200C4C2C4 /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				94BEB1BC2646D9C500A5D811 /* BeatTimeiOSApp.swift */,
+				94F62D872B717A0200C4C2C4 /* LocalNotificationManager.swift */,
 				94BEB1C02646D9CA00A5D811 /* Assets.xcassets */,
 				94BEB1C52646D9CA00A5D811 /* Info.plist */,
 				94BEB1C22646D9CA00A5D811 /* Preview Content */,
@@ -877,6 +880,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94F62D882B717A0300C4C2C4 /* LocalNotificationManager.swift in Sources */,
 				94BEB1BF2646D9C500A5D811 /* BeatTImeView.swift in Sources */,
 				94BEB20F2646E92E00A5D811 /* Colors.swift in Sources */,
 				94BEB1BD2646D9C500A5D811 /* BeatTimeiOSApp.swift in Sources */,

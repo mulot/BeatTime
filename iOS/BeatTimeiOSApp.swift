@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let notificationCenter = UNUserNotificationCenter.current()
+
 @main
 struct BeatTimeiOSApp: App {
     //let fgColors: [Color] = [.gray, .red, .orange, .yellow, .green, .blue, .purple, .pink]
@@ -240,11 +242,16 @@ struct ConverTimeView: View {
 struct AlarmSetView: View {
     @State private var date = Date()
     
+    func setNotification(msg: String) -> Void {
+        let manager = LocalNotificationManager()
+        manager.addNotification(title: msg)
+        manager.schedule()
+    }
+    
     var body: some View {
-        
         VStack (alignment: .leading) {
             HStack{
-                Text("Set an alarm")
+                Text("Set a notification alarm")
                     .font(.subheadline)
                 Spacer()
             }.padding(.leading)
@@ -261,6 +268,23 @@ struct AlarmSetView: View {
                     
                 }//.padding(.leading)
             }
+            HStack {
+                Spacer()
+                Button(action: { self.setNotification(msg: "TOTO") }) {
+                    Text("Set")
+                        .font(.title)
+                    Image(systemName: "bell")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: { }) {
+                    Text("Unset")
+                        .font(.title)
+                    Image(systemName: "bell.slash")
+                        .font(.title)
+                }
+                Spacer()
+            }//.padding(.leading)
         }
     }
 }
@@ -428,5 +452,33 @@ struct ConvertView_Previews: PreviewProvider {
             */
         }
         //.background(Color.orange)
+    }
+}
+
+struct AlarmView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { }) {
+                    Image(systemName: "xmark.circle.fill")
+                    //.font(.title)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
+            HStack{
+                Text("Alarm")
+                    .font(.largeTitle.bold())
+                Spacer()
+            }
+            .padding(.leading)
+            VStack {
+                Spacer()
+                AlarmSetView()
+            }
+        }
     }
 }

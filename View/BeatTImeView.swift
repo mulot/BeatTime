@@ -36,7 +36,7 @@ struct BeatTimeView: View {
                         .onAppear() {
                             withAnimation(.default.speed(0.30)) {
                                 //print("animation on Appear")
-                                self.beats = BeatTime().beats()
+                                self.beats = BeatTime.beats()
                             }
                         }
                     #if os(iOS)
@@ -73,7 +73,7 @@ struct BeatTimeView: View {
                     .foregroundColor(Color.red)
                  */
             }.onReceive(timer) { _ in
-                beats = BeatTime().beats(centiBeats: centiBeats)
+                beats = BeatTime.beats(centiBeats: centiBeats)
             }
             /*
             .onTapGesture {

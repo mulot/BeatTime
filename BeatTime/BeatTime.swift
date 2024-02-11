@@ -16,7 +16,7 @@ class BeatTime: NSObject {
     ///   - date: Date to convert
     ///   - centiBeats: option to display centieme of beats
     /// - Returns: beat time as String
-    func beats(date: Date = Date(), centiBeats: Bool = false) -> String
+    static func beats(date: Date = Date(), centiBeats: Bool = false) -> String
     {
         var beats: Double
         var timeSeconds: TimeInterval
@@ -39,7 +39,7 @@ class BeatTime: NSObject {
     /// Convert a beat time to a Date (local 24-hour time)
     /// - Parameter beats: beat time
     /// - Returns: Date
-    func date(beats: String) -> Date
+    static func date(beats: String) -> Date
     {
         var seconds: Double
         
@@ -99,5 +99,14 @@ class BeatTime: NSObject {
     static func hoursOffsetWithBMT(date: Date = Date()) -> Int
     {
         return(hoursOffsetWithGMT(date: date) - 1)
+    }
+    
+    static func validate(_ beats: String) -> Bool {
+        if let beattime = Int(beats) {
+            if (beattime >= 0 && beattime <= 1000) {
+                return true
+            }
+        }
+        return false
     }
 }

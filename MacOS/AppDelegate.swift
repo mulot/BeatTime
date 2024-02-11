@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     @IBOutlet var optCircleBack: NSMenuItem!
     
     var timer: Timer!
-    var beat: BeatTime!
+    //var beat: BeatTime!
     var circleBeatView: RingProgressView!
     var circleView: RingProgressView!
     var isCentiBeats: Bool = false
@@ -28,18 +28,16 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     var lineWidth: CGFloat = 25
     
     @IBAction func changeCentiBeats(_ sender: AnyObject) {
-        if (beat != nil) {
             if (optCentiBeats.state == NSControl.StateValue.off) {
                 optCentiBeats.state = NSControl.StateValue.on
                 isCentiBeats = true
-                beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"
+                beatsWindow.stringValue = "@\(BeatTime.beats(centiBeats: isCentiBeats))"
             }
             else {
                 optCentiBeats.state = NSControl.StateValue.off
                 isCentiBeats = false
-                beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"
+                beatsWindow.stringValue = "@\(BeatTime.beats(centiBeats: isCentiBeats))"
             }
-        }
     }
     
     @IBAction func changeFollowSun(_ sender: AnyObject) {
@@ -89,12 +87,10 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         }
         //Draw beat time circle
         let circleBeat = RingProgressView()
-        if (beat != nil) {
             circleBeat.isFollowSun = isFollowSun
-            circleBeat.arcFrag = Double(beat.beats()) ?? 0
+            circleBeat.arcFrag = Double(BeatTime.beats()) ?? 0
             circleBeat.lineWidth = lineWidth
             //circleBeat.arcFrag = 999 // TEST FULL CIRCLE
-        }
         if (circleBeatView != nil) {
             view.replaceSubview(circleBeatView, with: circleBeat)
             circleBeatView = circleBeat
@@ -158,9 +154,9 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         //NSApp.hide(nil)
-        beat = BeatTime()
+        //beat = BeatTime()
         //beat.isCentiBeat = true
-        beatsWindow.stringValue = "@\(beat.beats(centiBeats: isCentiBeats))"
+        beatsWindow.stringValue = "@\(BeatTime.beats(centiBeats: isCentiBeats))"
         //beatsWindow.textColor = NSColor(patternImage: imageGradient())
         drawTimeCircle()
         //let frame = NSRect(x: 0, y: 0, width: 400, height: 200)
@@ -185,14 +181,14 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         //let text = TextGradient()
         //view.addSubview(text)
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        self.statusItem?.button?.title = "@" + BeatTime().beats()
+        self.statusItem?.button?.title = "@" + BeatTime.beats()
         self.statusItem?.menu = NSMenu()
         self.statusItem?.menu?.addItem(withTitle: "Show App", action: #selector(showApp(_:)), keyEquivalent: "A")
         self.statusItem?.menu?.addItem(withTitle: "Quit", action: #selector(quitApp(_:)), keyEquivalent: "Q")
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
-            beatsWindow.stringValue = "@\(self.beat.beats(centiBeats: isCentiBeats))"
+            beatsWindow.stringValue = "@\(BeatTime.beats(centiBeats: isCentiBeats))"
             drawTimeCircle()
-            self.statusItem?.button?.title = "@" + BeatTime().beats()
+            self.statusItem?.button?.title = "@" + BeatTime.beats()
         }
     }
     

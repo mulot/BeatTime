@@ -67,7 +67,7 @@ struct TextFitView: View {
 
 struct RingProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        RingProgressView(arcFrag: Double(BeatTime().beats())!, lineWidth: 25)
+        RingProgressView(arcFrag: Double(BeatTime.beats())!, lineWidth: 25)
             .foregroundColor(Color.orange)
         //.background(Color.blue)
     }

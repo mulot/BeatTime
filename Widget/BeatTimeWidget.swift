@@ -39,11 +39,11 @@ extension View {
 
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
-        BeatEntry(date: Date(), beat: BeatTime().beats())
+        BeatEntry(date: Date(), beat: BeatTime.beats())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (BeatEntry) -> ()) {
-        let entry = BeatEntry(date: Date(), beat: BeatTime().beats())
+        let entry = BeatEntry(date: Date(), beat: BeatTime.beats())
         completion(entry)
     }
     
@@ -57,7 +57,7 @@ struct BeatTimeProvider: TimelineProvider {
         let currentDate = Date()
         for Offset in 1 ..< 31 {
             entryDate = Calendar.current.date(byAdding: .second, value: Offset*30, to: currentDate)!
-            let beat = BeatTime().beats(date: entryDate)
+            let beat = BeatTime.beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")
             /*
              if (Int(beat) != nil) {

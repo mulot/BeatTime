@@ -8,6 +8,7 @@
 import SwiftUI
 
 let notificationCenter = UNUserNotificationCenter.current()
+let manager = LocalNotificationManager()
 
 @main
 struct BeatTimeiOSApp: App {
@@ -71,7 +72,7 @@ struct ContentView: View {
                 Spacer()
                 Button(action: { self.showAlarm.toggle() }) {
                     //Text("Alarm")
-                    Image(systemName: "alarm")
+                    Image(systemName: "bell")
                         .font(.title)
                 }
                 Spacer()
@@ -172,7 +173,7 @@ struct AlarmView: View {
 }
 
 struct ConvertBeatView: View {
-    @State private var beats: String = BeatTime().beats()
+    @State private var beats: String = BeatTime.beats()
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -184,8 +185,8 @@ struct ConvertBeatView: View {
             List {
                 HStack {
                     TextField("Beat Time", text: $beats, onCommit: {
-                        if (!validate(beats)) {
-                            beats = BeatTime().beats()
+                        if (!BeatTime.validate(beats)) {
+                            beats = BeatTime.beats()
                         }
                     })
                     .foregroundColor(.accentColor)
@@ -195,19 +196,10 @@ struct ConvertBeatView: View {
                 }//.padding(.leading)
                 HStack {
                     Text("24-hour time:")
-                    Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
+                    Text(DateFormatter.localizedString(from: BeatTime.date(beats: beats), dateStyle: .none, timeStyle: .short))
                 }//.padding(.leading)
             }
         }
-    }
-    
-    private func validate(_ beats: String) -> Bool {
-        if let beattime = Int(beats) {
-            if (beattime >= 0 && beattime <= 1000) {
-                return true
-            }
-        }
-        return false
     }
 }
 
@@ -230,7 +222,7 @@ struct ConverTimeView: View {
                     Spacer()
                 }//.padding(.leading)
                 HStack {
-                    Text("@" + BeatTime().beats(date: date))
+                    Text("@" + BeatTime.beats(date: date))
                     Text(".beats")
                     
                 }//.padding(.leading)
@@ -241,11 +233,25 @@ struct ConverTimeView: View {
 
 struct AlarmSetView: View {
     @State private var date = Date()
+    @State private var beats: String = BeatTime.beats()
+    @State private var notifCount: Int = manager.notifications.count
     
-    func setNotification(msg: String) -> Void {
-        let manager = LocalNotificationManager()
+    func setNotification(msg: String, time: TimeInterval) -> Void {
         manager.addNotification(title: msg)
-        manager.schedule()
+        if (time < 0) {
+            manager.schedule(time: 86400 + time)
+        }
+        else {
+            manager.schedule(time: time)
+        }
+    }
+    
+    func unsetNotification(id: String? = nil) -> Void {
+        if (id == nil)
+        {
+            manager.notifications.removeLast()
+            manager.schedule()
+        }
     }
     
     var body: some View {
@@ -259,25 +265,58 @@ struct AlarmSetView: View {
                 HStack {
                     //Text("Local Time:")
                     DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
+                        .onChange(of: date) { newDate in
+                            //print("Date changed to \(date)!")
+                            beats = BeatTime.beats(date: date)
+                        }
                     //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
                     Spacer()
                 }//.padding(.leading)
                 HStack {
-                    Text("@" + BeatTime().beats(date: date))
+                    TextField("Beat Time", text: $beats, onCommit: {
+                        if (BeatTime.validate(beats)) {
+                            date = BeatTime.date(beats: beats)
+                        }
+                        else {
+                            print("beats non valid")
+                        }
+                    })
+                    .foregroundColor(.accentColor)
+                    //Text("@" + BeatTime().beats(date: date))
                     Text(".beats")
-                    
                 }//.padding(.leading)
             }
             HStack {
+                Text("Current alarms")
+                    .font(.subheadline)
                 Spacer()
-                Button(action: { self.setNotification(msg: "TOTO") }) {
+            }.padding(.leading)
+            List {
+                ForEach(0..<notifCount, id:\.self) { index in
+                    Text("\(manager.notifications[index].title)")
+                        .tag(manager.notifications[index].id)
+                }
+            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", time: date.timeIntervalSinceNow)
+                    notifCount = manager.notifications.count
+                }) {
                     Text("Set")
                         .font(.title)
                     Image(systemName: "bell")
                         .font(.title)
                 }
                 Spacer()
-                Button(action: { }) {
+                Button(action: {
+                    if (manager.notifications.last != nil) {
+                        print("unset: \(manager.notifications.last!.id)")
+                        //unsetNotification(id: manager.notifications.last!.id)
+                        unsetNotification()
+                    }
+                    notifCount = manager.notifications.count
+                }) {
                     Text("Unset")
                         .font(.title)
                     Image(systemName: "bell.slash")

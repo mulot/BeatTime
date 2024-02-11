@@ -49,7 +49,7 @@ struct Clock {
     ]
     
     static func getClock(date: Date = Date()) -> [String] {
-        let beats:String = "\(BeatTime().beats(date: date))"
+        let beats:String = "\(BeatTime.beats(date: date))"
         //print("getClock Date: \(date) Beats: \(beats) Beatime: \(BeatTime().beats(date: date))")
         var hours:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
         let minutes:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
@@ -120,7 +120,7 @@ struct ConvertView: View {
     private func updateClock(_ selectedTime: [String]) {
         logger.debug("updateclock Beats: \(selectedTime[0]) Hours: \(selectedTime[1]) Minutes: \(selectedTime[2])")
         if (self.lastSelection[0] != selectedTime[0]) {
-            let newClock = Clock.getClock(date: BeatTime().date(beats: selectedTime[0]))
+            let newClock = Clock.getClock(date: BeatTime.date(beats: selectedTime[0]))
             self.selection[1] = newClock[1]
             self.selection[2] = newClock[2]
             logger.debug("Updated selection:  Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
@@ -180,7 +180,7 @@ struct ContentView: View {
                     .scaleEffect(3.2, anchor: .center)
                     .onAppear() {
                         withAnimation(.default.speed(0.25)) {
-                            self.beats = BeatTime().beats()
+                            self.beats = BeatTime.beats()
                             //print("animation on Appear")
                         }
                     }
@@ -193,7 +193,7 @@ struct ContentView: View {
             .focusable()
             .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
             .onReceive(timer) { _ in
-                beats = BeatTime().beats()
+                beats = BeatTime.beats()
             }
             /*
              .onTapGesture(perform: {

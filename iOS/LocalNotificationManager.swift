@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-struct Notification {
+struct Notification: Equatable {
     var id: String
     var title: String
     var timer: TimeInterval
@@ -17,43 +17,57 @@ struct Notification {
 class LocalNotificationManager {
     var notifications = [Notification]()
     
-    func requestPermission() -> Void {
+    func requestPermission(notif: Notification) -> Void {
         UNUserNotificationCenter
             .current()
             .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
                 if granted == true && error == nil {
-                    self.scheduleNotifications()
+                    self.scheduleNotifications(notif: notif)
                     // We have permission!
                 }
             }
     }
     
     func addNotification(title: String, time: TimeInterval) -> Void {
-        notifications.append(Notification(id: UUID().uuidString, title: title, timer: time))
+        let notif = Notification(id: UUID().uuidString, title: title, timer: time)
+        notifications.append(notif)
+        self.schedule(notif: notif)
     }
     
-    func scheduleNotifications() -> Void {
-        for notification in notifications {
-            let content = UNMutableNotificationContent()
-            content.title = notification.title
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notification.timer, repeats: false)
-            let request = UNNotificationRequest(identifier: notification.id, content: content, trigger: trigger)
-            
-            UNUserNotificationCenter.current().add(request) { error in
-                guard error == nil else { return }
-                print("Scheduling notification with id: \(notification.id)")
-            }
+    func removeNotification(notif: Notification) -> Void {
+        if let index = notifications.firstIndex(of: notif) {
+            //print("remove notif: \(notif.id)")
+            notifications.remove(at: index)
+            self.unscheduleNotifications(notif: notif)
         }
     }
     
-    func schedule() -> Void {
+    func scheduleNotifications(notif: Notification) -> Void {
+            let content = UNMutableNotificationContent()
+            content.title = notif.title
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notif.timer, repeats: false)
+            let request = UNNotificationRequest(identifier: notif.id, content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request) { error in
+                guard error == nil else { return }
+                print("Scheduling notification with id: \(notif.id)")
+            }
+    }
+    
+    func unscheduleNotifications(notif: Notification) -> Void {
+        let notifs: [String] = [notif.id]
+        print("Unscheduling notifications: \(notifs)")
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notifs)
+    }
+    
+    func schedule(notif: Notification) -> Void {
         UNUserNotificationCenter.current().getNotificationSettings { settings in
             switch settings.authorizationStatus {
             case .notDetermined:
-                self.requestPermission()
+                self.requestPermission(notif: notif)
             case .authorized, .provisional:
-                self.scheduleNotifications()
+                self.scheduleNotifications(notif: notif)
             default:
                 break
             }

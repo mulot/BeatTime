@@ -239,19 +239,21 @@ struct AlarmSetView: View {
     func setNotification(msg: String, time: TimeInterval) -> Void {
         if (time < 0) {
             manager.addNotification(title: msg, time: 86400 + time)
-            manager.schedule()
         }
         else {
             manager.addNotification(title: msg, time: time)
-            manager.schedule()
         }
     }
     
     func unsetNotification(id: String? = nil) -> Void {
         if (id == nil)
         {
-            manager.notifications.removeLast()
-            manager.schedule()
+            if (manager.notifications.last != nil) {
+                manager.removeNotification(notif: manager.notifications.last!)
+            }
+        }
+        else {
+            
         }
     }
     
@@ -312,8 +314,6 @@ struct AlarmSetView: View {
                 Spacer()
                 Button(action: {
                     if (manager.notifications.last != nil) {
-                        print("unset: \(manager.notifications.last!.id)")
-                        //unsetNotification(id: manager.notifications.last!.id)
                         unsetNotification()
                     }
                     notifCount = manager.notifications.count

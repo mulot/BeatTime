@@ -237,12 +237,13 @@ struct AlarmSetView: View {
     @State private var notifCount: Int = manager.notifications.count
     
     func setNotification(msg: String, time: TimeInterval) -> Void {
-        manager.addNotification(title: msg)
         if (time < 0) {
-            manager.schedule(time: 86400 + time)
+            manager.addNotification(title: msg, time: 86400 + time)
+            manager.schedule()
         }
         else {
-            manager.schedule(time: time)
+            manager.addNotification(title: msg, time: time)
+            manager.schedule()
         }
     }
     

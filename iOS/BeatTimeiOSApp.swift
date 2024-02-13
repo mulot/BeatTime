@@ -19,7 +19,7 @@ struct BeatTimeiOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //BeatTimeView(lineWidth: 25)
+            //BeatTimeView(lineWidth:onde 25)
             /*
              .background(Color.black)
              .foregroundColor(fgColor)
@@ -158,12 +158,14 @@ struct AlarmView: View {
                     //.font(.title)
                 }
             } .padding(.trailing)
+            /*
             HStack{
                 Text("Alarm")
                     .font(.largeTitle.bold())
                 Spacer()
             }
             .padding(.leading)
+             */
             VStack {
                 Spacer()
                 AlarmSetView()
@@ -235,7 +237,8 @@ struct AlarmSetView: View {
     @State private var date = Date()
     @State private var beats: String = BeatTime.beats()
     @State private var notifCount: Int = manager.notifications.count
-    
+    @State private var notifications: [Notification] = manager.notifications
+
     func setNotification(msg: String, time: TimeInterval) -> Void {
         if (time < 0) {
             manager.addNotification(title: msg, time: 86400 + time)
@@ -253,58 +256,64 @@ struct AlarmSetView: View {
             }
         }
         else {
-            
+            let notif = manager.notifications.filter{$0.id == id}
+            if !notif.isEmpty {
+                print("remove notif: \(notif[0].title) - \(notif[0].id)")
+            }
         }
     }
     
     var body: some View {
         VStack (alignment: .leading) {
-            HStack{
-                Text("Set a notification alarm")
-                    .font(.subheadline)
-                Spacer()
-            }.padding(.leading)
-            List {
-                HStack {
-                    //Text("Local Time:")
-                    DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
-                        .onChange(of: date) { newDate in
-                            //print("Date changed to \(date)!")
-                            beats = BeatTime.beats(date: date)
-                        }
-                    //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
-                    Spacer()
-                }//.padding(.leading)
-                HStack {
-                    TextField("Beat Time", text: $beats, onCommit: {
-                        if (BeatTime.validate(beats)) {
-                            date = BeatTime.date(beats: beats)
-                        }
-                        else {
-                            print("beats non valid")
-                        }
-                    })
-                    .foregroundColor(.accentColor)
-                    //Text("@" + BeatTime().beats(date: date))
-                    Text(".beats")
-                }//.padding(.leading)
-            }
-            HStack {
-                Text("Current alarms")
-                    .font(.subheadline)
-                Spacer()
-            }.padding(.leading)
-            List {
-                ForEach(0..<notifCount, id:\.self) { index in
-                    Text("\(manager.notifications[index].title)")
-                        .tag(manager.notifications[index].id)
+            NavigationView {
+                List {
+                    HStack {
+                        //Text("Local Time:")
+                        DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
+                            .onChange(of: date) { newDate in
+                                //print("Date changed to \(date)!")
+                                beats = BeatTime.beats(date: date)
+                            }
+                        //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
+                        Spacer()
+                    }//.padding(.leading)
+                    HStack {
+                        TextField("Beat Time", text: $beats, onCommit: {
+                            if (BeatTime.validate(beats)) {
+                                date = BeatTime.date(beats: beats)
+                            }
+                            else {
+                                print("beats non valid")
+                            }
+                        })
+                        .foregroundColor(.accentColor)
+                        Text(".beats")
+                    }//.padding(.leading)
                 }
+                .navigationTitle("Set alarm")
+            }
+           NavigationView {
+                List {
+                    ForEach(notifications) { notif in
+                        Text("\(notif.title)")
+                    }
+                    .onDelete(perform: {
+                        //unsetNotification()
+                        notifications.remove(atOffsets: $0)
+                        //notifCount = manager.notifications.count
+                        notifCount = notifications.count
+                    })
+                }
+                .navigationTitle("Current alarms: \(notifCount)")
+                //.navigationTitle("Current alarms")
+                .toolbar { EditButton() }
             }
             HStack {
                 Spacer()
                 Button(action: {
                     self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", time: date.timeIntervalSinceNow)
-                    notifCount = manager.notifications.count
+                    notifications = manager.notifications
+                    notifCount =  manager.notifications.count
                 }) {
                     Text("Set")
                         .font(.title)
@@ -316,6 +325,7 @@ struct AlarmSetView: View {
                     if (manager.notifications.last != nil) {
                         unsetNotification()
                     }
+                    notifications = manager.notifications
                     notifCount = manager.notifications.count
                 }) {
                     Text("Unset")
@@ -324,7 +334,8 @@ struct AlarmSetView: View {
                         .font(.title)
                 }
                 Spacer()
-            }//.padding(.leading)
+            }
+            //.padding(.leading)
         }
     }
 }
@@ -509,14 +520,16 @@ struct AlarmView_Previews: PreviewProvider {
                     //.font(.title)
                 }
             } .padding(.trailing)
+            /*
             HStack{
                 Text("Alarm")
                     .font(.largeTitle.bold())
                 Spacer()
             }
             .padding(.leading)
+             */
             VStack {
-                Spacer()
+                //Spacer()
                 AlarmSetView()
             }
         }

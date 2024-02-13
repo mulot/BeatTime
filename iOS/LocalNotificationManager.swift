@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-struct Notification: Equatable {
+struct Notification: Identifiable, Hashable {
     var id: String
     var title: String
     var timer: TimeInterval

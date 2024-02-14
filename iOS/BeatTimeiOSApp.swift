@@ -158,14 +158,18 @@ struct AlarmView: View {
                     //.font(.title)
                 }
             } .padding(.trailing)
-            /*
             HStack{
-                Text("Alarm")
+                Text("Notification alarm")
                     .font(.largeTitle.bold())
                 Spacer()
             }
             .padding(.leading)
-             */
+            HStack{
+                Text("Manage notifications")
+                    .font(.subheadline)
+                Spacer()
+            }
+            .padding(.leading)
             VStack {
                 Spacer()
                 AlarmSetView()
@@ -259,6 +263,7 @@ struct AlarmSetView: View {
             let notif = manager.notifications.filter{$0.id == id}
             if !notif.isEmpty {
                 print("remove notif: \(notif[0].title) - \(notif[0].id)")
+                manager.removeNotification(notif: notif[0])
             }
         }
     }
@@ -298,9 +303,11 @@ struct AlarmSetView: View {
                         Text("\(notif.title)")
                     }
                     .onDelete(perform: {
-                        //unsetNotification()
+                        if let index = $0.first {
+                            //print("index \(index)")
+                            unsetNotification(id: notifications[index].id)
+                        }
                         notifications.remove(atOffsets: $0)
-                        //notifCount = manager.notifications.count
                         notifCount = notifications.count
                     })
                 }
@@ -520,14 +527,12 @@ struct AlarmView_Previews: PreviewProvider {
                     //.font(.title)
                 }
             } .padding(.trailing)
-            /*
             HStack{
                 Text("Alarm")
                     .font(.largeTitle.bold())
                 Spacer()
             }
             .padding(.leading)
-             */
             VStack {
                 //Spacer()
                 AlarmSetView()

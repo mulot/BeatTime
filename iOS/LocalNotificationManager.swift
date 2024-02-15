@@ -12,6 +12,7 @@ struct Notification: Identifiable, Hashable {
     var id: String
     var title: String
     var timer: TimeInterval
+    var date: Date
 }
 
 class LocalNotificationManager {
@@ -28,8 +29,8 @@ class LocalNotificationManager {
             }
     }
     
-    func addNotification(title: String, time: TimeInterval) -> Void {
-        let notif = Notification(id: UUID().uuidString, title: title, timer: time)
+    func addNotification(title: String, time: TimeInterval, date: Date) -> Void {
+        let notif = Notification(id: UUID().uuidString, title: title, timer: time, date: date)
         notifications.append(notif)
         self.schedule(notif: notif)
     }

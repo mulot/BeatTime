@@ -243,12 +243,12 @@ struct AlarmSetView: View {
     @State private var notifCount: Int = manager.notifications.count
     @State private var notifications: [Notification] = manager.notifications
 
-    func setNotification(msg: String, time: TimeInterval) -> Void {
-        if (time < 0) {
-            manager.addNotification(title: msg, time: 86400 + time)
+    func setNotification(msg: String, date: Date) -> Void {
+        if (date.timeIntervalSinceNow < 0) {
+            manager.addNotification(title: msg, time: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
         }
         else {
-            manager.addNotification(title: msg, time: time)
+            manager.addNotification(title: msg, time: date.timeIntervalSinceNow, date: date)
         }
     }
     
@@ -268,18 +268,22 @@ struct AlarmSetView: View {
         }
     }
     
+    func notificationTitle2beats(title: String) -> String {
+        var notifBeats = title.replacingOccurrences(of: "@", with: "")
+        notifBeats = notifBeats.replacingOccurrences(of: " .beats", with: "")
+        return (notifBeats)
+    }
+    
     var body: some View {
         VStack (alignment: .leading) {
             NavigationView {
                 List {
                     HStack {
-                        //Text("Local Time:")
                         DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
                             .onChange(of: date) { newDate in
                                 //print("Date changed to \(date)!")
                                 beats = BeatTime.beats(date: date)
                             }
-                        //Text(DateFormatter.localizedString(from: Date(), dateStyle: .none, timeStyle: .short))
                         Spacer()
                     }//.padding(.leading)
                     HStack {
@@ -300,11 +304,16 @@ struct AlarmSetView: View {
            NavigationView {
                 List {
                     ForEach(notifications) { notif in
-                        Text("\(notif.title)")
+                        if (notif.date > Date()) {
+                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                        }
+                        else {
+                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                                .foregroundColor(Color.gray)
+                        }
                     }
                     .onDelete(perform: {
                         if let index = $0.first {
-                            //print("index \(index)")
                             unsetNotification(id: notifications[index].id)
                         }
                         notifications.remove(atOffsets: $0)
@@ -318,7 +327,8 @@ struct AlarmSetView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", time: date.timeIntervalSinceNow)
+                    let dateBeats = BeatTime.date(beats: BeatTime.beats(date: date))
+                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", date: dateBeats)
                     notifications = manager.notifications
                     notifCount =  manager.notifications.count
                 }) {

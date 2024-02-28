@@ -267,13 +267,7 @@ struct AlarmSetView: View {
             }
         }
     }
-    
-    func notificationTitle2beats(title: String) -> String {
-        var notifBeats = title.replacingOccurrences(of: "@", with: "")
-        notifBeats = notifBeats.replacingOccurrences(of: " .beats", with: "")
-        return (notifBeats)
-    }
-    
+
     var body: some View {
         VStack (alignment: .leading) {
             NavigationView {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-let notificationCenter = UNUserNotificationCenter.current()
+//let notificationCenter = UNUserNotificationCenter.current()
 let manager = LocalNotificationManager()
 
 @main

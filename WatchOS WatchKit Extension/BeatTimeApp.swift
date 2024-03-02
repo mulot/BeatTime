@@ -8,6 +8,9 @@
 import SwiftUI
 import os
 
+//let notificationCenter = UNUserNotificationCenter.current()
+let manager = LocalNotificationManager()
+
 @main
 struct BeatTimeApp: App {
     @WKApplicationDelegateAdaptor private var appDelegate: ExtensionDelegate
@@ -20,6 +23,7 @@ struct BeatTimeApp: App {
             TabView {
                 ContentView()
                 ConvertView()
+                AlarmView()
             }.tabViewStyle(PageTabViewStyle())
         }.onChange(of: scenePhase) { (phase) in
             switch phase {
@@ -112,6 +116,7 @@ struct ConvertView: View {
                     }
                 }.font(.title.bold())
             }
+           
         }.onChange(of: selection) { time in
             updateClock(time)
         }
@@ -152,6 +157,40 @@ struct ConvertView: View {
             }
         }
         self.lastSelection = self.selection
+    }
+}
+
+struct AlarmView: View {
+    @State var selection: String = BeatTime.beats()
+    
+    func setNotification(msg: String, date: Date) -> Void {
+        if (date.timeIntervalSinceNow < 0) {
+            manager.addNotification(title: msg, time: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+        }
+        else {
+            manager.addNotification(title: msg, time: date.timeIntervalSinceNow, date: date)
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Picker("", selection: $selection) {
+                    ForEach(0..<1000, id:\.self) { index in
+                        Text(verbatim: "@\(index)")
+                            .tag("\(index)")
+                    }
+                }
+                .font(.title.bold())
+            }
+            HStack {
+                Text(DateFormatter.localizedString(from: BeatTime.date(beats: selection), dateStyle: .short, timeStyle: .short))
+                        .font(.title3.bold())
+            }
+            Button("Set notif ", action: {
+                self.setNotification(msg: "@\(selection) .beats", date: BeatTime.date(beats: selection))
+            })
+        }
     }
 }
 
@@ -213,6 +252,7 @@ struct Content_Preview: PreviewProvider {
         TabView {
             ContentView()
             ConvertView()
+            AlarmView()
         }.tabViewStyle(PageTabViewStyle())
     }
 }
@@ -221,6 +261,15 @@ struct Convert_Preview: PreviewProvider {
     static var previews: some View {
         TabView {
             ConvertView()
+            ContentView()
+        }.tabViewStyle(PageTabViewStyle())
+    }
+}
+
+struct Alarm_Preview: PreviewProvider {
+    static var previews: some View {
+        TabView {
+            AlarmView()
             ContentView()
         }.tabViewStyle(PageTabViewStyle())
     }

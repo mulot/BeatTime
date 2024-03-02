@@ -50,15 +50,14 @@ struct ContentView: View {
     
     @Binding var hoursOffsetGMT: Int
     @State var bgCircle: Bool = true
+    @State var centiBeats: Bool = false
+    @State var lineWidth: CGFloat = 40
     
     var longPress: some Gesture {
         LongPressGesture(minimumDuration: 1.0)
             .onEnded { _ in
-                hoursOffsetGMT += 1
-                if hoursOffsetGMT == 13 {
-                    hoursOffsetGMT = -12
-                }
-                print("longpress > GMT: \(hoursOffsetGMT)")
+                hoursOffsetGMT = BeatTime.hoursOffsetWithGMT()
+                //print("longpress > GMT: \(hoursOffsetGMT)")
             }
     }
     
@@ -77,16 +76,43 @@ struct ContentView: View {
                 .gradientForeground(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient])
                 */
             if #available(tvOS 16.0, *) {
-                BeatTimeView(lineWidth: 40, fullCircleBg: bgCircle, hoursOffsetGMT: hoursOffsetGMT)
+                BeatTimeView(lineWidth: lineWidth, centiBeats: centiBeats, fullCircleBg: bgCircle, hoursOffsetGMT: hoursOffsetGMT)
                     .focusable(true)
                     .highPriorityGesture(longPress)
                     .onLongPressGesture(minimumDuration: 0.01, pressing: { _ in }) {
                         print("short press")
-                        bgCircle = !bgCircle
+                        centiBeats = !centiBeats
                     }
+                    .onMoveCommand(perform: { direction in
+                        switch direction {
+                        case .down:
+                            print("down press")
+                            bgCircle = !bgCircle
+                        case .up:
+                            print("up press")
+                            lineWidth += 10
+                            if lineWidth == 110 {
+                                lineWidth = 40
+                            }
+                        case .left:
+                            print("left press")
+                            hoursOffsetGMT -= 1
+                            if hoursOffsetGMT == -13 {
+                                hoursOffsetGMT = 12
+                            }
+                        case .right:
+                            print("right press")
+                            hoursOffsetGMT += 1
+                            if hoursOffsetGMT == 13 {
+                                hoursOffsetGMT = -12
+                            }
+                        default:
+                            print("move press")
+                        }
+                    })
             }
             else {
-                BeatTimeView(lineWidth: 40)
+                BeatTimeView(lineWidth: lineWidth)
             }
         }
     }

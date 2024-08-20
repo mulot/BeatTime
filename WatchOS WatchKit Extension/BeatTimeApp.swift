@@ -7,6 +7,7 @@
 
 import SwiftUI
 import os
+import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
 let manager = LocalNotificationManager()
@@ -24,9 +25,10 @@ struct BeatTimeApp: App {
                 ContentView()
                 ConvertView()
                 AlarmView()
+                    .modelContainer(for: Notification.self)
             }.tabViewStyle(PageTabViewStyle())
-        }.onChange(of: scenePhase) { (phase) in
-            switch phase {
+        }.onChange(of: scenePhase) { oldPhase, newPhase in
+            switch newPhase {
             case .inactive:
                 logger.debug("Scene became inactive.")
             case .active:
@@ -117,8 +119,8 @@ struct ConvertView: View {
                 }.font(.title.bold())
             }
            
-        }.onChange(of: selection) { time in
-            updateClock(time)
+        }.onChange(of: selection) { oldTime, newTime in
+            updateClock(newTime)
         }
     }
     

@@ -284,7 +284,7 @@ struct AlarmSetView: View {
                 List {
                     HStack {
                         DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
-                            .onChange(of: date) { newDate in
+                            .onChange(of: date) {
                                 //print("Date changed to \(date)!")
                                 beats = BeatTime.beats(date: date)
                             }

@@ -53,9 +53,9 @@ struct BeatTimeProvider: TimelineProvider {
         var entry: BeatEntry
         //var dialColor = Color.white
         
-        // Generate a timeline consisting of fitteen entries a minute apart, starting from the current date.
+        // Generate a timeline consisting of 120 entries 30 secconds apart (timeline for 60min), starting from the current date.
         let currentDate = Date()
-        for Offset in 1 ..< 31 {
+        for Offset in 0 ..< 120 {
             entryDate = Calendar.current.date(byAdding: .second, value: Offset*30, to: currentDate)!
             let beat = BeatTime.beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")

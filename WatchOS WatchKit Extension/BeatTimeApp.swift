@@ -165,10 +165,12 @@ struct AlarmView: View {
     
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            manager.addNotification(title: msg, time: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            manager.addNotification(notif: notif)
         }
         else {
-            manager.addNotification(title: msg, time: date.timeIntervalSinceNow, date: date)
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            manager.addNotification(notif: notif)
         }
     }
     

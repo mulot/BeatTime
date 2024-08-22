@@ -161,7 +161,7 @@ struct AlarmView: View {
                 }
             } .padding(.trailing)
             HStack{
-                Text("Notification alarm")
+                Text("Alarm notifications")
                     .font(.largeTitle.bold())
                 Spacer()
             }

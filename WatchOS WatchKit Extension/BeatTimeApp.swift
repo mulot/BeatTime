@@ -188,8 +188,15 @@ struct AlarmView: View {
                 .font(.title.bold())
             }
             HStack {
-                Text(DateFormatter.localizedString(from: BeatTime.date(beats: selection), dateStyle: .short, timeStyle: .short))
+                let date = BeatTime.date(beats: selection)
+                if (date.timeIntervalSinceNow < 0) {
+                    Text(DateFormatter.localizedString(from: date.addingTimeInterval(86400), dateStyle: .short, timeStyle: .short))
                         .font(.title3.bold())
+                }
+                else {
+                    Text(DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
+                        .font(.title3.bold())
+                }
             }
             Button("Set notif ", action: {
                 self.setNotification(msg: "@\(selection) .beats", date: BeatTime.date(beats: selection))

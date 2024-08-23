@@ -7,12 +7,21 @@
 
 import Foundation
 import UserNotifications
+import SwiftData
 
-struct Notification: Identifiable, Hashable {
+@Model
+class Notification: Identifiable, Hashable {
     var id: String
     var title: String
     var timer: TimeInterval
     var date: Date
+    
+    init(id: String, title: String, timer: TimeInterval, date: Date) {
+        self.id = id
+        self.title = title
+        self.timer = timer
+        self.date = date
+    }
 }
 
 class LocalNotificationManager {
@@ -29,8 +38,8 @@ class LocalNotificationManager {
             }
     }
     
-    func addNotification(title: String, time: TimeInterval, date: Date) -> Void {
-        let notif = Notification(id: UUID().uuidString, title: title, timer: time, date: date)
+    func addNotification(notif: Notification) -> Void {
+        //let notif = Notification(id: UUID().uuidString, title: title, timer: time, date: date)
         notifications.append(notif)
         self.schedule(notif: notif)
     }

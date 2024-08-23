@@ -7,6 +7,7 @@
 
 import SwiftUI
 import os
+import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
 let manager = LocalNotificationManager()
@@ -24,9 +25,10 @@ struct BeatTimeApp: App {
                 ContentView()
                 ConvertView()
                 AlarmView()
+                    .modelContainer(for: Notification.self)
             }.tabViewStyle(PageTabViewStyle())
-        }.onChange(of: scenePhase) { (phase) in
-            switch phase {
+        }.onChange(of: scenePhase) { oldPhase, newPhase in
+            switch newPhase {
             case .inactive:
                 logger.debug("Scene became inactive.")
             case .active:
@@ -117,8 +119,8 @@ struct ConvertView: View {
                 }.font(.title.bold())
             }
            
-        }.onChange(of: selection) { time in
-            updateClock(time)
+        }.onChange(of: selection) { oldTime, newTime in
+            updateClock(newTime)
         }
     }
     
@@ -165,10 +167,12 @@ struct AlarmView: View {
     
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            manager.addNotification(title: msg, time: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            manager.addNotification(notif: notif)
         }
         else {
-            manager.addNotification(title: msg, time: date.timeIntervalSinceNow, date: date)
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            manager.addNotification(notif: notif)
         }
     }
     
@@ -184,8 +188,15 @@ struct AlarmView: View {
                 .font(.title.bold())
             }
             HStack {
-                Text(DateFormatter.localizedString(from: BeatTime.date(beats: selection), dateStyle: .short, timeStyle: .short))
+                let date = BeatTime.date(beats: selection)
+                if (date.timeIntervalSinceNow < 0) {
+                    Text(DateFormatter.localizedString(from: date.addingTimeInterval(86400), dateStyle: .short, timeStyle: .short))
                         .font(.title3.bold())
+                }
+                else {
+                    Text(DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
+                        .font(.title3.bold())
+                }
             }
             Button("Set notif ", action: {
                 self.setNotification(msg: "@\(selection) .beats", date: BeatTime.date(beats: selection))

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
 let manager = LocalNotificationManager()
@@ -19,6 +20,7 @@ struct BeatTimeiOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .modelContainer(for: Notification.self)
             //BeatTimeView(lineWidth:onde 25)
             /*
              .background(Color.black)
@@ -159,7 +161,7 @@ struct AlarmView: View {
                 }
             } .padding(.trailing)
             HStack{
-                Text("Notification alarm")
+                Text("Alarm notifications")
                     .font(.largeTitle.bold())
                 Spacer()
             }
@@ -240,30 +242,38 @@ struct ConverTimeView: View {
 struct AlarmSetView: View {
     @State private var date = Date()
     @State private var beats: String = BeatTime.beats()
-    @State private var notifCount: Int = manager.notifications.count
-    @State private var notifications: [Notification] = manager.notifications
+    @Query(sort: \Notification.date) private var notifications: [Notification]
+    //@State private var notifCount: Int = manager.notifications.count
+    //@Query private var notifications: [Notification] = manager.notifications
+    @Environment(\.modelContext) private var context
 
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            manager.addNotification(title: msg, time: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            manager.addNotification(notif: notif)
+            context.insert(notif)
         }
         else {
-            manager.addNotification(title: msg, time: date.timeIntervalSinceNow, date: date)
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            manager.addNotification(notif: notif)
+            context.insert(notif)
         }
     }
     
     func unsetNotification(id: String? = nil) -> Void {
         if (id == nil)
         {
-            if (manager.notifications.last != nil) {
-                manager.removeNotification(notif: manager.notifications.last!)
+            if (notifications.last != nil) {
+                manager.removeNotification(notif: notifications.last!)
+                context.delete(notifications.last!)
             }
         }
         else {
-            let notif = manager.notifications.filter{$0.id == id}
+            let notif = notifications.filter{$0.id == id}
             if !notif.isEmpty {
                 print("remove notif: \(notif[0].title) - \(notif[0].id)")
                 manager.removeNotification(notif: notif[0])
+                context.delete(notif[0])
             }
         }
     }
@@ -274,7 +284,7 @@ struct AlarmSetView: View {
                 List {
                     HStack {
                         DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
-                            .onChange(of: date) { newDate in
+                            .onChange(of: date) {
                                 //print("Date changed to \(date)!")
                                 beats = BeatTime.beats(date: date)
                             }
@@ -310,11 +320,11 @@ struct AlarmSetView: View {
                         if let index = $0.first {
                             unsetNotification(id: notifications[index].id)
                         }
-                        notifications.remove(atOffsets: $0)
-                        notifCount = notifications.count
+                        manager.notifications.remove(atOffsets: $0)
+                        //notifCount = notifications.count
                     })
                 }
-                .navigationTitle("Current alarms: \(notifCount)")
+                .navigationTitle("Current alarms: \(notifications.count)")
                 //.navigationTitle("Current alarms")
                 .toolbar { EditButton() }
             }
@@ -323,8 +333,8 @@ struct AlarmSetView: View {
                 Button(action: {
                     let dateBeats = BeatTime.date(beats: BeatTime.beats(date: date))
                     self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", date: dateBeats)
-                    notifications = manager.notifications
-                    notifCount =  manager.notifications.count
+                    //notifications = manager.notifications
+                    //notifCount =  manager.notifications.count
                 }) {
                     Text("Set")
                         .font(.title)
@@ -333,11 +343,11 @@ struct AlarmSetView: View {
                 }
                 Spacer()
                 Button(action: {
-                    if (manager.notifications.last != nil) {
+                    if (notifications.last != nil) {
                         unsetNotification()
                     }
-                    notifications = manager.notifications
-                    notifCount = manager.notifications.count
+                    //notifications = manager.notifications
+                    //notifCount = manager.notifications.count
                 }) {
                     Text("Unset")
                         .font(.title)

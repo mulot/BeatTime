@@ -166,7 +166,8 @@ struct GaugeWidget : View {
             Text(entry.beat)
         }
 #if os(iOS) || os(watchOS)
-        .widgetBackground(Color.white)
+        //.widgetBackground(Color.white)
+        .widgetBackground(Color("WidgetBackground"))
 #endif
     }
 }
@@ -215,7 +216,8 @@ struct RectangularsWidget : View {
             }
         }
 #if os(iOS) || os(watchOS)
-        .widgetBackground(Color.white)
+        //.widgetBackground(Color.white)
+        .widgetBackground(Color("WidgetBackground"))
 #endif
     }
 }

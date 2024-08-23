@@ -164,6 +164,7 @@ struct ConvertView: View {
 
 struct AlarmView: View {
     @State var selection: String = BeatTime.beats()
+    @State private var notifCount = 0
     
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
@@ -200,7 +201,9 @@ struct AlarmView: View {
             }
             Button("Set notif ", action: {
                 self.setNotification(msg: "@\(selection) .beats", date: BeatTime.date(beats: selection))
+                notifCount += 1
             })
+            .sensoryFeedback(.success, trigger: notifCount)
         }
     }
 }

@@ -30,7 +30,7 @@ class LocalNotificationManager {
     func requestPermission(notif: Notification) -> Void {
         UNUserNotificationCenter
             .current()
-            .requestAuthorization(options: [.alert, .badge, .alert]) { granted, error in
+            .requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 if granted == true && error == nil {
                     self.scheduleNotifications(notif: notif)
                     // We have permission!
@@ -55,6 +55,9 @@ class LocalNotificationManager {
     func scheduleNotifications(notif: Notification) -> Void {
             let content = UNMutableNotificationContent()
             content.title = notif.title
+            content.sound = UNNotificationSound.default
+        //content.badge = 1
+        //UNUserNotificationCenter.current().setBadgeCount(1)
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notif.timer, repeats: false)
             let request = UNNotificationRequest(identifier: notif.id, content: content, trigger: trigger)

@@ -242,7 +242,7 @@ struct ConverTimeView: View {
 struct AlarmSetView: View {
     @State private var date = Date()
     @State private var beats: String = BeatTime.beats()
-    @Query private var notifications: [Notification]
+    @Query(sort: \Notification.date) private var notifications: [Notification]
     //@State private var notifCount: Int = manager.notifications.count
     //@Query private var notifications: [Notification] = manager.notifications
     @Environment(\.modelContext) private var context

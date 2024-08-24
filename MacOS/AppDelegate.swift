@@ -162,8 +162,8 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
         //let frame = NSRect(x: 0, y: 0, width: 400, height: 200)
         //let gradientLabel = GradientLabel(string: "TUTU")
         //view.addSubview(gradientLabel)
-        let textGradient = GradientTextView()
-        view.addSubview(textGradient)
+        //let textGradient = GradientTextView()
+        //view.addSubview(textGradient)
         /*
         if let maskImage = createMaskImage(withText: "Hello !") {
             let imageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 300, height: 100))

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NotificationView: View {
     var body: some View {
-        Text("@" + BeatTime().beats())
+        Text("@" + BeatTime.beats())
     }
 }
 

@@ -6,6 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
+
+//let notificationCenter = UNUserNotificationCenter.current()
+let manager = LocalNotificationManager()
 
 @main
 struct BeatTimeiOSApp: App {
@@ -16,7 +20,8 @@ struct BeatTimeiOSApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //BeatTimeView(lineWidth: 25)
+                .modelContainer(for: Notification.self)
+            //BeatTimeView(lineWidth:onde 25)
             /*
              .background(Color.black)
              .foregroundColor(fgColor)
@@ -30,6 +35,7 @@ struct BeatTimeiOSApp: App {
 struct ContentView: View {
     @State var showConvert = false
     @State var showSettings = false
+    @State var showAlarm = false
     @State var bgCircleColor = Color.circleLine
     @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
@@ -58,13 +64,27 @@ struct ContentView: View {
                 BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, followSun: isFollowSun, bgCircleColor: bgCircleColor)
             }
             //.background(Color.blue)
-            Button(action: { self.showConvert.toggle() }) {
-                Text("Convert")
-                    .font(.title)
+            HStack {
+                Spacer()
+                Button(action: { self.showConvert.toggle() }) {
+                    //Text("Convert")
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: { self.showAlarm.toggle() }) {
+                    //Text("Alarm")
+                    Image(systemName: "bell")
+                        .font(.title)
+                }
+                Spacer()
             }
         }
         .sheet(isPresented: $showConvert) {
             ConvertView(isPresented: $showConvert)
+        }
+        .sheet(isPresented: $showAlarm) {
+            AlarmView(isPresented: $showAlarm)
         }
         .sheet(isPresented: $showSettings) {
             SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
@@ -124,8 +144,44 @@ struct ConvertView: View {
     }
 }
 
+struct AlarmView: View {
+    @Binding var isPresented: Bool
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { isPresented.toggle() }) {
+                    Image(systemName: "xmark.circle.fill")
+                    //.font(.title)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
+            HStack{
+                Text("Alarm notifications")
+                    .font(.largeTitle.bold())
+                Spacer()
+            }
+            .padding(.leading)
+            HStack{
+                Text("Manage notifications")
+                    .font(.subheadline)
+                Spacer()
+            }
+            .padding(.leading)
+            VStack {
+                Spacer()
+                AlarmSetView()
+            }
+        }
+    }
+}
+
 struct ConvertBeatView: View {
-    @State private var beats: String = BeatTime().beats()
+    @State private var beats: String = BeatTime.beats()
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -137,8 +193,8 @@ struct ConvertBeatView: View {
             List {
                 HStack {
                     TextField("Beat Time", text: $beats, onCommit: {
-                        if (!validate(beats)) {
-                            beats = BeatTime().beats()
+                        if (!BeatTime.validate(beats)) {
+                            beats = BeatTime.beats()
                         }
                     })
                     .foregroundColor(.accentColor)
@@ -148,19 +204,10 @@ struct ConvertBeatView: View {
                 }//.padding(.leading)
                 HStack {
                     Text("24-hour time:")
-                    Text(DateFormatter.localizedString(from: BeatTime().date(beats: beats), dateStyle: .none, timeStyle: .short))
+                    Text(DateFormatter.localizedString(from: BeatTime.date(beats: beats), dateStyle: .none, timeStyle: .short))
                 }//.padding(.leading)
             }
         }
-    }
-    
-    private func validate(_ beats: String) -> Bool {
-        if let beattime = Int(beats) {
-            if (beattime >= 0 && beattime <= 1000) {
-                return true
-            }
-        }
-        return false
     }
 }
 
@@ -183,11 +230,131 @@ struct ConverTimeView: View {
                     Spacer()
                 }//.padding(.leading)
                 HStack {
-                    Text("@" + BeatTime().beats(date: date))
+                    Text("@" + BeatTime.beats(date: date))
                     Text(".beats")
                     
                 }//.padding(.leading)
             }
+        }
+    }
+}
+
+struct AlarmSetView: View {
+    @State private var date = Date()
+    @State private var beats: String = BeatTime.beats()
+    @Query(sort: \Notification.date) private var notifications: [Notification]
+    @Environment(\.modelContext) private var context
+
+    func setNotification(msg: String, date: Date) -> Void {
+        if (date.timeIntervalSinceNow < 0) {
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            manager.addNotification(notif: notif)
+            context.insert(notif)
+        }
+        else {
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            manager.addNotification(notif: notif)
+            context.insert(notif)
+        }
+    }
+    
+    func unsetNotification(id: String? = nil) -> Void {
+        if (id == nil)
+        {
+            if (notifications.last != nil) {
+                manager.removeNotification(notif: notifications.last!)
+                context.delete(notifications.last!)
+            }
+        }
+        else {
+            let notif = notifications.filter{$0.id == id}
+            if !notif.isEmpty {
+                print("remove notif: \(notif[0].title) - \(notif[0].id)")
+                manager.removeNotification(notif: notif[0])
+                context.delete(notif[0])
+            }
+        }
+    }
+
+    var body: some View {
+        VStack (alignment: .leading) {
+            NavigationView {
+                List {
+                    HStack {
+                        DatePicker("24-hour time:", selection: $date, displayedComponents: [.hourAndMinute])
+                            .onChange(of: date) {
+                                //print("Date changed to \(date)!")
+                                beats = BeatTime.beats(date: date)
+                            }
+                        Spacer()
+                    }//.padding(.leading)
+                    HStack {
+                        TextField("Beat Time", text: $beats, onCommit: {
+                            if (BeatTime.validate(beats)) {
+                                date = BeatTime.date(beats: beats)
+                            }
+                            else {
+                                print("beats non valid")
+                            }
+                        })
+                        .foregroundColor(.accentColor)
+                        Text(".beats")
+                    }//.padding(.leading)
+                }
+                .navigationTitle("Set alarm")
+            }
+           NavigationView {
+                List {
+                    ForEach(notifications) { notif in
+                        if (notif.date > Date()) {
+                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                        }
+                        else {
+                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                                .foregroundColor(Color.gray)
+                        }
+                    }
+                    .onDelete(perform: {
+                        if let index = $0.first {
+                            unsetNotification(id: notifications[index].id)
+                        }
+                        manager.notifications.remove(atOffsets: $0)
+                        //notifCount = notifications.count
+                    })
+                }
+                .navigationTitle("Current alarms: \(notifications.count)")
+                //.navigationTitle("Current alarms")
+                .toolbar { EditButton() }
+            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    let dateBeats = BeatTime.date(beats: BeatTime.beats(date: date))
+                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", date: dateBeats)
+                    //notifications = manager.notifications
+                    //notifCount =  manager.notifications.count
+                }) {
+                    Text("Set")
+                        .font(.title)
+                    Image(systemName: "bell")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: {
+                    if (notifications.last != nil) {
+                        unsetNotification()
+                    }
+                    //notifications = manager.notifications
+                    //notifCount = manager.notifications.count
+                }) {
+                    Text("Unset")
+                        .font(.title)
+                    Image(systemName: "bell.slash")
+                        .font(.title)
+                }
+                Spacer()
+            }
+            //.padding(.leading)
         }
     }
 }
@@ -263,9 +430,22 @@ struct ContentView_Previews: PreviewProvider {
                 BeatTimeView(lineWidth: 25)
                 //Text("Centi")
             }
-            Button(action: {  }) {
-                Text("Convert")
-                    .font(.title)
+            HStack {
+                Spacer()
+                Button(action: {  }) {
+                    //Text("Convert")
+                    Image(systemName: "arrow.left.arrow.right")
+                        .font(.title)
+                }
+                Spacer()
+                Button(action: {  }) {
+                    //Text("Convert")
+                    //Image(systemName: "arrow.up.left.arrow.down.right.circle")
+                      ///  .font(.title)
+                    Image(systemName: "alarm")
+                        .font(.title)
+                }
+                Spacer()
             }
         }
     }
@@ -342,5 +522,33 @@ struct ConvertView_Previews: PreviewProvider {
             */
         }
         //.background(Color.orange)
+    }
+}
+
+struct AlarmView_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            Spacer()
+            Spacer()
+            HStack{
+                Spacer()
+                Button(action: { }) {
+                    Image(systemName: "xmark.circle.fill")
+                    //.font(.title)
+                        .foregroundColor(.gray)
+                    //.font(.title)
+                }
+            } .padding(.trailing)
+            HStack{
+                Text("Alarm")
+                    .font(.largeTitle.bold())
+                Spacer()
+            }
+            .padding(.leading)
+            VStack {
+                //Spacer()
+                AlarmSetView()
+            }
+        }
     }
 }

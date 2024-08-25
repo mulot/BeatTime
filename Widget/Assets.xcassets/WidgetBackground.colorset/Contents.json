@@ -3,7 +3,20 @@
     {
       "color" : {
         "platform" : "osx",
-        "reference" : "windowFrameTextColor"
+        "reference" : "textBackgroundColor"
+      },
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "color" : {
+        "platform" : "osx",
+        "reference" : "windowBackgroundColor"
       },
       "idiom" : "universal"
     }

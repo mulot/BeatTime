@@ -17,6 +17,7 @@ struct BeatTimeView: View {
     var fullCircleBg: Bool = true
     var followSun: Bool = true
     var bgCircleColor: Color = Color.circleLine
+    var hoursOffsetGMT: Int = BeatTime.hoursOffsetWithBMT()
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,7 +37,7 @@ struct BeatTimeView: View {
                         .onAppear() {
                             withAnimation(.default.speed(0.30)) {
                                 //print("animation on Appear")
-                                self.beats = BeatTime().beats()
+                                self.beats = BeatTime.beats()
                             }
                         }
                     #if os(iOS)
@@ -73,7 +74,7 @@ struct BeatTimeView: View {
                     .foregroundColor(Color.red)
                  */
             }.onReceive(timer) { _ in
-                beats = BeatTime().beats(centiBeats: centiBeats)
+                beats = BeatTime.beats(centiBeats: centiBeats)
             }
             /*
             .onTapGesture {
@@ -86,8 +87,7 @@ struct BeatTimeView: View {
     
     func gradientPosition(date: Date = Date(), frame: CGRect, lenght: CGFloat, followSun: Bool = true) -> (UnitPoint, UnitPoint)
     {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
-        let angle = -(2 * Double.pi) / 24 * Double(nbHour)
+        let angle = -(2 * Double.pi) / 24 * Double(hoursOffsetGMT)
         let r = lenght / 2
         let startCircle = UnitPoint(x: 0.5, y: (1 - (lenght / frame.height)) / 2)
         let endCircle = UnitPoint(x: 0.5, y: 1 - ((1 - (lenght / frame.height)) / 2))

@@ -7,6 +7,10 @@
 
 import SwiftUI
 import os
+import SwiftData
+
+//let notificationCenter = UNUserNotificationCenter.current()
+let manager = LocalNotificationManager()
 
 @main
 struct BeatTimeApp: App {
@@ -20,9 +24,11 @@ struct BeatTimeApp: App {
             TabView {
                 ContentView()
                 ConvertView()
+                AlarmView()
+                    .modelContainer(for: Notification.self)
             }.tabViewStyle(PageTabViewStyle())
-        }.onChange(of: scenePhase) { (phase) in
-            switch phase {
+        }.onChange(of: scenePhase) { oldPhase, newPhase in
+            switch newPhase {
             case .inactive:
                 logger.debug("Scene became inactive.")
             case .active:
@@ -49,7 +55,7 @@ struct Clock {
     ]
     
     static func getClock(date: Date = Date()) -> [String] {
-        let beats:String = "\(BeatTime().beats(date: date))"
+        let beats:String = "\(BeatTime.beats(date: date))"
         //print("getClock Date: \(date) Beats: \(beats) Beatime: \(BeatTime().beats(date: date))")
         var hours:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[0])"
         let minutes:String = "\(DateFormatter.localizedString(from: date, dateStyle: .none, timeStyle: .short).split(separator: ":", omittingEmptySubsequences: true)[1].split(separator: " ")[0])"
@@ -112,15 +118,16 @@ struct ConvertView: View {
                     }
                 }.font(.title.bold())
             }
-        }.onChange(of: selection) { time in
-            updateClock(time)
+           
+        }.onChange(of: selection) { oldTime, newTime in
+            updateClock(newTime)
         }
     }
     
     private func updateClock(_ selectedTime: [String]) {
         logger.debug("updateclock Beats: \(selectedTime[0]) Hours: \(selectedTime[1]) Minutes: \(selectedTime[2])")
         if (self.lastSelection[0] != selectedTime[0]) {
-            let newClock = Clock.getClock(date: BeatTime().date(beats: selectedTime[0]))
+            let newClock = Clock.getClock(date: BeatTime.date(beats: selectedTime[0]))
             self.selection[1] = newClock[1]
             self.selection[2] = newClock[2]
             logger.debug("Updated selection:  Beats: \(selection[0]) Hours: \(selection[1]) Minutes: \(selection[2]) current Date: \(Date())")
@@ -155,6 +162,52 @@ struct ConvertView: View {
     }
 }
 
+struct AlarmView: View {
+    @State var selection: String = BeatTime.beats()
+    @State private var notifCount = 0
+    
+    func setNotification(msg: String, date: Date) -> Void {
+        if (date.timeIntervalSinceNow < 0) {
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            manager.addNotification(notif: notif)
+        }
+        else {
+            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            manager.addNotification(notif: notif)
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Picker("", selection: $selection) {
+                    ForEach(0..<1000, id:\.self) { index in
+                        Text(verbatim: "@\(index)")
+                            .tag("\(index)")
+                    }
+                }
+                .font(.title.bold())
+            }
+            HStack {
+                let date = BeatTime.date(beats: selection)
+                if (date.timeIntervalSinceNow < 0) {
+                    Text(DateFormatter.localizedString(from: date.addingTimeInterval(86400), dateStyle: .short, timeStyle: .short))
+                        .font(.title3.bold())
+                }
+                else {
+                    Text(DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
+                        .font(.title3.bold())
+                }
+            }
+            Button("Set notif ", action: {
+                self.setNotification(msg: "@\(selection) .beats", date: BeatTime.date(beats: selection))
+                notifCount += 1
+            })
+            .sensoryFeedback(.success, trigger: notifCount)
+        }
+    }
+}
+
 struct ContentView: View {
     let fgColors: [Color] = [.orange, .gray, .red, .yellow, .green, .blue, .purple, .pink]
     @SceneStorage("ContentView.color") private var index:Double = 0.0
@@ -180,7 +233,7 @@ struct ContentView: View {
                     .scaleEffect(3.2, anchor: .center)
                     .onAppear() {
                         withAnimation(.default.speed(0.25)) {
-                            self.beats = BeatTime().beats()
+                            self.beats = BeatTime.beats()
                             //print("animation on Appear")
                         }
                     }
@@ -193,7 +246,7 @@ struct ContentView: View {
             .focusable()
             .digitalCrownRotation($index, from: 0, through: Double((fgColors.count - 1)), by: 1.0, sensitivity: .low, isContinuous: true, isHapticFeedbackEnabled: true)
             .onReceive(timer) { _ in
-                beats = BeatTime().beats()
+                beats = BeatTime.beats()
             }
             /*
              .onTapGesture(perform: {
@@ -213,6 +266,7 @@ struct Content_Preview: PreviewProvider {
         TabView {
             ContentView()
             ConvertView()
+            AlarmView()
         }.tabViewStyle(PageTabViewStyle())
     }
 }
@@ -221,6 +275,15 @@ struct Convert_Preview: PreviewProvider {
     static var previews: some View {
         TabView {
             ConvertView()
+            ContentView()
+        }.tabViewStyle(PageTabViewStyle())
+    }
+}
+
+struct Alarm_Preview: PreviewProvider {
+    static var previews: some View {
+        TabView {
+            AlarmView()
             ContentView()
         }.tabViewStyle(PageTabViewStyle())
     }

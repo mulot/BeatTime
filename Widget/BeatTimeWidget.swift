@@ -8,14 +8,42 @@
 import WidgetKit
 import SwiftUI
 
+extension View {
+    func widgetBackground(_ backgroundView: some View) -> some View {
+#if os(macOS)
+        return containerBackground(for: .widget) {
+            backgroundView
+        }
+#endif
+#if os(iOS)
+        if #available(iOSApplicationExtension 17.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
+#endif
+#if os(watchOS)
+        if #available(watchOSApplicationExtension 10.0, *) {
+            return containerBackground(for: .widget) {
+                backgroundView
+            }
+        } else {
+            return background(backgroundView)
+        }
+#endif
+    }
+}
+
 
 struct BeatTimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> BeatEntry {
-        BeatEntry(date: Date(), beat: BeatTime().beats())
+        BeatEntry(date: Date(), beat: BeatTime.beats())
     }
     
     func getSnapshot(in context: Context, completion: @escaping (BeatEntry) -> ()) {
-        let entry = BeatEntry(date: Date(), beat: BeatTime().beats())
+        let entry = BeatEntry(date: Date(), beat: BeatTime.beats())
         completion(entry)
     }
     
@@ -25,11 +53,11 @@ struct BeatTimeProvider: TimelineProvider {
         var entry: BeatEntry
         //var dialColor = Color.white
         
-        // Generate a timeline consisting of five entries a minute apart, starting from the current date.
+        // Generate a timeline consisting of 120 entries 30 secconds apart (timeline for 60min), starting from the current date.
         let currentDate = Date()
-        for Offset in 0 ..< 5 {
-            entryDate = Calendar.current.date(byAdding: .minute, value: Offset, to: currentDate)!
-            let beat = BeatTime().beats(date: entryDate)
+        for Offset in 0 ..< 120 {
+            entryDate = Calendar.current.date(byAdding: .second, value: Offset*30, to: currentDate)!
+            let beat = BeatTime.beats(date: entryDate)
             //print("getTimeline - Offset: \(Offset) beat: \(beat)")
             /*
              if (Int(beat) != nil) {
@@ -85,6 +113,9 @@ struct RingProgressWidgetSystem : View {
             Text("@" + entry.beat)
                 .font(.title.bold())
         }
+#if os(macOS) || os(iOS) || os(watchOS)
+        .widgetBackground(Color("WidgetBackground"))
+#endif
     }
 }
 
@@ -98,7 +129,7 @@ struct GaugeWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithBMT()
         //let nbHour = 4
         let angle = (2 * Double.pi) / 24 * Double(nbHour)
         let startCircle = UnitPoint(x: 0.5, y: 1)
@@ -134,6 +165,10 @@ struct GaugeWidget : View {
             }
             Text(entry.beat)
         }
+#if os(iOS) || os(watchOS)
+        //.widgetBackground(Color.white)
+        .widgetBackground(Color("WidgetBackground"))
+#endif
     }
 }
 #endif
@@ -148,9 +183,10 @@ struct RectangularsWidget : View {
     @Environment(\.widgetRenderingMode) var renderingMode
     
     var body: some View {
-        let nbHour = BeatTime.hoursOffsetWithGMT()
+        let nbHourGMT = BeatTime.hoursOffsetWithGMT()
+        let nbHour = BeatTime.hoursOffsetWithBMT()
         //let nbHour = -4
-        let gmt:String = nbHour > 0 ? "+\(nbHour)" : "\(nbHour)"
+        let gmt:String = nbHourGMT > 0 ? "+\(nbHourGMT)" : "\(nbHourGMT)"
         let index = ((abs(nbHour)/2%6)+5)%6
         let colors:[Color] = [.mid2Gradient, .endGradient, .mid2Gradient, .midGradient, .startGradient, .midGradient]
 #if os(watchOS)
@@ -179,6 +215,10 @@ struct RectangularsWidget : View {
                     .tint(accentColor)
             }
         }
+#if os(iOS) || os(watchOS)
+        //.widgetBackground(Color.white)
+        .widgetBackground(Color("WidgetBackground"))
+#endif
     }
 }
 #endif
@@ -263,6 +303,7 @@ struct BeatTimeWidget: Widget {
         .configurationDisplayName("BeatTime")
         .description("Swatch Internet Time aka .beat time")
         .supportedFamilies(supportedFamilies)
+        //.contentMarginsDisabled()
     }
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,8 @@
             <connections>
                 <outlet property="beatsWindow" destination="axz-U4-xrK" id="cSY-XQ-ptJ"/>
                 <outlet property="optCentiBeats" destination="08f-AP-Qyd" id="1In-IG-xCP"/>
+                <outlet property="optCircleBack" destination="mEa-V8-PWu" id="3z1-no-ajD"/>
+                <outlet property="optFollowSun" destination="PYO-nC-BGq" id="ryY-pw-bit"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="XGf-Ig-Eh5"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -642,10 +644,22 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="j6M-Tf-Omj"/>
+                            <menuItem title="Follow the Sun" keyEquivalent="c" identifier="isFollowSun" id="PYO-nC-BGq" userLabel="Follow the Sun">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="changeFollowSun:" target="Voe-Tx-rLC" id="VLA-Y2-UC5"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Show centiBeats" keyEquivalent="c" identifier="isCentiBeats" id="08f-AP-Qyd">
                                 <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
                                 <connections>
                                     <action selector="changeCentiBeats:" target="Voe-Tx-rLC" id="h2w-rd-Jh5"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show back circle" state="on" keyEquivalent="c" identifier="isFullBackCircle" id="mEa-V8-PWu" userLabel="Show back circle">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="changeCircleBack:" target="Voe-Tx-rLC" id="HAe-gM-7TT"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -691,17 +705,17 @@
             </items>
             <point key="canvasLocation" x="-113" y="132"/>
         </menu>
-        <window title="BeatTime" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+        <window title="BeatTime" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" tabbingMode="disallowed" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="389" height="251"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="contentRect" x="335" y="390" width="421" height="250"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="950"/>
             <value key="minSize" type="size" width="250" height="200"/>
             <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="199" height="66"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axz-U4-xrK">
-                        <rect key="frame" x="98" y="-88" width="193" height="56"/>
+                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axz-U4-xrK">
+                        <rect key="frame" x="114" y="-87" width="193" height="56"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="GLU-hy-b0Y"/>
                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="189" id="eYA-gi-JuS"/>
@@ -727,7 +741,7 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="oXJ-dp-oCK"/>
             </connections>
-            <point key="canvasLocation" x="815.5" y="777.5"/>
+            <point key="canvasLocation" x="926.5" y="869"/>
         </window>
     </objects>
 </document>

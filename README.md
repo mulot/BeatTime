@@ -11,7 +11,7 @@ This project includes:
 - TvOS app for Apple TV
 
 
-Apps are coded in Swift language using AppKit/Cocoa (macOS), SwiftUI (iOS, WatchOS, tvOS), WidgetKit, WatchKit, ClockKit, UserNotifications and SwiftData (required iOS 17.0) modules
+Apps are coded in Swift language using AppKit/Cocoa (macOS), SwiftUI (iOS, WatchOS, tvOS), WidgetKit, WatchKit, ClockKit, UserNotifications and SwiftData (requires iOS 17.0) modules
 
 For more information about Swatch Internet Time:
 https://en.wikipedia.org/wiki/Swatch_Internet_Time

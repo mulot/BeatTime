@@ -242,7 +242,9 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
             let shadowOffset = 2
             let circleDiameter = min(dirtyRect.height, dirtyRect.width)
             //print("Rect Height: \(dirtyRect.height) width: \(dirtyRect.width) diameter: \(circleDiameter)")
-            
+            //lineWidth = log2(circleDiameter)*3
+            lineWidth = circleDiameter/20
+            //print("circleDiameter: \(circleDiameter) lineWidth: \(lineWidth)")
             context.saveGState()
             context.setLineWidth(lineWidth)
             context.setLineCap(CGLineCap.round)
@@ -251,8 +253,8 @@ class AppDelegate: NSObject, NSWindowDelegate, NSApplicationDelegate {
             }
             context.beginPath()
             if (arcFrag != 1000) {
-                //let nbHour = BeatTime.hoursOffsetWithBMT()
-                let nbHour = 4
+                let nbHour = BeatTime.hoursOffsetWithBMT()
+                //let nbHour = 4
                 //print("BMP Offset: \(nbHour) hours")
                 let angle = (2 * Double.pi) / 24 * Double(nbHour)
                 context.addArc(center: CGPoint(x: dirtyRect.width/2, y: dirtyRect.height/2), radius: (circleDiameter/2 - lineWidth), startAngle: CGFloat(Double.pi/2), endAngle: arcLength, clockwise: true)

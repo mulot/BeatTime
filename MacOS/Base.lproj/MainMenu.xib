@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23094" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23094"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -709,12 +709,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="421" height="250"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1512" height="950"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="250" height="200"/>
             <view key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="199" height="66"/>
                 <subviews>
-                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axz-U4-xrK">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axz-U4-xrK">
                         <rect key="frame" x="114" y="-87" width="193" height="56"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="GLU-hy-b0Y"/>

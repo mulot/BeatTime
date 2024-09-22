@@ -22,7 +22,7 @@ What's New in version 2.0:
 - Define alarm notifications for WatchOS app
 
 What's New in version 2.1:
-- Dark and tinted modes support for iOS 18
+- App icon dark and tinted modes support for iOS 18
   
 For more information: https://beattime.mulot.org
 

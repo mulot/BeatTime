@@ -16,7 +16,7 @@ class BeatTime: NSObject {
     ///   - date: Date to convert
     ///   - centiBeats: option to display centieme of beats
     /// - Returns: beat time as String
-    static func beats(date: Date = Date(), centiBeats: Bool = false) -> String
+    static func beats(date: Date = Date(), centiBeats: Bool = false, fullDigits: Bool = false) -> String
     {
         var beats: Double
         var timeSeconds: TimeInterval
@@ -27,8 +27,17 @@ class BeatTime: NSObject {
         beats = (daySeconds * 1000) / 86400
         //print(".beat @\(Int(beats))")
         if (centiBeats) {
-            //print(".beat @\(String(format: "%.2f", beats))")
-            return String(format: "%.2f", beats)
+            if (fullDigits) {
+                //print(".beat @\(String(format: "%06.2f", beats))")
+                return String(format: "%06.2f", beats)
+            }
+            else {
+                //print(".beat @\(String(format: "%.2f", beats))")
+                return String(format: "%.2f", beats)
+            }
+        }
+        if (fullDigits) {
+            return String(format: "%03d", Int(beats))
         }
         else {
             //print(".beat @\(Int(beats))")

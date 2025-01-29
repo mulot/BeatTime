@@ -15,6 +15,7 @@ struct BeatTimeView: View {
     var lineWidth: CGFloat = 10
     var centiBeats: Bool = false
     var fullCircleBg: Bool = true
+    var fullDigits: Bool = false
     var followSun: Bool = true
     var bgCircleColor: Color = Color.circleLine
     var hoursOffsetGMT: Int = BeatTime.hoursOffsetWithBMT()
@@ -37,14 +38,19 @@ struct BeatTimeView: View {
                         .onAppear() {
                             withAnimation(.default.speed(0.30)) {
                                 //print("animation on Appear")
-                                self.beats = BeatTime.beats()
+                                self.beats = BeatTime.beats(centiBeats: centiBeats, fullDigits: fullDigits)
                             }
                         }
                     #if os(iOS)
                         .id(viewID)
                         .onTapGesture {
                                 //print("animation on Tap")
+                            if (fullDigits) {
+                                self.beats = "000"
+                            }
+                            else {
                                 self.beats = "0"
+                            }
                                 viewID += 1
                         }
                     #elseif os(tvOS)
@@ -74,7 +80,7 @@ struct BeatTimeView: View {
                     .foregroundColor(Color.red)
                  */
             }.onReceive(timer) { _ in
-                beats = BeatTime.beats(centiBeats: centiBeats)
+                beats = BeatTime.beats(centiBeats: centiBeats, fullDigits: fullDigits)
             }
             /*
             .onTapGesture {

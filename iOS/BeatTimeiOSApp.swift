@@ -39,6 +39,7 @@ struct ContentView: View {
     @State var bgCircleColor = Color.circleLine
     @SceneStorage("ContentView.isCentiBeats") var isCentiBeats = false
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
+    @SceneStorage("ContentView.isFullDigits") var isFullDigits = false
     @SceneStorage("ContentView.isFollowSun") var isFollowSun = true
     
     var body: some View {
@@ -61,7 +62,7 @@ struct ContentView: View {
              .mask(BeatTimeView(lineWidth: 25))
              */
             ZStack {
-                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, followSun: isFollowSun, bgCircleColor: bgCircleColor)
+                BeatTimeView(lineWidth: 25, centiBeats: isCentiBeats, fullCircleBg: isFullCircleBg, fullDigits: isFullDigits, followSun: isFollowSun, bgCircleColor: bgCircleColor)
             }
             //.background(Color.blue)
             HStack {
@@ -87,7 +88,7 @@ struct ContentView: View {
             AlarmView(isPresented: $showAlarm)
         }
         .sheet(isPresented: $showSettings) {
-            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
+            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFullDigits: $isFullDigits, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
         }
         /*
         .onTapGesture(perform: {
@@ -363,6 +364,7 @@ struct SettingsView: View {
     @Binding var isPresented: Bool
     @Binding var isCentiBeats: Bool
     @Binding var isFullCircleBg: Bool
+    @Binding var isFullDigits: Bool
     @Binding var isFollowSun: Bool
     @Binding var bgCircleColor: Color
     
@@ -379,6 +381,9 @@ struct SettingsView: View {
                     }
                     Toggle(isOn: $isFullCircleBg) {
                         Text("Back circle")
+                    }
+                    Toggle(isOn: $isFullDigits) {
+                        Text("Full digits")
                     }
                     if (isFullCircleBg) {
                         ColorPicker("Back circle color", selection: $bgCircleColor)

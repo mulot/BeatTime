@@ -36,11 +36,13 @@ struct GMTView: View {
                 Text("GMT: +\(hoursOffsetGMT)")
                     .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: .leading, endPoint: .trailing)
                     .font(.headline)
+                    .bold()
             }
             else {
                 Text("GMT: \(hoursOffsetGMT)")
                     .gradientLinear(colors: [.startGradient, .midGradient, .mid2Gradient, .endGradient], startPoint: .leading, endPoint: .trailing)
                     .font(.headline)
+                    .bold()
             }
         }
     }
@@ -80,28 +82,28 @@ struct ContentView: View {
                     .focusable(true)
                     .highPriorityGesture(longPress)
                     .onLongPressGesture(minimumDuration: 0.01, pressing: { _ in }) {
-                        print("short press")
+                        //print("short press")
                         centiBeats = !centiBeats
                     }
                     .onMoveCommand(perform: { direction in
                         switch direction {
                         case .down:
-                            print("down press")
+                            //print("down press")
                             bgCircle = !bgCircle
                         case .up:
-                            print("up press")
+                            //print("up press")
                             lineWidth += 10
                             if lineWidth == 110 {
                                 lineWidth = 40
                             }
                         case .left:
-                            print("left press")
+                            //print("left press")
                             hoursOffsetGMT -= 1
                             if hoursOffsetGMT == -13 {
                                 hoursOffsetGMT = 12
                             }
                         case .right:
-                            print("right press")
+                            //print("right press")
                             hoursOffsetGMT += 1
                             if hoursOffsetGMT == 13 {
                                 hoursOffsetGMT = -12

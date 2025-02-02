@@ -17,9 +17,8 @@ For more information about Swatch Internet Time:
 https://en.wikipedia.org/wiki/Swatch_Internet_Time
 
 
-What's New in version 2.0:
-- Define and manage alarm notifications for iOS app
-- Define alarm notifications for WatchOS app
+What's New in version 2.2:
+- Add an option to always display .beats time with 3 digits (eg. @042, @003, @642)
 
 What's New in version 2.1:
 - App icon dark and tinted modes support for iOS 18

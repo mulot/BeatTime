@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
-let manager = LocalNotificationManager()
+@MainActor let manager = LocalNotificationManager()
 
 @main
 struct BeatTimeiOSApp: App {

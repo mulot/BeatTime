@@ -10,10 +10,10 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         ZStack {
-            Text("@" + BeatTime().beats())
+            Text("@" + BeatTime.beats())
             RingProgressView(arcFrag: 999, lineWidth: 10)
                 .foregroundColor(.circleLine)
-            RingProgressView(arcFrag: Double(BeatTime().beats())!, lineWidth: 10)
+            RingProgressView(arcFrag: Double(BeatTime.beats())!, lineWidth: 10)
                 .foregroundColor(.accentColor)
         }
         .font(.title.bold())

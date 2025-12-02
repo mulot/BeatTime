@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
-@MainActor let manager = LocalNotificationManager()
+//@MainActor let manager = LocalNotificationManager()
+@MainActor let manager = AlarmModel()
 
 @main
 struct BeatTimeiOSApp: App {
@@ -248,21 +249,24 @@ struct AlarmSetView: View {
 
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
-            manager.addNotification(notif: notif)
+            let notif = Notification(id: UUID(), title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            //manager.addNotification(notif: notif)
+            manager.scheduleFixAlarm(notif: notif)
             context.insert(notif)
         }
         else {
-            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
-            manager.addNotification(notif: notif)
+            let notif = Notification(id: UUID(), title: msg, timer: date.timeIntervalSinceNow, date: date)
+            //manager.addNotification(notif: notif)
+            manager.scheduleFixAlarm(title: msg, date: date)
             context.insert(notif)
         }
     }
     
-    func unsetNotification(id: String? = nil) -> Void {
+    func unsetNotification(id: UUID? = nil) -> Void {
         if (id == nil)
         {
             if (notifications.last != nil) {
+                //manager.removeNotification(notif: notifications.last!)
                 manager.removeNotification(notif: notifications.last!)
                 context.delete(notifications.last!)
             }
@@ -271,7 +275,8 @@ struct AlarmSetView: View {
             let notif = notifications.filter{$0.id == id}
             if !notif.isEmpty {
                 print("remove notif: \(notif[0].title) - \(notif[0].id)")
-                manager.removeNotification(notif: notif[0])
+                //manager.removeNotification(notif: notif[0])
+                manager.removeNotification(notif: notifications.last!)
                 context.delete(notif[0])
             }
         }
@@ -314,7 +319,7 @@ struct AlarmSetView: View {
                             Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
                                 .foregroundColor(Color.gray)
                         }
-                    }
+                     }
                     .onDelete(perform: {
                         if let index = $0.first {
                             unsetNotification(id: notifications[index].id)

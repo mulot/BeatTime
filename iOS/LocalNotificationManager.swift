@@ -11,12 +11,12 @@ import SwiftData
 
 @Model
 class Notification: Identifiable, Hashable {
-    var id: String
+    var id: UUID
     var title: String
     var timer: TimeInterval
     var date: Date
     
-    init(id: String, title: String, timer: TimeInterval, date: Date) {
+    init(id: UUID, title: String, timer: TimeInterval, date: Date) {
         self.id = id
         self.title = title
         self.timer = timer
@@ -60,7 +60,7 @@ class LocalNotificationManager {
         //UNUserNotificationCenter.current().setBadgeCount(1)
             
             let trigger = UNTimeIntervalNotificationTrigger(timeInterval: notif.timer, repeats: false)
-            let request = UNNotificationRequest(identifier: notif.id, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: notif.id.uuidString, content: content, trigger: trigger)
             
             UNUserNotificationCenter.current().add(request) { error in
                 guard error == nil else { return }
@@ -69,7 +69,7 @@ class LocalNotificationManager {
     }
     
     func unscheduleNotifications(notif: Notification) -> Void {
-        let notifs: [String] = [notif.id]
+        let notifs: [String] = [notif.id.uuidString]
         print("Unscheduling notifications: \(notifs)")
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notifs)
     }

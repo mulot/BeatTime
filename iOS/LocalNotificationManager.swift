@@ -15,12 +15,16 @@ class Notification: Identifiable, Hashable {
     var title: String
     var timer: TimeInterval
     var date: Date
+    var alarm: Bool
+    var notif: Bool
     
-    init(id: UUID, title: String, timer: TimeInterval, date: Date) {
+    init(id: UUID, title: String, timer: TimeInterval, date: Date, alarm: Bool, notif: Bool) {
         self.id = id
         self.title = title
         self.timer = timer
         self.date = date
+        self.alarm = alarm
+        self.notif = notif
     }
 }
 

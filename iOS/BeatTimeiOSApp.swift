@@ -9,8 +9,8 @@ import SwiftUI
 import SwiftData
 
 //let notificationCenter = UNUserNotificationCenter.current()
-//@MainActor let manager = LocalNotificationManager()
-@MainActor let manager = AlarmModel()
+@MainActor let notifManager = LocalNotificationManager()
+@MainActor let alarmManager = AlarmModel()
 
 @main
 struct BeatTimeiOSApp: App {
@@ -163,13 +163,13 @@ struct AlarmView: View {
                 }
             } .padding(.trailing)
             HStack{
-                Text("Alarm notifications")
+                Text("Alarms")
                     .font(.largeTitle.bold())
                 Spacer()
             }
             .padding(.leading)
             HStack{
-                Text("Manage notifications")
+                Text("Manage notifications & alarms")
                     .font(.subheadline)
                 Spacer()
             }
@@ -244,21 +244,37 @@ struct ConverTimeView: View {
 struct AlarmSetView: View {
     @State private var date = Date()
     @State private var beats: String = BeatTime.beats()
+    @State private var setAlarm: Bool = true
+    @State private var setNotif: Bool = false
     @Query(sort: \Notification.date) private var notifications: [Notification]
     @Environment(\.modelContext) private var context
 
-    func setNotification(msg: String, date: Date) -> Void {
+    func setNotification(msg: String, date: Date, isAlarm: Bool, isNotif: Bool) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            let notif = Notification(id: UUID(), title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
-            //manager.addNotification(notif: notif)
-            manager.scheduleFixAlarm(notif: notif)
-            context.insert(notif)
+            let notif = Notification(id: UUID(), title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400), alarm: isAlarm, notif: isNotif)
+            if (isAlarm) {
+                alarmManager.scheduleFixAlarm(notif: notif)
+            }
+            if (isNotif) {
+                notifManager.addNotification(notif: notif)
+                
+            }
+            if isAlarm || isNotif {
+                context.insert(notif)
+            }
         }
         else {
-            let notif = Notification(id: UUID(), title: msg, timer: date.timeIntervalSinceNow, date: date)
-            //manager.addNotification(notif: notif)
-            manager.scheduleFixAlarm(title: msg, date: date)
-            context.insert(notif)
+            let notif = Notification(id: UUID(), title: msg, timer: date.timeIntervalSinceNow, date: date, alarm: isAlarm, notif: isNotif)
+            if (isAlarm) {
+                alarmManager.scheduleFixAlarm(notif: notif)
+            }
+            if (isNotif) {
+                notifManager.addNotification(notif: notif)
+                
+            }
+            if isAlarm || isNotif {
+                context.insert(notif)
+            }
         }
     }
     
@@ -266,8 +282,8 @@ struct AlarmSetView: View {
         if (id == nil)
         {
             if (notifications.last != nil) {
-                //manager.removeNotification(notif: notifications.last!)
-                manager.removeNotification(notif: notifications.last!)
+                notifManager.removeNotification(notif: notifications.last!)
+                alarmManager.removeNotification(notif: notifications.last!)
                 context.delete(notifications.last!)
             }
         }
@@ -275,8 +291,8 @@ struct AlarmSetView: View {
             let notif = notifications.filter{$0.id == id}
             if !notif.isEmpty {
                 print("remove notif: \(notif[0].title) - \(notif[0].id)")
-                //manager.removeNotification(notif: notif[0])
-                manager.removeNotification(notif: notifications.last!)
+                notifManager.removeNotification(notif: notif[0])
+                alarmManager.removeNotification(notif: notif[0])
                 context.delete(notif[0])
             }
         }
@@ -306,25 +322,51 @@ struct AlarmSetView: View {
                         .foregroundColor(.accentColor)
                         Text(".beats")
                     }//.padding(.leading)
+                    HStack {
+                        Toggle(isOn: $setAlarm) {
+                            Text("Alarm on")
+                        }
+                    }
+                    HStack {
+                        Toggle(isOn: $setNotif) {
+                            Text("Notification on")
+                        }
+                    }
                 }
                 .navigationTitle("Set alarm")
             }
            NavigationView {
                 List {
                     ForEach(notifications) { notif in
-                        if (notif.date > Date()) {
-                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
-                        }
-                        else {
-                            Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
-                                .foregroundColor(Color.gray)
+                        if notif.date > Date() {
+                            HStack(spacing: 8) {
+                                Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                                if notif.notif {
+                                    Image(systemName: "bell")
+                                }
+                                if notif.alarm {
+                                    Image(systemName: "alarm")
+                                }
+                            }
+                        } else {
+                            HStack(spacing: 8) {
+                                Text("\(notif.title) - \(DateFormatter.localizedString(from: notif.date, dateStyle: .short, timeStyle: .short))")
+                                if notif.notif {
+                                    Image(systemName: "bell")
+                                }
+                                if notif.alarm {
+                                    Image(systemName: "alarm")
+                                }
+                            }
+                            .foregroundColor(Color.gray)
                         }
                      }
                     .onDelete(perform: {
                         if let index = $0.first {
                             unsetNotification(id: notifications[index].id)
                         }
-                        manager.notifications.remove(atOffsets: $0)
+                        alarmManager.notifications.remove(atOffsets: $0)
+                        notifManager.notifications.remove(atOffsets: $0)
                         //notifCount = notifications.count
                     })
                 }
@@ -336,7 +378,7 @@ struct AlarmSetView: View {
                 Spacer()
                 Button(action: {
                     let dateBeats = BeatTime.date(beats: BeatTime.beats(date: date))
-                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", date: dateBeats)
+                    self.setNotification(msg: "@\(BeatTime.beats(date: date)) .beats", date: dateBeats, isAlarm: setAlarm, isNotif: setNotif)
                     //notifications = manager.notifications
                     //notifCount =  manager.notifications.count
                 }) {
@@ -478,7 +520,7 @@ struct Settings_Preview: PreviewProvider {
         NavigationView {
             Form {
                 Section(header: Text("Display")) {
-                    Toggle(isOn: /*@START_MENU_TOKEN@*/.constant(true)/*@END_MENU_TOKEN@*/, label: {
+                    Toggle(isOn: .constant(true), label: {
                         Text("Centibeats")
                     })
                     Toggle(isOn: .constant(true), label: {

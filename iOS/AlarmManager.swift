@@ -48,7 +48,8 @@ class AlarmModel {
     // Schedules an alarm with message and date
     func scheduleFixAlarm(title: String, date: Date) {
         let localizedTitle: LocalizedStringResource = LocalizedStringResource(stringLiteral: title)
-        let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton, secondaryButton: .openAppButton, secondaryButtonBehavior: .custom)
+        //let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton, secondaryButton: .openAppButton, secondaryButtonBehavior: .custom)
+        let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton)
         let attributes = AlarmAttributes<BeatAlarmData>(presentation: AlarmPresentation(alert: alertContent),
                                                         tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(date)
@@ -60,7 +61,7 @@ class AlarmModel {
     
     func scheduleFixAlarm(notif: Notification) {
         let localizedTitle: LocalizedStringResource = LocalizedStringResource(stringLiteral: notif.title)
-        let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton, secondaryButton: .openAppButton, secondaryButtonBehavior: .custom)
+        let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton)
         let attributes = AlarmAttributes<BeatAlarmData>(presentation: AlarmPresentation(alert: alertContent),
                                                         tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(notif.date)

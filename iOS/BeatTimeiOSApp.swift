@@ -42,6 +42,8 @@ struct ContentView: View {
     @SceneStorage("ContentView.isFullCircleBg") var isFullCircleBg = true
     @SceneStorage("ContentView.isFullDigits") var isFullDigits = false
     @SceneStorage("ContentView.isFollowSun") var isFollowSun = true
+    @SceneStorage("ContentView.alarmByDefault") var alarmByDefault = true
+    @SceneStorage("ContentView.notifByDefault") var notifByDefault = false
     
     var body: some View {
         VStack {
@@ -86,10 +88,10 @@ struct ContentView: View {
             ConvertView(isPresented: $showConvert)
         }
         .sheet(isPresented: $showAlarm) {
-            AlarmView(isPresented: $showAlarm)
+            AlarmView(isPresented: $showAlarm, alarmByDefault: alarmByDefault, notifByDefault: notifByDefault)
         }
         .sheet(isPresented: $showSettings) {
-            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFullDigits: $isFullDigits, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor)
+            SettingsView(isPresented: $showSettings, isCentiBeats: $isCentiBeats, isFullCircleBg: $isFullCircleBg, isFullDigits: $isFullDigits, isFollowSun: $isFollowSun, bgCircleColor: $bgCircleColor, alarmByDefault: $alarmByDefault, notifByDefault: $notifByDefault)
         }
         /*
         .onTapGesture(perform: {
@@ -148,6 +150,8 @@ struct ConvertView: View {
 
 struct AlarmView: View {
     @Binding var isPresented: Bool
+    var alarmByDefault: Bool = true
+    var notifByDefault: Bool = false
     
     var body: some View {
         VStack {
@@ -176,7 +180,7 @@ struct AlarmView: View {
             .padding(.leading)
             VStack {
                 Spacer()
-                AlarmSetView()
+                AlarmSetView(setAlarm: alarmByDefault, setNotif: notifByDefault)
             }
         }
     }
@@ -244,11 +248,11 @@ struct ConverTimeView: View {
 struct AlarmSetView: View {
     @State private var date = Date()
     @State private var beats: String = BeatTime.beats()
-    @State private var setAlarm: Bool = true
-    @State private var setNotif: Bool = false
+    @State var setAlarm: Bool = true
+    @State var setNotif: Bool = false
     @Query(sort: \Notification.date) private var notifications: [Notification]
     @Environment(\.modelContext) private var context
-
+    
     func setNotification(msg: String, date: Date, isAlarm: Bool, isNotif: Bool) -> Void {
         if (date.timeIntervalSinceNow < 0) {
             let notif = Notification(id: UUID(), title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400), alarm: isAlarm, notif: isNotif)
@@ -414,7 +418,9 @@ struct SettingsView: View {
     @Binding var isFullDigits: Bool
     @Binding var isFollowSun: Bool
     @Binding var bgCircleColor: Color
-    
+    @Binding var alarmByDefault: Bool
+    @Binding var notifByDefault: Bool
+
     var body: some View {
         
         NavigationView {
@@ -431,6 +437,12 @@ struct SettingsView: View {
                     }
                     Toggle(isOn: $isFullDigits) {
                         Text("Full digits")
+                    }
+                    Toggle(isOn: $alarmByDefault) {
+                        Text("Alarm by default")
+                    }
+                    Toggle(isOn: $notifByDefault) {
+                        Text("Notification by default")
                     }
                     if (isFullCircleBg) {
                         ColorPicker("Back circle color", selection: $bgCircleColor)

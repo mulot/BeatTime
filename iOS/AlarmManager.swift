@@ -9,12 +9,10 @@ import AlarmKit
 import SwiftUI
 
 struct BeatAlarmData: AlarmMetadata {
-    var id: UUID
     var title: String
     var date: Date
     
-    init(id: UUID, title: String, date: Date) {
-        self.id = id
+    init(title: String, date: Date) {
         self.title = title
         self.date = date
     }
@@ -50,8 +48,9 @@ class AlarmModel {
         let localizedTitle: LocalizedStringResource = LocalizedStringResource(stringLiteral: title)
         //let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton, secondaryButton: .openAppButton, secondaryButtonBehavior: .custom)
         let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton)
-        let attributes = AlarmAttributes<BeatAlarmData>(presentation: AlarmPresentation(alert: alertContent),
-                                                        tintColor: Color.accentColor)
+        let metadata = BeatAlarmData(title: title, date: date)
+        let attributes = AlarmAttributes(presentation: AlarmPresentation(alert: alertContent),
+                                         metadata: metadata, tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(date)
         let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes)
 
@@ -62,8 +61,9 @@ class AlarmModel {
     func scheduleFixAlarm(notif: Notification) {
         let localizedTitle: LocalizedStringResource = LocalizedStringResource(stringLiteral: notif.title)
         let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton)
-        let attributes = AlarmAttributes<BeatAlarmData>(presentation: AlarmPresentation(alert: alertContent),
-                                                        tintColor: Color.accentColor)
+        let metadata = BeatAlarmData(title: notif.title, date: notif.date)
+        let attributes = AlarmAttributes(presentation: AlarmPresentation(alert: alertContent),
+                                         metadata: metadata, tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(notif.date)
         let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes)
         

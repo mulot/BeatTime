@@ -7,6 +7,7 @@
 
 import AlarmKit
 import SwiftUI
+import AppIntents
 
 struct BeatAlarmData: AlarmMetadata {
     var title: String
@@ -18,7 +19,28 @@ struct BeatAlarmData: AlarmMetadata {
     }
 }
 
-class AlarmModel {
+struct StopIntent: LiveActivityIntent {
+    func perform() throws -> some IntentResult {
+        try AlarmManager.shared.stop(id: UUID(uuidString: alarmID)!)
+        return .result()
+    }
+    
+    static var title: LocalizedStringResource = "Stop"
+    static var description = IntentDescription("Stop an alert")
+    
+    @Parameter(title: "alarmID")
+    var alarmID: String
+    
+    init(alarmID: String) {
+        self.alarmID = alarmID
+    }
+    
+    init() {
+        self.alarmID = ""
+    }
+}
+
+@Observable class AlarmModel {
     typealias AlarmConfiguration = AlarmManager.AlarmConfiguration<BeatAlarmData>
     typealias AlarmsMap = [UUID: (Alarm, LocalizedStringResource)]
     
@@ -46,16 +68,16 @@ class AlarmModel {
     // Schedules an alarm with message and date
     func scheduleFixAlarm(title: String, date: Date) {
         let localizedTitle: LocalizedStringResource = LocalizedStringResource(stringLiteral: title)
-        //let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton, secondaryButton: .openAppButton, secondaryButtonBehavior: .custom)
         let alertContent = AlarmPresentation.Alert(title: localizedTitle, stopButton: .stopButton)
         let metadata = BeatAlarmData(title: title, date: date)
         let attributes = AlarmAttributes(presentation: AlarmPresentation(alert: alertContent),
                                          metadata: metadata, tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(date)
-        let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes)
+        let id = UUID()
+        let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes, stopIntent: StopIntent(alarmID: id.uuidString))
 
-        print("Date: \(date)")
-        scheduleAlarm(id: UUID(), label: localizedTitle, alarmConfiguration: alarmConfiguration)
+        //print("Date: \(date)")
+        scheduleAlarm(id: id, label: localizedTitle, alarmConfiguration: alarmConfiguration)
     }
     
     func scheduleFixAlarm(notif: Notification) {
@@ -65,29 +87,12 @@ class AlarmModel {
         let attributes = AlarmAttributes(presentation: AlarmPresentation(alert: alertContent),
                                          metadata: metadata, tintColor: Color.accentColor)
         let scheduleFixed = Alarm.Schedule.fixed(notif.date)
-        let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes)
+        let alarmConfiguration = AlarmConfiguration(schedule: scheduleFixed, attributes: attributes, stopIntent: StopIntent(alarmID: notif.id.uuidString))
         
-        print("Date: \(notif.date)")
+        //print("Date: \(notif.date)")
         notifications.append(notif)
         scheduleAlarm(id: notif.id, label: localizedTitle, alarmConfiguration: alarmConfiguration)
     }
-    
-//    func scheduleAlarm(id: UUID, label: LocalizedStringResource, alarmConfiguration: AlarmConfiguration) {
-//        Task {
-//            do {
-//                guard await requestAuthorization() else {
-//                    print("Not authorized to schedule alarms.")
-//                    return
-//                }
-//                let alarm = try await alarmManager.schedule(id: id, configuration: alarmConfiguration)
-//                await MainActor.run {
-//                    alarmsMap[id] = (alarm, label)
-//                }
-//            } catch {
-//                print("Error encountered when scheduling alarm: \(error)")
-//            }
-//        }
-//    }
     
     func scheduleAlarm(id: UUID, label: LocalizedStringResource, alarmConfiguration: AlarmConfiguration) {
         Task {
@@ -96,7 +101,7 @@ class AlarmModel {
                 let alarm = try await alarmManager.schedule(id: id, configuration: alarmConfiguration)
                 await MainActor.run {
                     alarmsMap[id] = (alarm, label)
-                    print("Alam added: \(label) with id: \(id)")
+                    //print("Alam added: \(label) with id: \(id)")
                 }
             } catch {
                 print("Error encountered when scheduling alarm: \(error)")
@@ -116,7 +121,7 @@ class AlarmModel {
         //print("unschedule Alarm ID: \(alarmID) alarm: \(alarmsMap[alarmID], default: "Unknown alarm")")
         try? alarmManager.cancel(id: alarmID)
         Task { @MainActor in
-            print("Task unschedule Alarm ID: \(alarmID) alarm: \(alarmsMap[alarmID], default: "Unknown alarm")")
+            //print("Task unschedule Alarm ID: \(alarmID) alarm: \(alarmsMap[alarmID], default: "Unknown alarm")")
             alarmsMap[alarmID] = nil
         }
     }
@@ -134,6 +139,7 @@ class AlarmModel {
             
             // Update existing alarm states.
             remoteAlarms.forEach { updated in
+                //print("Alarm \(updated.id) state: \(updated.state)")
                 alarmsMap[updated.id, default: (updated, "Old Alarm)")].0 = updated
             }
             

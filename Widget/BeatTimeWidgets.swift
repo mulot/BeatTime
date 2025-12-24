@@ -1,6 +1,6 @@
 //
-//  BeatTimeWidget.swift
-//  BeatTimeWidget
+//  BeatTimeWidgets.swift
+//  BeatTimeWidgets
 //
 //  Created by Julien Mulot on 28/04/2021.
 //
@@ -271,42 +271,6 @@ struct BeatTimeWidgetEntryView : View {
         }
     }
 }
-
-@main
-struct BeatTimeWidget: Widget {
-    let kind: String = "BeatTimeWidget"
-    
-    private let supportedFamilies:[WidgetFamily] = {
-#if os(macOS)
-        return [.systemSmall]
-#elseif os(watchOS)
-        return [.accessoryCircular, .accessoryInline, .accessoryRectangular, .accessoryCorner]
-#elseif os(iOS)
-        if #available(iOSApplicationExtension 16.0, *) {
-            return [.systemSmall, .accessoryCircular, .accessoryInline, .accessoryRectangular]
-        }
-        else {
-            return [.systemSmall]
-        }
-#else
-        return [.systemSmall]
-#endif
-    }()
-    
-    var body: some WidgetConfiguration {
-        StaticConfiguration(
-            kind: "org.mulot.beattime.BeatTimeWidget",
-            provider: BeatTimeProvider()
-        ) { entry in
-            BeatTimeWidgetEntryView(entry: entry)
-        }
-        .configurationDisplayName("BeatTime")
-        .description("Swatch Internet Time aka .beat time")
-        .supportedFamilies(supportedFamilies)
-        //.contentMarginsDisabled()
-    }
-}
-
 
 #if os(macOS)
 struct BeatTimeWidget_Previews: PreviewProvider {

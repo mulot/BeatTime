@@ -12,6 +12,7 @@ import SwiftData
 //let notificationCenter = UNUserNotificationCenter.current()
 let manager = LocalNotificationManager()
 
+
 @main
 struct BeatTimeApp: App {
     @WKApplicationDelegateAdaptor private var appDelegate: ExtensionDelegate
@@ -168,11 +169,11 @@ struct AlarmView: View {
     
     func setNotification(msg: String, date: Date) -> Void {
         if (date.timeIntervalSinceNow < 0) {
-            let notif = Notification(id: UUID().uuidString, title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400))
+            let notif = Notification(id: UUID(), title: msg, timer: 86400 + date.timeIntervalSinceNow, date: date.addingTimeInterval(86400), alarm: false, notif: true)
             manager.addNotification(notif: notif)
         }
         else {
-            let notif = Notification(id: UUID().uuidString, title: msg, timer: date.timeIntervalSinceNow, date: date)
+            let notif = Notification(id: UUID(), title: msg, timer: date.timeIntervalSinceNow, date: date, alarm: false, notif: true)
             manager.addNotification(notif: notif)
         }
     }

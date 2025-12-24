@@ -41,10 +41,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // StatusItem is stored as a class property.
         self.statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         //self.statusItem?.menu = menu
-        self.statusItem?.button?.title = "@" + BeatTime().beats()
+        self.statusItem?.button?.title = "@" + BeatTime.beats()
         self.statusItem?.button?.action = #selector(showPopover(_:))
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self]timer in
-            self.statusItem?.button?.title = "@" + BeatTime().beats()
+            self.statusItem?.button?.title = "@" + BeatTime.beats()
             let contentView = ContentView()
             self.popover?.contentViewController = NSHostingController(rootView: contentView)
         }

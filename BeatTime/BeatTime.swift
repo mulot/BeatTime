@@ -49,13 +49,9 @@ struct BeatTime {
         let calendar = Calendar.current
         let now = Date()
         var components = calendar.dateComponents([.year, .month, .day], from: now)
-        components.timeZone = TimeZone(abbreviation: "CET")
+        components.timeZone = TimeZone(secondsFromGMT: Int(utcPlus1Offset))
         components.hour = 0
         components.minute = 0
-        // Add UTC+1 offset if DST is on (local time matches BMT reference)
-        if TimeZone.autoupdatingCurrent.isDaylightSavingTime() {
-            components.hour = 1
-        }
         guard let dayStart = calendar.date(from: components) else {
             return Date()
         }

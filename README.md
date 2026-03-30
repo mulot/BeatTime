@@ -16,6 +16,9 @@ Apps are coded in Swift language using AppKit/Cocoa (macOS), SwiftUI (iOS, Watch
 For more information about Swatch Internet Time:
 https://en.wikipedia.org/wiki/Swatch_Internet_Time
 
+What's New in version 3.1:
+- Fix dayligth saving bug in .beats conversion to local time
+  
 What's New in version 3.0:
 - You can now set a true alarm in addition of notification
 - Add AppIntents for Apple Shorcuts
